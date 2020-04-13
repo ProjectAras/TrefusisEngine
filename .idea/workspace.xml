@@ -3,6 +3,9 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="TrefusisEngine" targetName="TrefusisEngine" />
+      <config projectName="TrefusisEngine" targetName="FileReader.h" />
+      <config projectName="TrefusisEngine" targetName="Actor.cpp" />
+      <config projectName="TrefusisEngine" targetName="GameManager.cpp" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -12,18 +15,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1a06ea-58dc-453b-a9da-2d444733f390" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/managers/TimeManager.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/managers/TimeManager.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Player.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Player.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/managers/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/managers/SaveManager.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/managers/SaveManager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objects/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utility/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/managers/GameManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GameManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/GameManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GameManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Character.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/FileReader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/FileReader.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +37,13 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -55,12 +65,33 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="CMake Application.TrefusisEngine">
+    <configuration name="Actor.cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="Actor.cpp" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrefusisEngine" RUN_TARGET_NAME="Actor.cpp">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileReader.h" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="FileReader.h" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrefusisEngine" RUN_TARGET_NAME="FileReader.h">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameManager.cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="GameManager.cpp" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrefusisEngine" RUN_TARGET_NAME="GameManager.cpp">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TrefusisEngine" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="TrefusisEngine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrefusisEngine" RUN_TARGET_NAME="TrefusisEngine">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="CMake Application.TrefusisEngine" />
+      <item itemvalue="CMake Application.GameManager.cpp" />
+      <item itemvalue="CMake Application.Actor.cpp" />
+      <item itemvalue="CMake Application.FileReader.h" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -74,14 +105,30 @@
       <updated>1586649461382</updated>
       <workItem from="1586649462769" duration="2569000" />
       <workItem from="1586752040294" duration="506000" />
-      <workItem from="1586764246707" duration="10387000" />
+      <workItem from="1586764246707" duration="14477000" />
     </task>
+    <task id="LOCAL-00001" summary="Add managers">
+      <created>1586791049622</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586791049622</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add managers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add managers" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="1015" y="130" width="860" height="854" key="CommitChangelistDialog2" timestamp="1586791049564">
+      <screen x="40" y="27" width="1880" height="1053" />
+    </state>
+    <state x="1015" y="130" width="860" height="854" key="CommitChangelistDialog2/40.27.1880.1053@40.27.1880.1053" timestamp="1586791049564" />
     <state width="894" height="275" key="GridCell.Tab.0.bottom" timestamp="1586652031737">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
@@ -102,6 +149,14 @@
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state x="1101" y="381" key="com.intellij.ide.util.TipDialog/40.27.1880.1053@40.27.1880.1053" timestamp="1586764246671" />
+    <state x="1105" y="263" width="501" height="720" key="refactoring.ChangeSignatureDialog" timestamp="1586792886008">
+      <screen x="40" y="27" width="1880" height="1053" />
+    </state>
+    <state x="1105" y="263" width="501" height="720" key="refactoring.ChangeSignatureDialog/40.27.1880.1053@40.27.1880.1053" timestamp="1586792886008" />
+    <state x="644" y="252" key="run.anything.popup" timestamp="1586791635798">
+      <screen x="40" y="27" width="1880" height="1053" />
+    </state>
+    <state x="644" y="252" key="run.anything.popup/40.27.1880.1053@40.27.1880.1053" timestamp="1586791635798" />
     <state x="1113" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1586769710214">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>

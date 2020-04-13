@@ -1,0 +1,1 @@
+add_executable(Actor.cpp Actor.h Character.cpp Character.h EnviromentalActor.cpp EnviromentalActor.h)
