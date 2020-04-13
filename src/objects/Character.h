@@ -11,7 +11,7 @@ private:
     float baseHealth;
     float baseSpeed;
 public:
-    void track();
+    void track(Character other);
 };
 
 

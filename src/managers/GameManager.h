@@ -8,10 +8,14 @@
 #include <vector>
 #include <string>
 #include "../objects/Character.h"
+#include "TimeManager.h"
+#include "GraphicsManager.h"
 
 class GameManager {
 private:
     std::vector<Character> characters;
+    TimeManager timeManager;
+    GraphicsManager graphicsManager;
     void trackObjects();
 public:
     void Update();
