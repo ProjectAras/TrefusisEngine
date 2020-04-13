@@ -1,3 +1,0 @@
-/home/elsa/CLionProjects/TrefusisEngine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/elsa/CLionProjects/TrefusisEngine/cmake-build-debug/CMakeFiles/TrefusisEngine.dir
-/home/elsa/CLionProjects/TrefusisEngine/cmake-build-debug/CMakeFiles/edit_cache.dir

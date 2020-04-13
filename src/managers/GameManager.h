@@ -6,10 +6,17 @@
 #define TREFUSISENGINE_GAMEMANAGER_H
 
 #include <vector>
+#include <string>
+#include "../objects/Character.h"
 
 class GameManager {
 private:
-    std::vector<
+    std::vector<Character> characters;
+    void trackObjects();
+public:
+    void Update();
+    GameManager();
+    GameManager(std::string saveFile);
 };
 
 
