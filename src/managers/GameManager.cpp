@@ -14,16 +14,16 @@ void GameManager::trackObjects() {
 }
 
 void GameManager::Update() {
-    this->timeManager.tickTime();
-    this->graphicsManager.drawScreen();
 }
 
 GameManager::GameManager() {
+    auto* gm = new GraphicsManager(640, 320);
+    this->graphicsManager = *gm;
+}
+
+GameManager::ShowSplashScreen() {
 
 }
 
 
 
-GameManager::GameManager(std::string saveFile) {
-
-}

@@ -19,8 +19,10 @@ private:
     SDL_Renderer* gameRenderer;
     int screen_width;
     int screen_height;
+    std::vector<SDL_Texture*> textures;
 public:
     GraphicsManager(int screen_width, int screen_height);
+    GraphicsManager() : GraphicsManager(640, 320) {};
     void drawScreen(Player player, EnviromentalActor* enviromentalActors[], std::vector<Character> characters);
     void drawToScreen(std::string filePath);
     void drawToScreen(int x, int y, std::string filePath);

@@ -5,6 +5,11 @@
 #include "GraphicsManager.h"
 #include <SDL.h>
 
+void GraphicsManager::drawToScreen(std::string filePath) {
+    SDL_Texture* newTexture;
+    SDL_Surface* loadSurface = IMG_LOAD
+}
+
 GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
     this->screen_height = screen_height;
     this->screen_width = screen_width;
