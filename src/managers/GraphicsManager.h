@@ -27,8 +27,8 @@ public:
     GraphicsManager(int screen_width, int screen_height);
     GraphicsManager() : GraphicsManager(640, 480) {};
     void drawScreen(Player player, EnviromentalActor* enviromentalActors[], std::vector<Character> characters);
-    void drawToScreen(std::string filePath);
-    void drawToScreen(int x, int y, std::string filePath);
+    SDL_Texture* drawToScreen(std::string filePath, bool fadeIn);
+    SDL_Texture* drawToScreen(int x, int y, std::string filePath);
     void close();
 };
 

@@ -35,7 +35,9 @@ void GameManager::close() {
     this->graphicsManager.close();
 }
 void GameManager::showSplashScreen() {
-    this->graphicsManager.drawToScreen("../resources/splash.png");
+    this->graphicsManager.drawToScreen("../resources/splash.png", true);
+    SDL_Delay(2000);
+    this->graphicsManager.drawToScreen("../resources/game_splash.png", true);
 }
 
 

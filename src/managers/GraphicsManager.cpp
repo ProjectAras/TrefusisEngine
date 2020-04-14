@@ -8,13 +8,18 @@
 #include <SDL2/SDL_surface.h>
 
 
-void GraphicsManager::drawToScreen(std::string filePath) {
+SDL_Texture* GraphicsManager::drawToScreen(std::string filePath, bool fadeIn) {
     SDL_Texture* newTexture;
     SDL_Surface* loadSurface = IMG_Load(filePath.c_str());
     if (loadSurface == NULL) {
         printf("Unable to load the image %s, ERROR: ", filePath.c_str(), IMG_GetError);
     }
     newTexture = SDL_CreateTextureFromSurface(this->gameRenderer, loadSurface);
+    if (fadeIn) {
+        for (int i = 233; i < 255; i++) {
+            SDL_SetTextureAlphaMod(newTexture, i); // Does not work.
+        }
+    }
     if (newTexture == NULL) {
         printf("Error with loading texture file.");
     }
