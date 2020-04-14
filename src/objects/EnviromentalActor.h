@@ -5,8 +5,8 @@
 #ifndef TREFUSISENGINE_ENVIROMENTALACTOR_H
 #define TREFUSISENGINE_ENVIROMENTALACTOR_H
 
-#include <SDL_render.h>
 #include <string>
+#include <SDL2/SDL_render.h>
 #include "Actor.h"
 
 class EnviromentalActor : Actor {

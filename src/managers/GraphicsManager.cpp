@@ -3,16 +3,27 @@
 //
 
 #include "GraphicsManager.h"
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_surface.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_surface.h>
 
 
 void GraphicsManager::drawToScreen(std::string filePath) {
     SDL_Texture* newTexture;
     SDL_Surface* loadSurface = IMG_Load(filePath.c_str());
+    if (loadSurface == NULL) {
+        printf("Unable to load the image %s, ERROR: ", filePath.c_str(), IMG_GetError);
+    }
     newTexture = SDL_CreateTextureFromSurface(this->gameRenderer, loadSurface);
+    if (newTexture == NULL) {
+        printf("Error with loading texture file.");
+    }
     SDL_FreeSurface(loadSurface);
+    SDL_RenderClear( this->gameRenderer );
+    //Render texture to screen
+    SDL_RenderCopy( this->gameRenderer, newTexture, NULL, NULL );
+    //Update screen
+    SDL_RenderPresent( this->gameRenderer );
 }
 
 GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
@@ -26,7 +37,7 @@ GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
 
 }
 
-GraphicsManager::~GraphicsManager() {
+void GraphicsManager::close() {
     SDL_DestroyRenderer(this->gameRenderer);
     SDL_DestroyWindow(this->gameWindow);
     SDL_Quit();

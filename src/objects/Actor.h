@@ -6,7 +6,7 @@
 #define TREFUSISENGINE_ACTOR_H
 
 
-#include <SDL_render.h>
+#include <SDL2/SDL_render.h>
 
 class Actor {
 public:

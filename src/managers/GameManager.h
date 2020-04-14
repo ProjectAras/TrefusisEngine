@@ -16,11 +16,15 @@ private:
     std::vector<Character> characters;
     TimeManager timeManager;
     GraphicsManager graphicsManager;
+    SDL_Event e;
     void trackObjects();
     void showSplashScreen();
+    void handleKeys();
 public:
+    bool quit;
     void Update();
     GameManager();
+    void close();
     GameManager(std::string saveFile);
 };
 
