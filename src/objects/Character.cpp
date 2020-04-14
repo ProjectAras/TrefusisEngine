@@ -4,6 +4,6 @@
 
 #include "Character.h"
 
-void Character::track() {
+void Character::track(Character other) {
 
 }

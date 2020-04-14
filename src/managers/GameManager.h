@@ -17,6 +17,7 @@ private:
     TimeManager timeManager;
     GraphicsManager graphicsManager;
     void trackObjects();
+    void showSplashScreen();
 public:
     void Update();
     GameManager();

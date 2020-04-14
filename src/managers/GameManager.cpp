@@ -21,8 +21,8 @@ GameManager::GameManager() {
     this->graphicsManager = *gm;
 }
 
-GameManager::ShowSplashScreen() {
-
+void GameManager::showSplashScreen() {
+    this->graphicsManager.drawToScreen("resources/splash.png");
 }
 
 

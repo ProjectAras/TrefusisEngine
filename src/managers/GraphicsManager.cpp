@@ -4,10 +4,15 @@
 
 #include "GraphicsManager.h"
 #include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_surface.h>
+
 
 void GraphicsManager::drawToScreen(std::string filePath) {
     SDL_Texture* newTexture;
-    SDL_Surface* loadSurface = IMG_LOAD
+    SDL_Surface* loadSurface = IMG_Load(filePath.c_str());
+    newTexture = SDL_CreateTextureFromSurface(this->gameRenderer, loadSurface);
+    SDL_FreeSurface(loadSurface);
 }
 
 GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
