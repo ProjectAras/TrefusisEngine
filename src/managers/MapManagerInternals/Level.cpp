@@ -27,6 +27,7 @@ void Level::importLevelBase(std::string fileName) {
                 column++;
         }
     }
+    fclose(file_ptr);
 }
 
 void Level::generateTiles() {
