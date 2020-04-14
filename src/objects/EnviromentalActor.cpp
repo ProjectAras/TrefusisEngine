@@ -5,7 +5,6 @@
 #include "EnviromentalActor.h"
 
 #include <utility>
-#include "../utility/FileReader.h"
 
 void EnviromentalActor::incrementSeason() {
     this->texturePointer+=2;
@@ -21,10 +20,10 @@ SDL_Texture* EnviromentalActor::getTexture() {
 }
 
 EnviromentalActor::EnviromentalActor(std::string fileName) {
-    EnviromentalActor importedActor = importEnviromentalActor(std::move(fileName));
+//    EnviromentalActor importedActor = importEnviromentalActor(std::move(fileName));
     this->texturePointer = 0;
     this->isDay = 1;
-    for (int i = 0; i < 8; i++) {
-        this->textures[i] = importedActor.textures[i];
-    }
+//    for (int i = 0; i < 8; i++) {
+//        this->textures[i] = importedActor.textures[i];
+//    }
 }

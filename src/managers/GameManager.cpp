@@ -27,8 +27,6 @@ void GameManager::Update() {
 }
 
 GameManager::GameManager() {
-    GraphicsManager gm;
-    this->graphicsManager = gm;
     this->showSplashScreen();
     this->quit = false;
 }

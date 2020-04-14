@@ -3,7 +3,6 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="TrefusisEngine" targetName="TrefusisEngine" />
-      <config projectName="TrefusisEngine" targetName="FileReader.h" />
       <config projectName="TrefusisEngine" targetName="objects" />
       <config projectName="TrefusisEngine" targetName="managers" />
     </generated>
@@ -16,15 +15,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3f1a06ea-58dc-453b-a9da-2d444733f390" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeModules/FindSDL2.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeModules/FindSDL2.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/managers/GameManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GameManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/GameManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GameManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/Actor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Actor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/EnviromentalActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/EnviromentalActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/EnviromentalActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/EnviromentalActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/FileReader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/FileReader.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +60,6 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.TrefusisEngine">
-    <configuration name="FileReader.h" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="FileReader.h" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrefusisEngine" RUN_TARGET_NAME="FileReader.h">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TrefusisEngine" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="TrefusisEngine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrefusisEngine" RUN_TARGET_NAME="TrefusisEngine">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -88,7 +79,6 @@
       <item itemvalue="CMake Application.TrefusisEngine" />
       <item itemvalue="CMake Application.managers" />
       <item itemvalue="CMake Application.objects" />
-      <item itemvalue="CMake Application.FileReader.h" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -104,7 +94,7 @@
       <workItem from="1586649462769" duration="2569000" />
       <workItem from="1586752040294" duration="506000" />
       <workItem from="1586764246707" duration="21008000" />
-      <workItem from="1586831469878" duration="4729000" />
+      <workItem from="1586831469878" duration="4891000" />
     </task>
     <task id="LOCAL-00001" summary="Add managers">
       <created>1586791049622</created>
@@ -144,22 +134,22 @@
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state x="1015" y="130" width="860" height="854" key="CommitChangelistDialog2/40.27.1880.1053@40.27.1880.1053" timestamp="1586795395283" />
-    <state width="1834" height="275" key="GridCell.Tab.0.bottom" timestamp="1586836900738">
+    <state width="1834" height="275" key="GridCell.Tab.0.bottom" timestamp="1586838544808">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="275" key="GridCell.Tab.0.bottom/40.27.1880.1053@40.27.1880.1053" timestamp="1586836900738" />
-    <state width="1834" height="275" key="GridCell.Tab.0.center" timestamp="1586836900737">
+    <state width="1834" height="275" key="GridCell.Tab.0.bottom/40.27.1880.1053@40.27.1880.1053" timestamp="1586838544808" />
+    <state width="1834" height="275" key="GridCell.Tab.0.center" timestamp="1586838544808">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="275" key="GridCell.Tab.0.center/40.27.1880.1053@40.27.1880.1053" timestamp="1586836900737" />
-    <state width="1834" height="275" key="GridCell.Tab.0.left" timestamp="1586836900737">
+    <state width="1834" height="275" key="GridCell.Tab.0.center/40.27.1880.1053@40.27.1880.1053" timestamp="1586838544808" />
+    <state width="1834" height="275" key="GridCell.Tab.0.left" timestamp="1586838544807">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="275" key="GridCell.Tab.0.left/40.27.1880.1053@40.27.1880.1053" timestamp="1586836900737" />
-    <state width="1834" height="275" key="GridCell.Tab.0.right" timestamp="1586836900738">
+    <state width="1834" height="275" key="GridCell.Tab.0.left/40.27.1880.1053@40.27.1880.1053" timestamp="1586838544807" />
+    <state width="1834" height="275" key="GridCell.Tab.0.right" timestamp="1586838544808">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="275" key="GridCell.Tab.0.right/40.27.1880.1053@40.27.1880.1053" timestamp="1586836900738" />
+    <state width="1834" height="275" key="GridCell.Tab.0.right/40.27.1880.1053@40.27.1880.1053" timestamp="1586838544808" />
     <state x="1101" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1586831472408">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
