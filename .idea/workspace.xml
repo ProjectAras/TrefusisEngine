@@ -3,10 +3,10 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="TrefusisEngine" targetName="TrefusisEngine" />
-      <config projectName="TrefusisEngine" targetName="objects" />
-      <config projectName="TrefusisEngine" targetName="map_manager_internals" />
-      <config projectName="TrefusisEngine" targetName="managers" />
       <config projectName="TrefusisEngine" targetName="internals" />
+      <config projectName="TrefusisEngine" targetName="map_manager_internals" />
+      <config projectName="TrefusisEngine" targetName="objects" />
+      <config projectName="TrefusisEngine" targetName="managers" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -16,14 +16,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1a06ea-58dc-453b-a9da-2d444733f390" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/maps/sampleMap.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/maps/sampleMap.1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/MapManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Character.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Player.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trefusisInternals/TrefusisConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/trefusisInternals/TrefusisConfig.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +116,7 @@
       <workItem from="1586831469878" duration="13647000" />
       <workItem from="1586883554860" duration="611000" />
       <workItem from="1586909434408" duration="14630000" />
+      <workItem from="1586946597370" duration="963000" />
     </task>
     <task id="LOCAL-00001" summary="Add managers">
       <created>1586791049622</created>
@@ -160,6 +156,10 @@
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state x="417" y="317" key="#com.intellij.execution.impl.EditConfigurationsDialog/40.27.1880.1053@40.27.1880.1053" timestamp="1586916037732" />
+    <state x="664" y="355" width="621" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586946884428">
+      <screen x="40" y="27" width="1880" height="1053" />
+    </state>
+    <state x="664" y="355" width="621" height="403" key="#com.intellij.fileTypes.FileTypeChooser/40.27.1880.1053@40.27.1880.1053" timestamp="1586946884428" />
     <state x="742" y="367" width="424" height="591" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1586914208034">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
