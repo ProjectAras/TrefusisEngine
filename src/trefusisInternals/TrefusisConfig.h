@@ -1,0 +1,14 @@
+//
+// Created by elsa on 15.04.2020.
+//
+
+#ifndef TREFUSISENGINE_TREFUSISCONFIG_H
+#define TREFUSISENGINE_TREFUSISCONFIG_H
+
+
+class TrefusisConfig {
+
+};
+
+
+#endif //TREFUSISENGINE_TREFUSISCONFIG_H

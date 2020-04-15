@@ -11,21 +11,25 @@
 #include "TimeManager.h"
 #include "GraphicsManager.h"
 
+/**
+ * A singleton class, GameManager has only one active instance at any given time.
+ */
 class GameManager {
 private:
     std::vector<Character> characters;
     TimeManager timeManager;
     GraphicsManager graphicsManager;
     SDL_Event e;
+    static GameManager* game;
     void trackObjects();
     void showSplashScreen();
     void handleKeys();
+    GameManager();
 public:
     bool quit;
     void Update();
-    GameManager();
+    static GameManager getInstance();
     void close();
-    GameManager(std::string saveFile);
 };
 
 

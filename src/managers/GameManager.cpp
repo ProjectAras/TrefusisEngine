@@ -5,6 +5,8 @@
 #include "GameManager.h"
 #include "../objects/Character.h"
 
+GameManager* GameManager::game = nullptr;
+
 void GameManager::trackObjects() {
     for (Character self : characters) {
         for (Character other : characters) {
@@ -40,5 +42,11 @@ void GameManager::showSplashScreen() {
     this->graphicsManager.drawToScreen("../resources/game_splash.png", true);
 }
 
-
-
+GameManager GameManager::getInstance() {
+    if (game != nullptr) {
+        return *game;
+    } else {
+        game = new GameManager();
+        return *game;
+    }
+}
