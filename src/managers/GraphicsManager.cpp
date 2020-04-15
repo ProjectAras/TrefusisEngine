@@ -3,6 +3,9 @@
 //
 
 #include "GraphicsManager.h"
+#include "../trefusisInternals/TrefusisConfig.h"
+#include "MapManagerInternals/Level.h"
+#include "MapManager.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_surface.h>
@@ -42,8 +45,32 @@ GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
 
 }
 
+void GraphicsManager::drawToScreen(int x, int y, SDL_Rect *drawZone) {
+    SDL_Rect* drawRect;
+    drawRect->x = x;
+    drawRect->y = y;
+    drawRect->w = TrefusisConfig::tileSize;
+    drawRect->h = TrefusisConfig::tileSize;
+    SDL_BlitSurface(mainSpriteSheet, drawZone, this->gameSurface, drawRect);
+}
+
+void GraphicsManager::drawScreen(Player player) {
+    int renderWidth = TrefusisConfig::screenWidth / TrefusisConfig::tileSize;
+    int renderHeight = TrefusisConfig::screenHeight / TrefusisConfig::tileSize;
+    Level* activeLevel = MapManager::activeLevel;
+    for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
+        for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
+            GraphicsManager::drawToScreen(i, j, activeLevel->tileMatrix[i][j].getTexture());
+        }
+    }
+}
 void GraphicsManager::close() {
     SDL_DestroyRenderer(this->gameRenderer);
     SDL_DestroyWindow(this->gameWindow);
     SDL_Quit();
 }
+
+void GraphicsManager::getSpriteSheet(std::string fileName) {
+    this->mainSpriteSheet =  IMG_Load(fileName.c_str());
+}
+

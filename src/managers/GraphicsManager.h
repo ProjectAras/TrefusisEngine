@@ -21,6 +21,7 @@ private:
     SDL_Window* gameWindow;
     SDL_Renderer* gameRenderer;
     SDL_Surface* mainSpriteSheet;
+    SDL_Surface* gameSurface;
     int screen_width;
     int screen_height;
     std::vector<SDL_Texture*> textures;
@@ -30,11 +31,26 @@ private:
      */
     void getSpriteSheet(std::string);
 public:
+    /**
+     * Initialise a Graphics Manager with given sizes.
+     * @param screen_width
+     * @param screen_height
+     */
     GraphicsManager(int screen_width, int screen_height);
+    /**
+     * Initialise an empty graphics manager.
+     */
     GraphicsManager() : GraphicsManager(640, 480) {};
-    void drawScreen(Player player, EnviromentalActor* enviromentalActors[], std::vector<Character> characters);
+    /**
+     * Given the player character render the screen.
+     * @param player
+     * @param enviromentalActors
+     * @param characters
+     */
+    void drawScreen(Player player);
     SDL_Texture* drawToScreen(std::string filePath, bool fadeIn);
-    SDL_Texture* drawToScreen(int x, int y, std::string filePath);
+
+    void drawToScreen(int x, int y, SDL_Rect* drawZone);
     void close();
 };
 

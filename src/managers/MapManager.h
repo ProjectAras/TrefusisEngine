@@ -6,8 +6,11 @@
 #define TREFUSISENGINE_MAPMANAGER_H
 
 
-class MapManager {
+#include "MapManagerInternals/Level.h"
 
+class MapManager {
+public:
+    static Level* activeLevel;
 };
 
 

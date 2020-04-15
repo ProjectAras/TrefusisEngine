@@ -11,11 +11,12 @@
 
 class Level {
 private:
-    EnviromentalActor tileMatrix[3600][3600];
-    Zone zoneMatrix[500][500];
-    Zone availableZones[5];
+    Zone zoneMatrix[500][500]{};
+    Zone availableZones[5]{};
     void importLevelBase(std::string fileName);
     void generateTiles();
+public:
+    EnviromentalActor tileMatrix[500][500];
 };
 
 
