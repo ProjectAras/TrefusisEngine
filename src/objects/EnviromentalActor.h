@@ -9,16 +9,18 @@
 #include <SDL2/SDL_render.h>
 #include "Actor.h"
 
+
 class EnviromentalActor : Actor {
 private:
-    SDL_Texture* textures[8]{};
-    int texturePointer;
+    int id;
+    int timeSetting;
     int isDay;  // 1 if day, -1 if night
 public:
-    SDL_Texture* getTexture() override;
+    SDL_Rect* getTexture() override;
     void incrementSeason();
     void transitionDayNight();
-    EnviromentalActor(std::string fileName);
+    EnviromentalActor();
+    static void importEnviromentalActors();
 };
 
 

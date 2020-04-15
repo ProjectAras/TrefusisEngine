@@ -20,9 +20,15 @@ class GraphicsManager {
 private:
     SDL_Window* gameWindow;
     SDL_Renderer* gameRenderer;
+    SDL_Surface* mainSpriteSheet;
     int screen_width;
     int screen_height;
     std::vector<SDL_Texture*> textures;
+    /**
+     * Load the spritesheet onto the RAM.
+     * @return
+     */
+    void getSpriteSheet(std::string);
 public:
     GraphicsManager(int screen_width, int screen_height);
     GraphicsManager() : GraphicsManager(640, 480) {};

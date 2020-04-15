@@ -6,6 +6,7 @@
       <config projectName="TrefusisEngine" targetName="objects" />
       <config projectName="TrefusisEngine" targetName="map_manager_internals" />
       <config projectName="TrefusisEngine" targetName="managers" />
+      <config projectName="TrefusisEngine" targetName="internals" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -15,8 +16,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1a06ea-58dc-453b-a9da-2d444733f390" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/developmentResources/maps/sampleMap.tmx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/developmentResources/tilesets/TrefusisStandardZoneTileset.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/maps/sampleMap.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/Actor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Actor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/Character.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Character.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/EnviromentalActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/EnviromentalActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/EnviromentalActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/EnviromentalActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trefusisInternals/TrefusisConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/trefusisInternals/TrefusisConfig.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trefusis.conf" beforeDir="false" afterPath="$PROJECT_DIR$/trefusis.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,44 +52,54 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="OCResolveContextSettings">
-    <option name="configuration" value="0-Debug-map_manager_internals" />
+    <option name="configuration" value="0-Debug-managers" />
   </component>
   <component name="ProjectId" id="1aPuHTsYELjycqXaIqwI2MY0hlB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/maps" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/maps" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources" />
       <recent name="$PROJECT_DIR$/src/managers" />
       <recent name="$PROJECT_DIR$/src/objects" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.TrefusisEngine">
-    <configuration name="TrefusisEngine" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="TrefusisEngine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrefusisEngine" RUN_TARGET_NAME="TrefusisEngine">
+    <configuration name="TrefusisEngine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="TrefusisEngine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrefusisEngine" RUN_TARGET_NAME="TrefusisEngine">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="managers" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="managers" CONFIG_NAME="Debug">
+    <configuration name="internals" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="internals" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="map_manager_internals" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="map_manager_internals" CONFIG_NAME="Debug">
+    <configuration name="managers" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="managers" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="objects" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="objects" CONFIG_NAME="Debug">
+    <configuration name="map_manager_internals" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="map_manager_internals" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="objects" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrefusisEngine" TARGET_NAME="objects" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -85,6 +109,7 @@
       <item itemvalue="CMake Application.managers" />
       <item itemvalue="CMake Application.map_manager_internals" />
       <item itemvalue="CMake Application.objects" />
+      <item itemvalue="CMake Application.internals" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -100,7 +125,9 @@
       <workItem from="1586649462769" duration="2569000" />
       <workItem from="1586752040294" duration="506000" />
       <workItem from="1586764246707" duration="21008000" />
-      <workItem from="1586831469878" duration="13009000" />
+      <workItem from="1586831469878" duration="13647000" />
+      <workItem from="1586883554860" duration="611000" />
+      <workItem from="1586909434408" duration="10883000" />
     </task>
     <task id="LOCAL-00001" summary="Add managers">
       <created>1586791049622</created>
@@ -127,7 +154,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add managers" />
@@ -136,30 +163,38 @@
     <option name="LAST_COMMIT_MESSAGE" value="Additions to managers." />
   </component>
   <component name="WindowStateProjectService">
+    <state x="417" y="317" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586916037732">
+      <screen x="40" y="27" width="1880" height="1053" />
+    </state>
+    <state x="417" y="317" key="#com.intellij.execution.impl.EditConfigurationsDialog/40.27.1880.1053@40.27.1880.1053" timestamp="1586916037732" />
+    <state x="742" y="367" width="424" height="591" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1586914208034">
+      <screen x="40" y="27" width="1880" height="1053" />
+    </state>
+    <state x="742" y="367" width="424" height="591" key="#com.intellij.ide.macro.MacrosDialog/40.27.1880.1053@40.27.1880.1053" timestamp="1586914208034" />
     <state x="1015" y="130" width="860" height="854" key="CommitChangelistDialog2" timestamp="1586795395283">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state x="1015" y="130" width="860" height="854" key="CommitChangelistDialog2/40.27.1880.1053@40.27.1880.1053" timestamp="1586795395283" />
-    <state width="1834" height="275" key="GridCell.Tab.0.bottom" timestamp="1586867948662">
+    <state width="1834" height="275" key="GridCell.Tab.0.bottom" timestamp="1586924676213">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="275" key="GridCell.Tab.0.bottom/40.27.1880.1053@40.27.1880.1053" timestamp="1586867948662" />
-    <state width="1834" height="275" key="GridCell.Tab.0.center" timestamp="1586867948662">
+    <state width="1834" height="275" key="GridCell.Tab.0.bottom/40.27.1880.1053@40.27.1880.1053" timestamp="1586924676213" />
+    <state width="1834" height="275" key="GridCell.Tab.0.center" timestamp="1586924676212">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="275" key="GridCell.Tab.0.center/40.27.1880.1053@40.27.1880.1053" timestamp="1586867948662" />
-    <state width="1834" height="275" key="GridCell.Tab.0.left" timestamp="1586867948661">
+    <state width="1834" height="275" key="GridCell.Tab.0.center/40.27.1880.1053@40.27.1880.1053" timestamp="1586924676212" />
+    <state width="1834" height="275" key="GridCell.Tab.0.left" timestamp="1586924676212">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="275" key="GridCell.Tab.0.left/40.27.1880.1053@40.27.1880.1053" timestamp="1586867948661" />
-    <state width="1834" height="275" key="GridCell.Tab.0.right" timestamp="1586867948662">
+    <state width="1834" height="275" key="GridCell.Tab.0.left/40.27.1880.1053@40.27.1880.1053" timestamp="1586924676212" />
+    <state width="1834" height="275" key="GridCell.Tab.0.right" timestamp="1586924676213">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="275" key="GridCell.Tab.0.right/40.27.1880.1053@40.27.1880.1053" timestamp="1586867948662" />
-    <state x="1101" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1586831472408">
+    <state width="1834" height="275" key="GridCell.Tab.0.right/40.27.1880.1053@40.27.1880.1053" timestamp="1586924676213" />
+    <state x="1101" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1586883556418">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state x="1101" y="381" key="com.intellij.ide.util.TipDialog/40.27.1880.1053@40.27.1880.1053" timestamp="1586831472408" />
+    <state x="1101" y="381" key="com.intellij.ide.util.TipDialog/40.27.1880.1053@40.27.1880.1053" timestamp="1586883556418" />
     <state x="1105" y="263" width="501" height="720" key="refactoring.ChangeSignatureDialog" timestamp="1586792886008">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
@@ -168,9 +203,9 @@
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state x="644" y="252" key="run.anything.popup/40.27.1880.1053@40.27.1880.1053" timestamp="1586791635798" />
-    <state x="1113" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1586835221036">
+    <state x="1113" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1586915527397">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state x="1113" y="259" width="672" height="678" key="search.everywhere.popup/40.27.1880.1053@40.27.1880.1053" timestamp="1586835221036" />
+    <state x="1113" y="259" width="672" height="678" key="search.everywhere.popup/40.27.1880.1053@40.27.1880.1053" timestamp="1586915527397" />
   </component>
 </project>

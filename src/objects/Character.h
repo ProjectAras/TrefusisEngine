@@ -10,6 +10,8 @@ class Character {
 private:
     float baseHealth;
     float baseSpeed;
+    int x;
+    int y;
 public:
     void track(Character other);
 };

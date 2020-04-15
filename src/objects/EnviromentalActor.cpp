@@ -3,27 +3,35 @@
 //
 
 #include "EnviromentalActor.h"
+#include "../trefusisInternals/TrefusisConfig.h"
 
 #include <utility>
 
 void EnviromentalActor::incrementSeason() {
-    this->texturePointer+=2;
+    this->timeSetting+=2;
 }
 
 void EnviromentalActor::transitionDayNight() {
-    this->texturePointer += this->isDay;
+    this->timeSetting += this->isDay;
     this->isDay *= -1;
 }
 
-SDL_Texture* EnviromentalActor::getTexture() {
-    return this->textures[texturePointer];
+SDL_Rect* EnviromentalActor::getTexture() {
+    SDL_Rect* rect;
+    rect->h = TrefusisConfig::tileSize;
+    rect->w = TrefusisConfig::tileSize;
+    rect->y = TrefusisConfig::tileSize * this->id;
+    rect->x = TrefusisConfig::tileSize * this->timeSetting;
 }
 
-EnviromentalActor::EnviromentalActor(std::string fileName) {
+EnviromentalActor::EnviromentalActor() {
 //    EnviromentalActor importedActor = importEnviromentalActor(std::move(fileName));
-    this->texturePointer = 0;
     this->isDay = 1;
 //    for (int i = 0; i < 8; i++) {
 //        this->textures[i] = importedActor.textures[i];
 //    }
+}
+
+void EnviromentalActor::importEnviromentalActors() {
+
 }
