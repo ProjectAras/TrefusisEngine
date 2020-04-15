@@ -7,6 +7,13 @@
 
 
 #include "../../objects/EnviromentalActor.h"
+#include <iostream>
+#include <string>
+
+struct foilage {
+    int id; //id of the foilage object
+    int chance; //chance of the foilage object, this variable may be different for different zones
+};
 
 class Zone {
 public:
