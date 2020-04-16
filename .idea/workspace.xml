@@ -16,10 +16,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1a06ea-58dc-453b-a9da-2d444733f390" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/trefusisInternals/RandomNumberGenerator.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/trefusisInternals/RandomNumberGenerator.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Zone.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Zone.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Zone.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Zone.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/EnviromentalActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/EnviromentalActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/EnviromentalActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/EnviromentalActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trefusisInternals/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/trefusisInternals/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +45,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="OCResolveContextSettings">
-    <option name="configuration" value="0-Debug-map_manager_internals" />
+    <option name="configuration" value="0-Debug-internals" />
   </component>
   <component name="ProjectId" id="1aPuHTsYELjycqXaIqwI2MY0hlB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -119,7 +123,7 @@
       <workItem from="1586883554860" duration="611000" />
       <workItem from="1586909434408" duration="14630000" />
       <workItem from="1586946597370" duration="963000" />
-      <workItem from="1587011990552" duration="4763000" />
+      <workItem from="1587011990552" duration="7514000" />
     </task>
     <task id="LOCAL-00001" summary="Add managers">
       <created>1586791049622</created>
@@ -203,9 +207,9 @@
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state x="644" y="252" key="run.anything.popup/40.27.1880.1053@40.27.1880.1053" timestamp="1586791635798" />
-    <state x="1113" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1586915527397">
+    <state x="1113" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1587024173860">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state x="1113" y="259" width="672" height="678" key="search.everywhere.popup/40.27.1880.1053@40.27.1880.1053" timestamp="1586915527397" />
+    <state x="1113" y="259" width="672" height="678" key="search.everywhere.popup/40.27.1880.1053@40.27.1880.1053" timestamp="1587024173860" />
   </component>
 </project>

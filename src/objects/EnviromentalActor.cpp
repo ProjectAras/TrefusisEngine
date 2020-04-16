@@ -32,6 +32,11 @@ EnviromentalActor::EnviromentalActor() {
 //    }
 }
 
+EnviromentalActor::EnviromentalActor(int id) {
+    this->id = id;
+    this->isDay = 1;
+}
+
 void EnviromentalActor::importEnviromentalActors() {
 
 }

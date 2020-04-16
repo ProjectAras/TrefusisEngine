@@ -3,6 +3,7 @@
 //
 
 #include "Zone.h"
+#include "../../trefusisInternals/RandomNumberGenerator.h"
 
 
 void mallocZoneProbability(zoneProbability* zp, int mallocSize) {
@@ -11,6 +12,11 @@ void mallocZoneProbability(zoneProbability* zp, int mallocSize) {
     zp->higherBounds = (double *) malloc(sizeof(double ) * mallocSize);
 }
 
+/**
+ * Determine the count of tiles in a given zone file.
+ * @param fileName The count of tiles in a zone file.
+ * @return the number of tiles in the zone file.
+ */
 int determineEnviromentCount(const std::string& fileName) {
     FILE* fileptr;
     fileptr = fopen(fileName.c_str(), "r");
@@ -64,7 +70,19 @@ Zone Zone::importZone(std::string fileName) {
                 break;
         }
     }
+    newZone.tileCount = tileCount;
     return newZone;
+}
+
+
+/**
+ * Generate the name of the file holding a zone.
+ * @param levelName Name of the level zone is in.
+ * @param zoneIndex Index of the level zone is in.
+ * @return The generated filename.
+ */
+std::string inline generateZoneFileName(std::string levelName, int zoneIndex) {
+    return levelName + "." + std::to_string(zoneIndex);
 }
 
 /**
@@ -77,7 +95,7 @@ int getZoneFileCount(std::string levelName) {
     FILE* fileptr;
     do {
         fileCount++;
-        fileptr = fopen((levelName + "." + std::to_string(fileCount)).c_str(), "r");
+        fileptr = fopen(generateZoneFileName(levelName, fileCount).c_str(), "r");
         fclose(fileptr);
     } while(fileptr != NULL);
     return fileCount;
@@ -85,5 +103,30 @@ int getZoneFileCount(std::string levelName) {
 
 Zone* Zone::importZones(std::string levelName) {
     int zoneCount = getZoneFileCount(levelName);
-    Zone zoneArray[zoneCount] {};
+    Zone* zoneArray;
+    int totalSize = 0;
+    int zoneIndex = 0;
+    zoneArray = (Zone*) malloc(totalSize);
+    std::string fileName;
+    // We start looping through, and we constantly reallocating the memory.
+    for (int i = 0; i < zoneCount; i++) {
+        fileName = generateZoneFileName(levelName, i);
+        Zone newZone = importZone(fileName);
+        totalSize += sizeof(newZone);
+        zoneArray = (Zone *) realloc(zoneArray, totalSize);
+        zoneArray[zoneIndex] = newZone;
+        zoneIndex++;
+    }
+    return zoneArray;
+}
+
+EnviromentalActor Zone::generateTile() {
+    float randomNumber = RandomNumberGenerator::random();
+    for (int i = 0; i < this->tileCount; i++) {
+        if (this->tileSpawnProbability.lowerBounds[i] < randomNumber
+        && randomNumber < this->tileSpawnProbability.higherBounds[i]) {
+            EnviromentalActor enviromentalActor {this->tileSpawnProbability.ids[i]};
+            return enviromentalActor;
+        }
+    }
 }
