@@ -22,6 +22,7 @@ SDL_Rect* EnviromentalActor::getTexture() {
     rect->w = TrefusisConfig::tileSize;
     rect->y = TrefusisConfig::tileSize * this->id;
     rect->x = TrefusisConfig::tileSize * this->timeSetting;
+    return rect;
 }
 
 EnviromentalActor::EnviromentalActor(int id) {

@@ -121,4 +121,5 @@ EnviromentalActor Zone::generateTile() {
             return enviromentalActor;
         }
     }
+    return NULL;
 }

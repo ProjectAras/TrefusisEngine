@@ -3,6 +3,7 @@
 //
 
 #include <stdio.h>
+#include <iostream>
 #include "managers/GameManager.h"
 #include "trefusisInternals/TrefusisConfig.h"
 
@@ -12,7 +13,18 @@ const int SCREEN_HEIGHT = 480;
 
 
 int main(int argc, char* args[]){
-    TrefusisConfig::initConfig("trefusis.conf");
+#ifdef DEBUG
+    bool fileFound = TrefusisConfig::initConfig("../trefusis.conf");
+#elif PROD
+    bool fileFound = TrefusisConfig::initConfig("trefusis.conf");
+#endif
+
+#ifdef DEBUG
+    std::cout << TrefusisConfig::configFile << "Maps directory: " << TrefusisConfig::mapsDirectory << "\n";
+    if (!fileFound) {
+        std::cout << "Config file not found\n";
+    }
+#endif
     GameManager gm = GameManager::getInstance();
     while (!gm.quit) {
         gm.Update();
