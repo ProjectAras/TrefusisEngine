@@ -6,10 +6,12 @@
 #define TREFUSISENGINE_FOILAGEGENERATOR_H
 
 #include "Zone.h"
+#include "../../trefusisInternals/RandomNumberGenerator.h"
 
 #include <iostream>
 #include <string>
 #include <vector>
+
 
 using namespace std;
 
@@ -24,10 +26,12 @@ struct foilageTile {
 
 class FoilageGenerator {
 public:
-    vector <vector<foilage>>
-    generateFoilage(vector <foilage> &foilages, int length, int width, int playerX, int playerY);
+    std::vector<std::vector<foilageTile>>
+    generateFoilage(vector <foilage> &foilages, int length, int width, int playerX, int playerY, int maxAllowed);
+
+    int paint(int x, int y, tileColor toBePainted, tileColor color);
 private:
-    vector<vector<foilageTile>> field;
+    std::vector<std::vector<foilageTile>> field;
     int length;
     int width;
 };
