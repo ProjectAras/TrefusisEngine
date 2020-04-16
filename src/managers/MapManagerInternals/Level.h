@@ -11,8 +11,8 @@
 
 class Level {
 private:
-    Zone zoneMatrix[500][500]{};
-    Zone availableZones[5]{};
+    Zone zoneMatrix[500][500];
+    Zone availableZones[5];
     void importLevelBase(std::string fileName);
     void generateTiles();
 public:
