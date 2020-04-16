@@ -16,6 +16,7 @@ public:
     static const int tileSize = 32;
     static const int screenWidth = 640;
     static const int screenHeight = 480;
+    static std::vector<std::string> mapFileNames;
     static bool isInitialised;
     /**
      * Initialise the config object.

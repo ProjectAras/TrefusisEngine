@@ -5,7 +5,6 @@
 #include "GraphicsManager.h"
 #include "../trefusisInternals/TrefusisConfig.h"
 #include "MapManagerInternals/Level.h"
-#include "MapManager.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_surface.h>
@@ -58,7 +57,7 @@ void GraphicsManager::drawToScreen(int x, int y, SDL_Rect *drawZone) {
 void GraphicsManager::drawScreen(Player player) {
     int renderWidth = TrefusisConfig::screenWidth / TrefusisConfig::tileSize;
     int renderHeight = TrefusisConfig::screenHeight / TrefusisConfig::tileSize;
-    Level* activeLevel = MapManager::activeLevel;
+    Level* activeLevel = Level::activeLevel;
     for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
         for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
             GraphicsManager::drawToScreen(i, j, activeLevel->tileMatrix[i][j].getTexture());
