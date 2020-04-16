@@ -11,7 +11,7 @@ FoilageGenerator::generateFoilage(vector <foilage> &foilages, int length, int wi
     
     for(int i=0; i<width; i++) {
         for(int j=0; j<length; i++) {
-            int foilageNumber = ((int)RandomNumberGenerator::random() * 100) % foilages.size();
+            int foilageNumber = (int)(RandomNumberGenerator::random() * 100) % foilages.size();
             double chance = RandomNumberGenerator::random();
             foilageTile tile;
 
