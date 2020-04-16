@@ -2,11 +2,13 @@
 // Created by elsa on 15.04.2020.
 //
 
+#include <vector>
 #include "TrefusisConfig.h"
 
 std::string TrefusisConfig::configFile;
 std::string TrefusisConfig::tilemapLocation;
 std::string  TrefusisConfig::mapsDirectory;
+std::vector<std::string> TrefusisConfig::mapFileNames;
 bool TrefusisConfig::isInitialised = false;
 
 bool TrefusisConfig::initConfig(std::string fileName) {
@@ -31,10 +33,12 @@ bool TrefusisConfig::initConfig(std::string fileName) {
                     writeTo = token;
                     break;
                 case '\n':
-                    if (writeTo == "maps")
+                    if (writeTo == "maps") {
                         mapsDirectory = token;
-                    else if (writeTo == "tilemap") {
+                    } else if (writeTo == "tilemap") {
                         tilemapLocation = token;
+                    } else if (writeTo == "map") {
+                        mapFileNames.push_back(token + ".csv");
                     }
                     token = "";
                     break;

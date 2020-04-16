@@ -4,6 +4,7 @@
 
 #include <langinfo.h>
 #include "Level.h"
+#include "../../trefusisInternals/TrefusisConfig.h"
 
 Level* Level::activeLevel = nullptr;
 Level* Level::levels = nullptr;
@@ -68,13 +69,13 @@ void Level::generateTiles() {
     }
 }
 
-void Level::importLevels(std::vector<std::string> mapNames) {
-    levels = (Level*) malloc(sizeof(Level) * mapNames.size());
-    for (auto fileName : mapNames) {
+void Level::importLevels() {
+    levels = (Level*) malloc(sizeof(Level) * TrefusisConfig::mapFileNames.size());
+    for (auto fileName : TrefusisConfig::mapFileNames) {
         *levels = importLevelBase(fileName);
         levels++;
     }
-    levels -= mapNames.size();
+    levels -= TrefusisConfig::mapFileNames.size();
     activeLevel = levels;
 }
 

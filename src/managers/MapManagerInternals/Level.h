@@ -29,7 +29,7 @@ public:
      * Given a vector of level names, import the levels.
      * @param mapNames Names of the maps.
      */
-    static void importLevels(std::vector<std::string> mapNames);
+    static void importLevels();
     static void changeLevel(int levelIndex);
 };
 
