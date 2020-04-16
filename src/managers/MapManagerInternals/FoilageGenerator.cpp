@@ -4,6 +4,7 @@
 
 #include "FoilageGenerator.h"
 
+/**
 using namespace std;
 
 vector <vector<foilage>>
@@ -37,3 +38,4 @@ generateFoilage(vector <foilage> &foilages, int length, int width, int playerX, 
 void walk(int x, int y) {
 
 }
+ */

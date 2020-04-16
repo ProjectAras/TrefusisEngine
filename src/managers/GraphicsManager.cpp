@@ -54,6 +54,7 @@ void GraphicsManager::drawToScreen(int x, int y, SDL_Rect *drawZone) {
     SDL_BlitSurface(mainSpriteSheet, drawZone, this->gameSurface, drawRect);
 }
 
+/**
 void GraphicsManager::drawScreen(Player player) {
     int renderWidth = TrefusisConfig::screenWidth / TrefusisConfig::tileSize;
     int renderHeight = TrefusisConfig::screenHeight / TrefusisConfig::tileSize;
@@ -64,6 +65,7 @@ void GraphicsManager::drawScreen(Player player) {
         }
     }
 }
+ */
 void GraphicsManager::close() {
     SDL_DestroyRenderer(this->gameRenderer);
     SDL_DestroyWindow(this->gameWindow);
