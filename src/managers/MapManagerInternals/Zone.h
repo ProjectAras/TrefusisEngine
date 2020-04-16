@@ -9,23 +9,24 @@
 #include "../../objects/EnviromentalActor.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
 /**
  * A zone's probabilities for tile generation.
  */
 struct zoneProbability {
-    int* ids;  // IDs of the tiles.
-    double* lowerBounds;  // Lower bounds of the tiles spawn probability.
-    double* higherBounds;  // Higher bounds of the tiles spawn probability.
+    std::vector<int> ids;  // IDs of the tiles.
+    std::vector<double> lowerBounds;  // Lower bounds of the tiles spawn probability.
+    std::vector<double> higherBounds;  // Higher bounds of the tiles spawn probability.
 };
 
 /**
  * Allocate memory for a zone probability structure.
  * @param zp ZP pointer.
  * @param mallocSize Memory allocation multiplier.
- */
-void mallocZoneProbability(zoneProbability* zp, int mallocSize);
 
+void mallocZoneProbability(zoneProbability* zp, int mallocSize);
+*/
 struct foilage {
     int id; //id of the foilage object
     int chance; //chance of the foilage object, this variable may be different for different zones
@@ -48,12 +49,12 @@ public:
      * @param levelName Name of the level holding the zones.
      * @return The zone array holding the zones.
      */
-    static Zone* importZones(std::string levelName);
+    static std::vector<Zone> importZones(std::string levelName);
     /**
      * Initiate a new zone object.
      * @param tileCount Count of tile types in the given zone.
      */
-    Zone(int tileCount);
+    Zone();
 };
 
 

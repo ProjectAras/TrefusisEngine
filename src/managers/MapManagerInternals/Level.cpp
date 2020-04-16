@@ -6,8 +6,8 @@
 #include "Level.h"
 #include "../../trefusisInternals/TrefusisConfig.h"
 
-Level* Level::activeLevel = nullptr;
-Level* Level::levels = nullptr;
+Level Level::activeLevel {};
+std::vector<Level> Level::levels;
 
 
 /**
@@ -35,8 +35,8 @@ std::string parseLevelName(std::string fileName) {
 
 Level Level::importLevelBase(std::string fileName) {
     FILE *file_ptr;
-    Level* newLevel {};
-    newLevel-> availableZones = Zone::importZones(parseLevelName(fileName));
+    Level newLevel {};
+    newLevel.availableZones = Zone::importZones(parseLevelName(fileName));
     file_ptr = fopen(fileName.c_str(), "r");
     int row = 0;
     int column = 0;
@@ -53,12 +53,12 @@ Level Level::importLevelBase(std::string fileName) {
                 continue;
             default:
                 const char toIndex = token; // This is a terrible idea use negation instead.
-                newLevel->zoneMatrix[row][column] = newLevel->availableZones[std::atoi(&toIndex)]; // Seriously fix this before prod.
+                newLevel.zoneMatrix[row][column] = newLevel.availableZones[std::atoi(&toIndex)]; // Seriously fix this before prod.
                 column++;
         }
     }
     fclose(file_ptr);
-    return *newLevel;
+    return newLevel;
 }
 
 void Level::generateTiles() {
@@ -70,15 +70,21 @@ void Level::generateTiles() {
 }
 
 void Level::importLevels() {
-    levels = (Level*) malloc(sizeof(Level) * TrefusisConfig::mapFileNames.size());
     for (auto fileName : TrefusisConfig::mapFileNames) {
-        *levels = importLevelBase(fileName);
-        levels++;
+        levels.push_back(importLevelBase(fileName));
     }
-    levels -= TrefusisConfig::mapFileNames.size();
-    activeLevel = levels;
+    activeLevel = levels[0];
 }
 
 void Level::changeLevel(int levelIndex) {
-    activeLevel = &levels[levelIndex];
+    activeLevel = levels[levelIndex];
+}
+
+Level::Level() {
+    this->tileMatrix.resize(500);
+    this->zoneMatrix.resize(500);
+    for (int i = 0; i < 500; i++) {
+        this->tileMatrix[i].push_back(EnviromentalActor(1));
+        this->zoneMatrix[i].resize(500);
+    }
 }

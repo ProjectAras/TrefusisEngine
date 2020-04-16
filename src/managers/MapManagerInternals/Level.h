@@ -12,9 +12,10 @@
 
 class Level {
 private:
-    Zone zoneMatrix[500][500];
-    static Level* levels;
-    Zone* availableZones;
+    Level();
+    std::vector<std::vector<Zone>> zoneMatrix;
+    static std::vector<Level> levels;
+    std::vector<Zone> availableZones;
     /**
      * Import the base levelmap.
      * @param fileName File of the level.
@@ -23,8 +24,8 @@ private:
     static Level importLevelBase(std::string fileName);
     void generateTiles();
 public:
-    EnviromentalActor tileMatrix[500][500];
-    static Level* activeLevel;
+    std::vector<std::vector<EnviromentalActor>> tileMatrix;
+    static Level activeLevel;
     /**
      * Given a vector of level names, import the levels.
      * @param mapNames Names of the maps.
