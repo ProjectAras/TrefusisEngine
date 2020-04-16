@@ -31,6 +31,7 @@ bool TrefusisConfig::initConfig(std::string fileName) {
                 case ' ':
                     isWriteMode = !isWriteMode;
                     writeTo = token;
+                    token = "";
                     break;
                 case '\n':
                     if (writeTo == "maps") {
