@@ -4,6 +4,7 @@
 
 #include "GameManager.h"
 #include "../objects/Character.h"
+#include "MapManagerInternals/Level.h"
 
 GameManager* GameManager::game = nullptr;
 
@@ -29,6 +30,7 @@ void GameManager::Update() {
 }
 
 GameManager::GameManager() {
+    Level::importLevels();
     this->showSplashScreen();
     this->quit = false;
 }

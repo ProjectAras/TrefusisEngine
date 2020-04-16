@@ -13,7 +13,7 @@ public:
     int x;
     int y;
     int id;
-    virtual SDL_Rect* getTexture();
+    virtual SDL_Rect* getTexture() = 0;
 };
 
 

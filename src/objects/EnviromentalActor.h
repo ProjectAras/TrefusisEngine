@@ -16,10 +16,9 @@ private:
     int timeSetting;
     int isDay;  // 1 if day, -1 if night
 public:
-    SDL_Rect* getTexture() override;
+    SDL_Rect* getTexture();
     void incrementSeason();
     void transitionDayNight();
-    EnviromentalActor();
     EnviromentalActor(int id);
     static void importEnviromentalActors();
 };

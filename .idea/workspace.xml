@@ -17,9 +17,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3f1a06ea-58dc-453b-a9da-2d444733f390" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/GameManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GameManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trefusisInternals/TrefusisConfig.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/trefusisInternals/TrefusisConfig.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/Actor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Actor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/EnviromentalActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/EnviromentalActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/EnviromentalActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/EnviromentalActor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/trefusisInternals/TrefusisConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/trefusisInternals/TrefusisConfig.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +124,7 @@
       <workItem from="1586883554860" duration="611000" />
       <workItem from="1586909434408" duration="14630000" />
       <workItem from="1586946597370" duration="963000" />
-      <workItem from="1587011990552" duration="12717000" />
+      <workItem from="1587011990552" duration="14350000" />
     </task>
     <task id="LOCAL-00001" summary="Add managers">
       <created>1586791049622</created>
@@ -176,22 +180,22 @@
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state x="1015" y="130" width="860" height="854" key="CommitChangelistDialog2/40.27.1880.1053@40.27.1880.1053" timestamp="1586795395283" />
-    <state width="1834" height="274" key="GridCell.Tab.0.bottom" timestamp="1587046370436">
+    <state width="1834" height="274" key="GridCell.Tab.0.bottom" timestamp="1587061574149">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="274" key="GridCell.Tab.0.bottom/40.27.1880.1053@40.27.1880.1053" timestamp="1587046370436" />
-    <state width="1834" height="274" key="GridCell.Tab.0.center" timestamp="1587046370435">
+    <state width="1834" height="274" key="GridCell.Tab.0.bottom/40.27.1880.1053@40.27.1880.1053" timestamp="1587061574149" />
+    <state width="1834" height="274" key="GridCell.Tab.0.center" timestamp="1587061574149">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="274" key="GridCell.Tab.0.center/40.27.1880.1053@40.27.1880.1053" timestamp="1587046370435" />
-    <state width="1834" height="274" key="GridCell.Tab.0.left" timestamp="1587046370435">
+    <state width="1834" height="274" key="GridCell.Tab.0.center/40.27.1880.1053@40.27.1880.1053" timestamp="1587061574149" />
+    <state width="1834" height="274" key="GridCell.Tab.0.left" timestamp="1587061574149">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="274" key="GridCell.Tab.0.left/40.27.1880.1053@40.27.1880.1053" timestamp="1587046370435" />
-    <state width="1834" height="274" key="GridCell.Tab.0.right" timestamp="1587046370436">
+    <state width="1834" height="274" key="GridCell.Tab.0.left/40.27.1880.1053@40.27.1880.1053" timestamp="1587061574149" />
+    <state width="1834" height="274" key="GridCell.Tab.0.right" timestamp="1587061574149">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="274" key="GridCell.Tab.0.right/40.27.1880.1053@40.27.1880.1053" timestamp="1587046370436" />
+    <state width="1834" height="274" key="GridCell.Tab.0.right/40.27.1880.1053@40.27.1880.1053" timestamp="1587061574149" />
     <state x="869" y="267" width="1022" height="737" key="SettingsEditor" timestamp="1587014722878">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>

@@ -30,6 +30,10 @@ public:
      * @param mapNames Names of the maps.
      */
     static void importLevels();
+    /**
+     * Change the active level
+     * @param levelIndex New active level's index.
+     */
     static void changeLevel(int levelIndex);
 };
 

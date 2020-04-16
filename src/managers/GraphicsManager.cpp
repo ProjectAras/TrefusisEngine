@@ -14,7 +14,7 @@ SDL_Texture* GraphicsManager::drawToScreen(std::string filePath, bool fadeIn) {
     SDL_Texture* newTexture;
     SDL_Surface* loadSurface = IMG_Load(filePath.c_str());
     if (loadSurface == NULL) {
-        printf("Unable to load the image %s, ERROR: ", filePath.c_str(), IMG_GetError);
+        printf("Unable to load the image %s, ERROR: %s", filePath.c_str(), (const char*) IMG_GetError);
     }
     newTexture = SDL_CreateTextureFromSurface(this->gameRenderer, loadSurface);
     if (fadeIn) {
@@ -31,6 +31,7 @@ SDL_Texture* GraphicsManager::drawToScreen(std::string filePath, bool fadeIn) {
     SDL_RenderCopy( this->gameRenderer, newTexture, NULL, NULL );
     //Update screen
     SDL_RenderPresent( this->gameRenderer );
+    return newTexture;
 }
 
 GraphicsManager::GraphicsManager(int screen_width, int screen_height) {

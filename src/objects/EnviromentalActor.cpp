@@ -24,19 +24,8 @@ SDL_Rect* EnviromentalActor::getTexture() {
     rect->x = TrefusisConfig::tileSize * this->timeSetting;
 }
 
-EnviromentalActor::EnviromentalActor() {
-//    EnviromentalActor importedActor = importEnviromentalActor(std::move(fileName));
-    this->isDay = 1;
-//    for (int i = 0; i < 8; i++) {
-//        this->textures[i] = importedActor.textures[i];
-//    }
-}
-
 EnviromentalActor::EnviromentalActor(int id) {
+    this->timeSetting = 0;
     this->id = id;
     this->isDay = 1;
-}
-
-void EnviromentalActor::importEnviromentalActors() {
-
 }
