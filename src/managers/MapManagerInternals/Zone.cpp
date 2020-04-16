@@ -80,7 +80,7 @@ Zone Zone::importZone(std::string fileName) {
  * @return The generated filename.
  */
 std::string inline generateZoneFileName(std::string levelName, int zoneIndex) {
-    return TrefusisConfig::mapsDirectory + levelName + "." + std::to_string(zoneIndex);
+    return TrefusisConfig::prefix + TrefusisConfig::mapsDirectory + levelName + "." + std::to_string(zoneIndex);
 }
 
 /**
@@ -89,22 +89,58 @@ std::string inline generateZoneFileName(std::string levelName, int zoneIndex) {
  * @return
  */
 int getZoneFileCount(std::string levelName) {
+#ifdef DEBUG
+    std::cout<< "Checking zone count for: " << levelName << "\n";
+#endif
     int fileCount = -1;
     FILE* fileptr;
     do {
         fileCount++;
         fileptr = fopen(generateZoneFileName(levelName, fileCount).c_str(), "r");
-        fclose(fileptr);
+        if (fileptr != NULL) {
+            fclose(fileptr);
+        }
     } while(fileptr != NULL);
     return fileCount;
 }
 
+void copyZoneProbabilities(zoneProbability* self, zoneProbability* other) {
+    for (int i = 0; i < other->ids.size(); i++) {
+        if (i > self->ids.size()) {
+            self->ids.push_back(other->ids[i]);
+        } else {
+            self->ids[i] = other->ids[i];
+        }
+
+        if (i > self->lowerBounds.size()) {
+            self->lowerBounds.push_back(other->lowerBounds[i]);
+        } else {
+            self->lowerBounds[i] = other->lowerBounds[i];
+        }
+
+        if (i > self->higherBounds.size()) {
+            self->higherBounds.push_back(other->higherBounds[i]);
+        } else {
+            self->higherBounds[i] = other->higherBounds[i];
+        }
+    }
+}
+
 std::vector<Zone> Zone::importZones(std::string levelName) {
+#ifdef DEBUG
+    std::cout << "Importing from " << levelName << "\n";
+#endif
     int zoneCount = getZoneFileCount(levelName);
+#ifdef DEBUG
+    std::cout << "Zone count: " << zoneCount << "\n";
+#endif
     std::vector<Zone> zoneArray;
     std::string fileName;
     // We start looping through, and we constantly reallocating the memory.
     for (int i = 0; i < zoneCount; i++) {
+#ifdef DEBUG
+        std::cout << "Importing zone " << i << "\n";
+#endif
         fileName = generateZoneFileName(levelName, i);
         Zone newZone = importZone(fileName);
         zoneArray.push_back(newZone);
@@ -122,4 +158,27 @@ EnviromentalActor Zone::generateTile() {
         }
     }
     return NULL;
+}
+
+void vector_copy(std::vector<int> *self, std::vector<int> *other) {
+    for (auto obj : *other) {
+        self->push_back(obj);
+    }
+}
+
+void vector_copy(std::vector<double> *self, std::vector<double> *other) {
+    for (auto obj : *other) {
+        self->push_back(obj);
+    }
+}
+
+void Zone::copyProbabilities(Zone *otherZone) {
+    vector_copy(&this->tileSpawnProbability.ids, &otherZone->tileSpawnProbability.ids);
+    vector_copy(&this->tileSpawnProbability.lowerBounds, &otherZone->tileSpawnProbability.lowerBounds);
+    vector_copy(&this->tileSpawnProbability.higherBounds, &otherZone->tileSpawnProbability.higherBounds);
+}
+
+void Zone::operator=(const Zone &z) {
+    copyProbabilities((Zone *) &z);
+    this->tileCount = z.tileCount;
 }

@@ -15,10 +15,12 @@
  * A zone's probabilities for tile generation.
  */
 struct zoneProbability {
-    std::vector<int> ids;  // IDs of the tiles.
-    std::vector<double> lowerBounds;  // Lower bounds of the tiles spawn probability.
-    std::vector<double> higherBounds;  // Higher bounds of the tiles spawn probability.
+    std::vector<int> ids {};  // IDs of the tiles.
+    std::vector<double> lowerBounds {};  // Lower bounds of the tiles spawn probability.
+    std::vector<double> higherBounds {};  // Higher bounds of the tiles spawn probability.
 };
+
+void copyZoneProbabilities(zoneProbability* self, zoneProbability* other);
 
 /**
  * Allocate memory for a zone probability structure.
@@ -35,6 +37,7 @@ struct foilage {
 class Zone {
 private:
     zoneProbability tileSpawnProbability;
+    void copyProbabilities(Zone* otherZone);
     /**
      * Import a single zone given its file name.
      * @param fileName File name of the zone.
@@ -55,6 +58,7 @@ public:
      * @param tileCount Count of tile types in the given zone.
      */
     Zone();
+    void operator=(const Zone& z);
 };
 
 

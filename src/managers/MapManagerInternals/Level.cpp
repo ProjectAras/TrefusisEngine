@@ -46,9 +46,12 @@ Level Level::importLevelBase(std::string fileName) {
     Level newLevel {};
     newLevel.availableZones = Zone::importZones(parseLevelName(fileName));
     file_ptr = fopen(fileName.c_str(), "r");
+    if (file_ptr == NULL) {
+        std::cout << "Error, file could not be opened\n";
+    }
     int row = 0;
     int column = 0;
-    int token = 65;
+    int token = 66;
     while (token != EOF) {
         token = fgetc(file_ptr);
         switch (token) {
@@ -57,12 +60,13 @@ Level Level::importLevelBase(std::string fileName) {
                 column = 0;
                 break;
             case ',':
+                column++;
             case ' ':
+            case EOF:
                 continue;
             default:
                 const char toIndex = token; // This is a terrible idea use negation instead.
                 newLevel.zoneMatrix[row][column] = newLevel.availableZones[std::atoi(&toIndex)]; // Seriously fix this before prod.
-                column++;
         }
     }
     fclose(file_ptr);
