@@ -70,12 +70,14 @@ Level Level::importLevelBase(std::string fileName) {
         }
     }
     fclose(file_ptr);
+    newLevel.generateTiles();
     return newLevel;
 }
 
 void Level::generateTiles() {
-    for (int i = 0; i < 3600; i++) {
-        for (int j = 0; j < 3600; j++) {
+
+    for (int i = 0; i < 500; i++) {
+        for (int j = 0; j < 500; j++) {
             this->tileMatrix[i][j] = this->zoneMatrix[i][j].generateTile();
         }
     }
@@ -85,7 +87,7 @@ void Level::importLevels() {
     for (auto fileName : TrefusisConfig::mapFileNames) {
         levels.push_back(importLevelBase(TrefusisConfig::prefix + TrefusisConfig::mapsDirectory + fileName));
     }
-    activeLevel = levels[0];
+//    activeLevel = levels[0];
 }
 
 void Level::changeLevel(int levelIndex) {
@@ -99,7 +101,7 @@ Level::Level() {
     this->tileMatrix.resize(500);
     this->zoneMatrix.resize(500);
     for (int i = 0; i < 500; i++) {
-        this->tileMatrix[i].push_back(EnviromentalActor(1));
+        this->tileMatrix[i].resize(500);
         this->zoneMatrix[i].resize(500);
     }
 }

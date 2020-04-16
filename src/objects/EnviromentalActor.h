@@ -20,7 +20,8 @@ public:
     void incrementSeason();
     void transitionDayNight();
     EnviromentalActor(int id);
-    static void importEnviromentalActors();
+    EnviromentalActor();
+    void operator= (const EnviromentalActor &e);
 };
 
 

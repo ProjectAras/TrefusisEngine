@@ -30,3 +30,15 @@ EnviromentalActor::EnviromentalActor(int id) {
     this->id = id;
     this->isDay = 1;
 }
+
+EnviromentalActor::EnviromentalActor() {
+    this->timeSetting = 0;
+    this->id = 0;
+    this->isDay = 1;
+    this->x = 0;
+    this->y = 0;
+}
+
+void EnviromentalActor::operator=(const EnviromentalActor &e) {
+    this->id = e.id;
+}

@@ -12,7 +12,7 @@ class Actor {
 public:
     int x;
     int y;
-    int id;
+    int objid;
     virtual SDL_Rect* getTexture() = 0;
 };
 

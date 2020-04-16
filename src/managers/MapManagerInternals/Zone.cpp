@@ -150,8 +150,8 @@ std::vector<Zone> Zone::importZones(std::string levelName) {
 
 EnviromentalActor Zone::generateTile() {
     float randomNumber = RandomNumberGenerator::random();
-    for (int i = 0; i < this->tileCount; i++) {
-        if (this->tileSpawnProbability.lowerBounds[i] < randomNumber
+    for (int i = 0; i < this->tileSpawnProbability.ids.size(); i++) {
+        if (this->tileSpawnProbability.lowerBounds[i] <= randomNumber
         && randomNumber < this->tileSpawnProbability.higherBounds[i]) {
             EnviromentalActor enviromentalActor {this->tileSpawnProbability.ids[i]};
             return enviromentalActor;
