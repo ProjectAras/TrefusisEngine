@@ -15,16 +15,18 @@ Level* Level::levels = nullptr;
  * @return the level name.
  */
 std::string parseLevelName(std::string fileName) {
+    int pathEndIndex;
     int dotIndex;
     for (int i = 0; i < fileName.length(); i++) {
         if (fileName[i] == '.') {
             dotIndex = i;
-            break;
+        } else if (fileName[i] == '/') {
+            pathEndIndex = i;
         }
     }
     std::string token = "";
     std::string levelName = "";
-    for (int i = 0; i <= dotIndex; i++) {
+    for (int i = pathEndIndex + 1; i <= dotIndex; i++) {
         levelName += fileName[i];
     }
     return levelName;

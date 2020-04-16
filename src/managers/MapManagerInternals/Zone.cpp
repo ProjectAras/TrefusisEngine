@@ -4,6 +4,7 @@
 
 #include "Zone.h"
 #include "../../trefusisInternals/RandomNumberGenerator.h"
+#include "../../trefusisInternals/TrefusisConfig.h"
 
 
 void mallocZoneProbability(zoneProbability* zp, int mallocSize) {
@@ -82,7 +83,7 @@ Zone Zone::importZone(std::string fileName) {
  * @return The generated filename.
  */
 std::string inline generateZoneFileName(std::string levelName, int zoneIndex) {
-    return levelName + "." + std::to_string(zoneIndex);
+    return TrefusisConfig::mapsDirectory + levelName + "." + std::to_string(zoneIndex);
 }
 
 /**

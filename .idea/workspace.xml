@@ -17,12 +17,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3f1a06ea-58dc-453b-a9da-2d444733f390" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/MapManager.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/MapManager.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Level.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Zone.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Zone.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +118,7 @@
       <workItem from="1586883554860" duration="611000" />
       <workItem from="1586909434408" duration="14630000" />
       <workItem from="1586946597370" duration="963000" />
-      <workItem from="1587011990552" duration="11819000" />
+      <workItem from="1587011990552" duration="12345000" />
     </task>
     <task id="LOCAL-00001" summary="Add managers">
       <created>1586791049622</created>
