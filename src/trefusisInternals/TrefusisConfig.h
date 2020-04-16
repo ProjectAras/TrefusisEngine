@@ -14,6 +14,7 @@ public:
     static std::string configFile;
     static std::string mapsDirectory;
     static std::string tilemapLocation;
+    static std::string prefix;
     static const int tileSize = 32;
     static const int screenWidth = 640;
     static const int screenHeight = 480;

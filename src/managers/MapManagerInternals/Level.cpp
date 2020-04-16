@@ -5,7 +5,9 @@
 #include <langinfo.h>
 #include "Level.h"
 #include "../../trefusisInternals/TrefusisConfig.h"
-
+#ifdef DEBUG
+#include <iostream>
+#endif
 Level Level::activeLevel {};
 std::vector<Level> Level::levels;
 
@@ -16,8 +18,8 @@ std::vector<Level> Level::levels;
  * @return the level name.
  */
 std::string parseLevelName(std::string fileName) {
-    int pathEndIndex;
-    int dotIndex;
+    int pathEndIndex = 0;
+    int dotIndex = -1;
     for (int i = 0; i < fileName.length(); i++) {
         if (fileName[i] == '.') {
             dotIndex = i;
@@ -27,14 +29,20 @@ std::string parseLevelName(std::string fileName) {
     }
     std::string token = "";
     std::string levelName = "";
-    for (int i = pathEndIndex + 1; i <= dotIndex; i++) {
+    for (int i = pathEndIndex + 1; i < dotIndex; i++) {
         levelName += fileName[i];
     }
+#ifdef DEBUG
+    std::cout << "Level Name: " << levelName << "\n";
+#endif
     return levelName;
 }
 
 Level Level::importLevelBase(std::string fileName) {
     FILE *file_ptr;
+#ifdef DEBUG
+    std::cout << "File name: " << fileName << "\n";
+#endif
     Level newLevel {};
     newLevel.availableZones = Zone::importZones(parseLevelName(fileName));
     file_ptr = fopen(fileName.c_str(), "r");
@@ -71,7 +79,7 @@ void Level::generateTiles() {
 
 void Level::importLevels() {
     for (auto fileName : TrefusisConfig::mapFileNames) {
-        levels.push_back(importLevelBase(fileName));
+        levels.push_back(importLevelBase(TrefusisConfig::prefix + TrefusisConfig::mapsDirectory + fileName));
     }
     activeLevel = levels[0];
 }
@@ -81,6 +89,9 @@ void Level::changeLevel(int levelIndex) {
 }
 
 Level::Level() {
+#ifdef DEBUG
+    std::cout << "Generating level...\n";
+#endif
     this->tileMatrix.resize(500);
     this->zoneMatrix.resize(500);
     for (int i = 0; i < 500; i++) {

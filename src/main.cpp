@@ -20,7 +20,10 @@ int main(int argc, char* args[]){
 #endif
 
 #ifdef DEBUG
-    std::cout << TrefusisConfig::configFile << "Maps directory: " << TrefusisConfig::mapsDirectory << "\n";
+    std::cout << TrefusisConfig::configFile << "Maps directory: " << TrefusisConfig::mapsDirectory << " List of maps: \n";
+    for (auto mapName : TrefusisConfig::mapFileNames) {
+        std::cout << mapName << "\n";
+    }
     if (!fileFound) {
         std::cout << "Config file not found\n";
     }

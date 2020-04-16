@@ -9,6 +9,10 @@ std::string TrefusisConfig::configFile;
 std::string TrefusisConfig::tilemapLocation;
 std::string  TrefusisConfig::mapsDirectory;
 std::vector<std::string> TrefusisConfig::mapFileNames;
+#ifdef DEBUG
+    std::string TrefusisConfig::prefix = "../";
+#endif
+
 bool TrefusisConfig::isInitialised = false;
 
 bool TrefusisConfig::initConfig(std::string fileName) {
