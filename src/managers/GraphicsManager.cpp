@@ -46,26 +46,38 @@ GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
 }
 
 void GraphicsManager::drawToScreen(int x, int y, SDL_Rect *drawZone) {
-    SDL_Rect* drawRect;
-    drawRect->x = x;
-    drawRect->y = y;
-    drawRect->w = TrefusisConfig::tileSize;
-    drawRect->h = TrefusisConfig::tileSize;
-    //SDL_BlitSurface(mainSpriteSheet, drawZone, this->gameSurface, drawRect);
+    SDL_Rect drawRect;
+    drawRect.x = x * TrefusisConfig::tileSize;
+    drawRect.y = y * TrefusisConfig::tileSize;
+    drawRect.w = TrefusisConfig::tileSize;
+    drawRect.h = TrefusisConfig::tileSize;
+    SDL_Surface* loadSurface = IMG_Load("../resources/TrefusisTilemap.png");
+    SDL_SetColorKey( loadSurface, SDL_TRUE, SDL_MapRGB( loadSurface->format, 0, 0xFF, 0xFF ) );
+    SDL_Texture* newTexture = SDL_CreateTextureFromSurface(this->gameRenderer, loadSurface);
+    SDL_RenderCopy( this->gameRenderer, newTexture, drawZone, &drawRect);
 }
 
 
 void GraphicsManager::drawScreen(Player player) {
     int renderWidth = TrefusisConfig::screenWidth / TrefusisConfig::tileSize;
+    std::cout << renderWidth << "\n";
     int renderHeight = TrefusisConfig::screenHeight / TrefusisConfig::tileSize;
     Level activeLevel = Level::activeLevel;
+    int x = 0;
+    int y = 0;
+    SDL_RenderClear(this->gameRenderer);
     for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
+        y = 0;
         for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
+
             EnviromentalActor actor = activeLevel.tileMatrix[i][j];
             SDL_Rect* rect = actor.getTexture();
-            this->drawToScreen(i, j, rect);
+            this->drawToScreen(x, y, rect);
+            y++;
         }
+        x++;
     }
+    SDL_RenderPresent(this->gameRenderer);
 }
 
 void GraphicsManager::close() {
