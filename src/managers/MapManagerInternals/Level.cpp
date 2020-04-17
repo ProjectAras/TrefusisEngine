@@ -87,7 +87,7 @@ void Level::importLevels() {
     for (auto fileName : TrefusisConfig::mapFileNames) {
         levels.push_back(importLevelBase(TrefusisConfig::prefix + TrefusisConfig::mapsDirectory + fileName));
     }
-//    activeLevel = levels[0];
+    activeLevel = levels[0];
 }
 
 void Level::changeLevel(int levelIndex) {

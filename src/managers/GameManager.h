@@ -21,7 +21,12 @@ private:
     GraphicsManager graphicsManager;
     SDL_Event e;
     static GameManager* game;
+    Player player {};
     void trackObjects();
+    /**
+     * Stub method to load the first scene for the first Milestone test.
+     */
+    void loadFirstScene();
     void showSplashScreen();
     void handleKeys();
     GameManager();

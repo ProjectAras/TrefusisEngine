@@ -30,6 +30,7 @@ int main(int argc, char* args[]){
 #endif
     GameManager gm = GameManager::getInstance();
     while (!gm.quit) {
+        SDL_Delay(TrefusisConfig::deltaTime);
         gm.Update();
     }
     gm.close();

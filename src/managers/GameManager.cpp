@@ -27,12 +27,19 @@ void GameManager::handleKeys() {
 
 void GameManager::Update() {
     this->handleKeys();
+    this->graphicsManager.drawScreen(player);
+}
+
+void GameManager::loadFirstScene() {
+    player.x = 250;
+    player.y = 250;
 }
 
 GameManager::GameManager() {
     Level::importLevels();
     this->showSplashScreen();
     this->quit = false;
+    this->loadFirstScene();
 }
 
 void GameManager::close() {
@@ -42,6 +49,7 @@ void GameManager::showSplashScreen() {
     this->graphicsManager.drawToScreen("../resources/splash.png", true);
     SDL_Delay(2000);
     this->graphicsManager.drawToScreen("../resources/game_splash.png", true);
+    SDL_Delay(2000);
 }
 
 GameManager GameManager::getInstance() {

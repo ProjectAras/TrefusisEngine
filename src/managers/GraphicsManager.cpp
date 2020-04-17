@@ -51,21 +51,24 @@ void GraphicsManager::drawToScreen(int x, int y, SDL_Rect *drawZone) {
     drawRect->y = y;
     drawRect->w = TrefusisConfig::tileSize;
     drawRect->h = TrefusisConfig::tileSize;
-    SDL_BlitSurface(mainSpriteSheet, drawZone, this->gameSurface, drawRect);
+    //SDL_BlitSurface(mainSpriteSheet, drawZone, this->gameSurface, drawRect);
 }
 
-/**
+
 void GraphicsManager::drawScreen(Player player) {
     int renderWidth = TrefusisConfig::screenWidth / TrefusisConfig::tileSize;
     int renderHeight = TrefusisConfig::screenHeight / TrefusisConfig::tileSize;
-    Level* activeLevel = Level::activeLevel;
+    Level activeLevel = Level::activeLevel;
     for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
         for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
-            GraphicsManager::drawToScreen(i, j, activeLevel->tileMatrix[i][j].getTexture());
+#ifdef DEBUG
+            std::cout << "Rendering: " << i << ", " << j << "\n";
+#endif
+            this->drawToScreen(i, j, activeLevel.tileMatrix[i][j].getTexture());
         }
     }
 }
- */
+
 void GraphicsManager::close() {
     SDL_DestroyRenderer(this->gameRenderer);
     SDL_DestroyWindow(this->gameWindow);
