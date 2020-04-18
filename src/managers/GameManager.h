@@ -27,14 +27,32 @@ private:
      * Stub method to load the first scene for the first Milestone test.
      */
     void loadFirstScene();
+    /**
+     * Show the splash screen.
+     */
     void showSplashScreen();
+    /**
+     * Handle the key presses by the user.
+     */
     void handleKeys();
-    void initNonGraphicsSDL();
+    /**
+     * Initialise a gamemanager instance.
+     */
     GameManager();
 public:
     bool quit;
+    /**
+     * Main loop of the game.
+     */
     void Update();
+    /**
+     * Get the instance of the gamemaneger.
+     * @return Only instance of the game manager.
+     */
     static GameManager getInstance();
+    /**
+     * Close the game manager. Release used resources.
+     */
     void close();
 };
 

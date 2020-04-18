@@ -13,6 +13,9 @@ private:
     SEASON season;
     DAYTIME time;
 public:
+    /**
+     * Pass the time by ticking it.
+     */
     void tickTime();
 };
 

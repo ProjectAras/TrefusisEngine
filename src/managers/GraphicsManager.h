@@ -48,8 +48,23 @@ public:
      * @param characters
      */
     void drawScreen(Player player);
+    /**
+     * Draw a given image to the screen.
+     * @param filePath File path to the image.
+     * @param fadeIn Wheter or not image will be faded in.
+     * @return
+     */
     SDL_Texture* drawToScreen(std::string filePath, bool fadeIn);
-    void drawToScreen(int x, int y, SDL_Rect drawZone);
+    /**
+     * Draw to screen given coordinates and a draw zone.
+     * @param x X coordinate in screen.
+     * @param y Y coordinate in screen
+     * @param drawZone Draw zone from the image.
+     */
+    void drawToScreen(int x, int y, SDL_Rect drawZone);  // TODO: Add std::string variable for filename.
+    /**
+     * Close the graphics relese its resources.
+     */
     void close();
 };
 
