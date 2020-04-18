@@ -13,7 +13,7 @@ public:
     int x;
     int y;
     int objid;
-    virtual SDL_Rect* getTexture() = 0;
+    virtual SDL_Rect getTexture() = 0;
 };
 
 

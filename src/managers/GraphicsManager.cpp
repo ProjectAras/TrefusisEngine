@@ -45,7 +45,7 @@ GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
 
 }
 
-void GraphicsManager::drawToScreen(int x, int y, SDL_Rect *drawZone) {
+SDL_Texture* GraphicsManager::drawToScreen(int x, int y, SDL_Rect drawZone) {
     SDL_Rect drawRect;
     drawRect.x = x * TrefusisConfig::tileSize;
     drawRect.y = y * TrefusisConfig::tileSize;
@@ -54,15 +54,27 @@ void GraphicsManager::drawToScreen(int x, int y, SDL_Rect *drawZone) {
     SDL_Surface* loadSurface = IMG_Load("../resources/TrefusisTilemap.png");
     SDL_SetColorKey( loadSurface, SDL_TRUE, SDL_MapRGB( loadSurface->format, 0, 0xFF, 0xFF ) );
     SDL_Texture* newTexture = SDL_CreateTextureFromSurface(this->gameRenderer, loadSurface);
-    SDL_RenderCopy( this->gameRenderer, newTexture, drawZone, &drawRect);
+    SDL_FreeSurface(loadSurface);
+    SDL_RenderCopy( this->gameRenderer, newTexture, &drawZone, &drawRect);
 }
 
 
+void GraphicsManager::freeTextures(std::vector<SDL_Texture *> *textureVector) {
+    for (int i = 0; i < textureVector->size(); i++) {
+        SDL_Texture* texture = textureVector->back();
+        textureVector->pop_back();
+        SDL_DestroyTexture(texture);
+    }
+}
+
 void GraphicsManager::drawScreen(Player player) {
     int renderWidth = TrefusisConfig::screenWidth / TrefusisConfig::tileSize;
-    std::cout << renderWidth << "\n";
+    std::vector<SDL_Texture*> textureVector;
     int renderHeight = TrefusisConfig::screenHeight / TrefusisConfig::tileSize;
     Level activeLevel = Level::activeLevel;
+#ifdef DEBUG
+    std::cout << player.x << ", " << player.y << "\n";
+#endif
     int x = 0;
     int y = 0;
     SDL_RenderClear(this->gameRenderer);
@@ -71,13 +83,14 @@ void GraphicsManager::drawScreen(Player player) {
         for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
 
             EnviromentalActor actor = activeLevel.tileMatrix[i][j];
-            SDL_Rect* rect = actor.getTexture();
-            this->drawToScreen(x, y, rect);
+            SDL_Rect rect = actor.getTexture();
+            textureVector.push_back(this->drawToScreen(x, y, rect));
             y++;
         }
         x++;
     }
     SDL_RenderPresent(this->gameRenderer);
+    this->freeTextures(&textureVector);
 }
 
 void GraphicsManager::close() {

@@ -18,9 +18,15 @@ void GameManager::trackObjects() {
 
 void GameManager::handleKeys() {
     while(SDL_PollEvent(&e) != 0) {
-        if (e.type == SDL_QUIT) {
-            this->quit = true;
-            break;
+        switch(e.type) {
+            case SDL_QUIT:
+                this->quit = true;
+                break;
+            case SDL_KEYDOWN:
+                if (e.key.keysym.sym == SDLK_UP) player.y--;
+                else if (e.key.keysym.sym == SDLK_LEFT) player.x--;
+                else if (e.key.keysym.sym == SDLK_RIGHT) player.x++;
+                else if (e.key.keysym.sym == SDLK_DOWN) player.y++;
         }
     }
 }
@@ -31,8 +37,8 @@ void GameManager::Update() {
 }
 
 void GameManager::loadFirstScene() {
-    player.x = 250;
-    player.y = 250;
+    player.x = 110;
+    player.y = 110;
 }
 
 GameManager::GameManager() {

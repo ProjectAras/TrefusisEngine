@@ -16,12 +16,12 @@ void EnviromentalActor::transitionDayNight() {
     this->isDay *= -1;
 }
 
-SDL_Rect* EnviromentalActor::getTexture() {
-    SDL_Rect* rect;
-    rect->h = TrefusisConfig::tileSize;
-    rect->w = TrefusisConfig::tileSize;
-    rect->y = TrefusisConfig::tileSize * this->id;
-    rect->x = TrefusisConfig::tileSize * this->timeSetting;
+SDL_Rect EnviromentalActor::getTexture() {
+    SDL_Rect rect;
+    rect.h = TrefusisConfig::tileSize;
+    rect.w = TrefusisConfig::tileSize;
+    rect.y = TrefusisConfig::tileSize * this->id;
+    rect.x = TrefusisConfig::tileSize * this->timeSetting;
     return rect;
 }
 

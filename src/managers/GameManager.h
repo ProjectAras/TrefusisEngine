@@ -29,6 +29,7 @@ private:
     void loadFirstScene();
     void showSplashScreen();
     void handleKeys();
+    void initNonGraphicsSDL();
     GameManager();
 public:
     bool quit;
