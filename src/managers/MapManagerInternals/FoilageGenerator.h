@@ -15,22 +15,48 @@
 
 using namespace std;
 
+/**
+ * Used only when generating foilages..
+ */
 enum tileColor {
     BLUE, GREEN, RED, GREY, WHITE
 };
 
+/**
+ * A struct to hold color and foilage id.
+ */
 struct foilageTile {
     tileColor color;
     int foilageId;
 };
 
+
 class FoilageGenerator {
 public:
+    /**
+     * Generates foilage and returns a two dimensional vector.
+     * @param foilages Vector of foilages.
+     * @param length Length of the area.
+     * @param width Width of the area.
+     * @param playerX X coordinate of the player.
+     * @param playerY Y coordinate of the player.
+     * @param maxAllowed Maximum allowed blocked-off area.
+     * @return A two dimensional vector of foilageTile.
+     */
     std::vector<std::vector<foilageTile>>
     generateFoilage(vector <foilage> &foilages, int length, int width, int playerX, int playerY, int maxAllowed);
 
-    int paint(int x, int y, tileColor toBePainted, tileColor color);
 private:
+    /**
+     * A recursive function to paint tiles.
+     * @param x X coordinate.
+     * @param y Y coordinate.
+     * @param toBePainted The color of the tiles to be painted.
+     * @param color Color to paint.
+     * @return Number of tile that painted.
+     */
+    int paint(int x, int y, tileColor toBePainted, tileColor color);
+
     std::vector<std::vector<foilageTile>> field;
     int length;
     int width;
