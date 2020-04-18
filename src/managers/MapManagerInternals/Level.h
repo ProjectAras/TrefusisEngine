@@ -23,6 +23,7 @@ private:
      */
     static Level importLevelBase(std::string fileName);
     void generateTiles();
+    void smoothTiles();
 public:
     std::vector<std::vector<EnviromentalActor>> tileMatrix;
     static Level activeLevel;

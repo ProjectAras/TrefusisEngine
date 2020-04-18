@@ -20,6 +20,13 @@ public:
      * @return the generated random number.
      */
     static double random();
+    /**
+     * Generate a random integer between two integers.
+     * @param small smaller number.
+     * @param large larger number.
+     * @return A random between smaller and larger number, both inclusive.
+     */
+    static int randint(int small, int large);
 };
 
 

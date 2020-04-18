@@ -5,6 +5,8 @@
 #include <langinfo.h>
 #include "Level.h"
 #include "../../trefusisInternals/TrefusisConfig.h"
+#include "../../trefusisInternals/RandomNumberGenerator.h"
+
 #ifdef DEBUG
 #include <iostream>
 #endif
@@ -71,6 +73,7 @@ Level Level::importLevelBase(std::string fileName) {
     }
     fclose(file_ptr);
     newLevel.generateTiles();
+    newLevel.smoothTiles();
     return newLevel;
 }
 
@@ -81,6 +84,21 @@ void Level::generateTiles() {
             this->tileMatrix[i][j] = this->zoneMatrix[i][j].generateTile();
         }
     }
+}
+
+void Level::smoothTiles() {
+    std::vector<EnviromentalActor> surrounding;
+    for (int i = 1; i < 499; i++) {
+        for (int j = 1; j < 499; j++ ) {
+            surrounding.push_back(this->tileMatrix[i - 1][j]);
+            surrounding.push_back(this->tileMatrix[i][j - 1]);
+            surrounding.push_back(this->tileMatrix[i + 1][j]);
+            surrounding.push_back(this->tileMatrix[i][j + 1]);
+            this->tileMatrix[i][j] = surrounding[RandomNumberGenerator::randint(0, 4)];
+            surrounding.clear();
+        }
+    }
+
 }
 
 void Level::importLevels() {

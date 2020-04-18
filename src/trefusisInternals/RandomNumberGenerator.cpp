@@ -19,3 +19,7 @@ double RandomNumberGenerator::random() {
     double result = (double) rand() / (double) RAND_MAX;
     return result;
 }
+
+int RandomNumberGenerator::randint(int small, int large) {
+    return (rand() % (large - small)) + small;
+}
