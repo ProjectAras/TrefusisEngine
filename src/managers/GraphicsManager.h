@@ -24,11 +24,6 @@ private:
     SDL_Surface* gameSurface;
     int screen_width;
     int screen_height;
-    /**
-     * Given a pointer to a vector of textures, free their memory.
-     * @param textureVector Vector of textures.
-     */
-    void freeTextures(std::vector<SDL_Texture*> *textureVector);
     std::vector<SDL_Texture*> textures;
     /**
      * Load the spritesheet onto the RAM.
@@ -54,8 +49,7 @@ public:
      */
     void drawScreen(Player player);
     SDL_Texture* drawToScreen(std::string filePath, bool fadeIn);
-
-    SDL_Texture* drawToScreen(int x, int y, SDL_Rect drawZone);
+    void drawToScreen(int x, int y, SDL_Rect drawZone);
     void close();
 };
 
