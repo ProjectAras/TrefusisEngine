@@ -43,8 +43,8 @@ Zone Zone::importZone(std::string fileName) {
     fileptr = fopen(fileName.c_str(), "r");
     std::string token;
     int traversingChar = ' ';
-    int currentProbability = 0;
-    int totalProbability = 0;
+    float currentProbability = 0;
+    float totalProbability = 0;
     while (traversingChar != EOF) {
         traversingChar = fgetc(fileptr);
         switch (traversingChar) {
@@ -60,6 +60,7 @@ Zone Zone::importZone(std::string fileName) {
 //                newZone.tileSpawnProbability.higherBounds++;
 //                newZone.tileSpawnProbability.lowerBounds++;
                 currentProbability += std::atof(token.c_str());
+                token = "";
                 break;
             case ' ':
                 continue;

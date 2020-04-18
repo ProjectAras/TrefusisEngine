@@ -3,10 +3,10 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="TrefusisEngine" targetName="TrefusisEngine" />
-      <config projectName="TrefusisEngine" targetName="managers" />
+      <config projectName="TrefusisEngine" targetName="internals" />
       <config projectName="TrefusisEngine" targetName="map_manager_internals" />
       <config projectName="TrefusisEngine" targetName="objects" />
-      <config projectName="TrefusisEngine" targetName="internals" />
+      <config projectName="TrefusisEngine" targetName="managers" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -17,9 +17,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3f1a06ea-58dc-453b-a9da-2d444733f390" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managers/GraphicsManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/GraphicsManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trefusisInternals/TrefusisConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/trefusisInternals/TrefusisConfig.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/TrefusisTilemap.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/TrefusisTilemap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/maps/sampleMap.1" beforeDir="false" afterPath="$PROJECT_DIR$/resources/maps/sampleMap.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managers/MapManagerInternals/Zone.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/managers/MapManagerInternals/Zone.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +125,8 @@
       <workItem from="1587109820612" duration="5672000" />
       <workItem from="1587120112758" duration="3177000" />
       <workItem from="1587186095130" duration="4023000" />
-      <workItem from="1587200092089" duration="3753000" />
+      <workItem from="1587200092089" duration="4354000" />
+      <workItem from="1587212111006" duration="1373000" />
     </task>
     <task id="LOCAL-00001" summary="Add managers">
       <created>1586791049622</created>
@@ -181,38 +182,38 @@
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state x="1015" y="130" width="860" height="854" key="CommitChangelistDialog2/40.27.1880.1053@40.27.1880.1053" timestamp="1586795395283" />
-    <state width="1834" height="279" key="GridCell.Tab.0.bottom" timestamp="1587206794934">
+    <state width="1834" height="402" key="GridCell.Tab.0.bottom" timestamp="1587213483383">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="279" key="GridCell.Tab.0.bottom/40.27.1880.1053@40.27.1880.1053" timestamp="1587206794934" />
-    <state width="1834" height="279" key="GridCell.Tab.0.center" timestamp="1587206794933">
+    <state width="1834" height="402" key="GridCell.Tab.0.bottom/40.27.1880.1053@40.27.1880.1053" timestamp="1587213483383" />
+    <state width="1834" height="402" key="GridCell.Tab.0.center" timestamp="1587213483383">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="279" key="GridCell.Tab.0.center/40.27.1880.1053@40.27.1880.1053" timestamp="1587206794933" />
-    <state width="1834" height="279" key="GridCell.Tab.0.left" timestamp="1587206794933">
+    <state width="1834" height="402" key="GridCell.Tab.0.center/40.27.1880.1053@40.27.1880.1053" timestamp="1587213483383" />
+    <state width="1834" height="402" key="GridCell.Tab.0.left" timestamp="1587213483382">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="279" key="GridCell.Tab.0.left/40.27.1880.1053@40.27.1880.1053" timestamp="1587206794933" />
-    <state width="1834" height="279" key="GridCell.Tab.0.right" timestamp="1587206794933">
+    <state width="1834" height="402" key="GridCell.Tab.0.left/40.27.1880.1053@40.27.1880.1053" timestamp="1587213483382" />
+    <state width="1834" height="402" key="GridCell.Tab.0.right" timestamp="1587213483383">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="279" key="GridCell.Tab.0.right/40.27.1880.1053@40.27.1880.1053" timestamp="1587206794933" />
-    <state width="1834" height="279" key="GridCell.Tab.1.bottom" timestamp="1587206128724">
+    <state width="1834" height="402" key="GridCell.Tab.0.right/40.27.1880.1053@40.27.1880.1053" timestamp="1587213483383" />
+    <state width="1834" height="340" key="GridCell.Tab.1.bottom" timestamp="1587212911672">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="279" key="GridCell.Tab.1.bottom/40.27.1880.1053@40.27.1880.1053" timestamp="1587206128724" />
-    <state width="1834" height="279" key="GridCell.Tab.1.center" timestamp="1587206128724">
+    <state width="1834" height="340" key="GridCell.Tab.1.bottom/40.27.1880.1053@40.27.1880.1053" timestamp="1587212911672" />
+    <state width="1834" height="340" key="GridCell.Tab.1.center" timestamp="1587212911671">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="279" key="GridCell.Tab.1.center/40.27.1880.1053@40.27.1880.1053" timestamp="1587206128724" />
-    <state width="1834" height="279" key="GridCell.Tab.1.left" timestamp="1587206128724">
+    <state width="1834" height="340" key="GridCell.Tab.1.center/40.27.1880.1053@40.27.1880.1053" timestamp="1587212911671" />
+    <state width="1834" height="340" key="GridCell.Tab.1.left" timestamp="1587212911670">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="279" key="GridCell.Tab.1.left/40.27.1880.1053@40.27.1880.1053" timestamp="1587206128724" />
-    <state width="1834" height="279" key="GridCell.Tab.1.right" timestamp="1587206128724">
+    <state width="1834" height="340" key="GridCell.Tab.1.left/40.27.1880.1053@40.27.1880.1053" timestamp="1587212911670" />
+    <state width="1834" height="340" key="GridCell.Tab.1.right" timestamp="1587212911671">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
-    <state width="1834" height="279" key="GridCell.Tab.1.right/40.27.1880.1053@40.27.1880.1053" timestamp="1587206128724" />
+    <state width="1834" height="340" key="GridCell.Tab.1.right/40.27.1880.1053@40.27.1880.1053" timestamp="1587212911671" />
     <state x="869" y="267" width="1022" height="737" key="SettingsEditor" timestamp="1587205014932">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
@@ -235,6 +236,15 @@
     <state x="1113" y="259" width="672" height="678" key="search.everywhere.popup/40.27.1880.1053@40.27.1880.1053" timestamp="1587075307174" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/managers/MapManagerInternals/Zone.cpp</url>
+          <line>71</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="this-&gt;tileSpawnProbability.ids[0]" />
