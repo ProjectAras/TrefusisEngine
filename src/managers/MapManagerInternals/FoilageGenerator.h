@@ -16,7 +16,7 @@
 using namespace std;
 
 /**
- * Used only when generating foilages.
+ * Used only when generating foilages..
  */
 enum tileColor {
     BLUE, GREEN, RED, GREY, WHITE
