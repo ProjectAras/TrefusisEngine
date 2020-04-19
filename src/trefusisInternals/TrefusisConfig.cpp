@@ -8,6 +8,8 @@
 std::string TrefusisConfig::configFile;
 std::string TrefusisConfig::tilemapLocation;
 std::string  TrefusisConfig::mapsDirectory;
+std::string  TrefusisConfig::resourcesDirectory;
+std::string  TrefusisConfig::musicsDirectory;
 std::vector<std::string> TrefusisConfig::mapFileNames;
 #ifdef DEBUG
     std::string TrefusisConfig::prefix = "../";
@@ -38,8 +40,8 @@ bool TrefusisConfig::initConfig(std::string fileName) {
                     token = "";
                     break;
                 case '\n':
-                    if (writeTo == "maps") {
-                        mapsDirectory = token;
+                    if (writeTo == "resources") {
+                        resourcesDirectory = token;
                     } else if (writeTo == "tilemap") {
                         tilemapLocation = token;
                     } else if (writeTo == "map") {
@@ -52,6 +54,8 @@ bool TrefusisConfig::initConfig(std::string fileName) {
             }
         }
         fclose(fileptr);
+        mapsDirectory = resourcesDirectory + "maps/";
+        musicsDirectory = resourcesDirectory + "musics/";
         return true;
     }
 }

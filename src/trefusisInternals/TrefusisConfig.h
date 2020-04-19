@@ -12,7 +12,9 @@
 class TrefusisConfig {
 public:
     static std::string configFile;
+    static std::string resourcesDirectory;
     static std::string mapsDirectory;
+    static std::string musicsDirectory;
     static std::string tilemapLocation;
     static std::string prefix;
     static const int deltaTime = 16;
