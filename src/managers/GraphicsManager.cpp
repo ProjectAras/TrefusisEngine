@@ -45,9 +45,9 @@ GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
 
 }
 
-void GraphicsManager::drawToScreen(int x, int y, SDL_Rect drawZone) {
+void GraphicsManager::drawToScreen(int x, int y, SDL_Rect drawZone, std::string fileName) {
     const SDL_Rect drawRect {x * TrefusisConfig::tileSize, y * TrefusisConfig::tileSize, TrefusisConfig::tileSize, TrefusisConfig::tileSize};
-    SDL_Surface* loadSurface = IMG_Load("../resources/TrefusisTilemap.png");
+    SDL_Surface* loadSurface = IMG_Load(fileName.c_str());
     SDL_SetColorKey( loadSurface, SDL_TRUE, SDL_MapRGB( loadSurface->format, 0, 0xFF, 0xFF ) );
     SDL_Texture* newTexture = SDL_CreateTextureFromSurface(this->gameRenderer, loadSurface);
     SDL_FreeSurface(loadSurface);
@@ -72,7 +72,10 @@ void GraphicsManager::drawScreen(Player player) {
             if (i >= 0 && j >= 0 && i < 500 && j < 500) {
                 EnviromentalActor actor = activeLevel.tileMatrix[i][j];
                 SDL_Rect rect = actor.getTexture();
-                this->drawToScreen(x, y, rect);
+                this->drawToScreen(x, y, rect, TrefusisConfig::prefix + TrefusisConfig::tilemapLocation);
+                if (i == player.x && j == player.y) {
+                    this->drawToScreen(x, y, SDL_Rect {0, 0, 347, 368}, "../resources/davsan.png");
+                }
             }
             y++;
         }

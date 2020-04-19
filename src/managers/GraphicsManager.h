@@ -61,7 +61,7 @@ public:
      * @param y Y coordinate in screen
      * @param drawZone Draw zone from the image.
      */
-    void drawToScreen(int x, int y, SDL_Rect drawZone);  // TODO: Add std::string variable for filename.
+    void drawToScreen(int x, int y, SDL_Rect drawZone, std::string fileName);  // TODO: Add std::string variable for filename.
     /**
      * Close the graphics relese its resources.
      */
