@@ -16,6 +16,7 @@ private:
     int timeSetting;
     int isDay;  // 1 if day, -1 if night
 public:
+    bool isObstruction;
     SDL_Rect getTexture();
     void incrementSeason();
     void transitionDayNight();

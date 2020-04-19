@@ -29,6 +29,7 @@ EnviromentalActor::EnviromentalActor(int id) {
     this->timeSetting = 0;
     this->id = id;
     this->isDay = 1;
+    this->isObstruction = false;
 }
 
 EnviromentalActor::EnviromentalActor() {
@@ -37,6 +38,7 @@ EnviromentalActor::EnviromentalActor() {
     this->isDay = 1;
     this->x = 0;
     this->y = 0;
+    this->isObstruction = false;
 }
 
 void EnviromentalActor::operator=(const EnviromentalActor &e) {
