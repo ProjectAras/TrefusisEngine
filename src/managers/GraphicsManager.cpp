@@ -69,10 +69,11 @@ void GraphicsManager::drawScreen(Player player) {
     for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
         y = 0;
         for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
-
-            EnviromentalActor actor = activeLevel.tileMatrix[i][j];
-            SDL_Rect rect = actor.getTexture();
-            this->drawToScreen(x, y, rect);
+            if (i >= 0 && j >= 0 && i < 500 && j < 500) {
+                EnviromentalActor actor = activeLevel.tileMatrix[i][j];
+                SDL_Rect rect = actor.getTexture();
+                this->drawToScreen(x, y, rect);
+            }
             y++;
         }
         x++;
