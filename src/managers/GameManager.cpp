@@ -16,6 +16,19 @@ void GameManager::trackObjects() {
     }
 }
 
+bool inline GameManager::playerIsInsideMapAfterMove(int x, int y) {
+    return player.x + x >= 0 && player.y + y >= 0 &&
+            player.x + x <= Level::activeLevel.tileMatrix.size() &&
+            player.y + y <= Level::activeLevel.tileMatrix.size();
+}
+
+void GameManager::movePlayer(int x, int y) {
+    if (playerIsInsideMapAfterMove(x, y) && !Level::activeLevel.tileMatrix[player.x + x][player.y + y].isObstruction) {
+        player.x += x;
+        player.y += y;
+    }
+}
+
 void GameManager::handleKeys() {
     while(SDL_PollEvent(&e) != 0) {
         switch(e.type) {
@@ -23,10 +36,10 @@ void GameManager::handleKeys() {
                 this->quit = true;
                 break;
             case SDL_KEYDOWN:
-                if (e.key.keysym.sym == SDLK_UP) player.y--;
-                else if (e.key.keysym.sym == SDLK_LEFT) player.x--;
-                else if (e.key.keysym.sym == SDLK_RIGHT) player.x++;
-                else if (e.key.keysym.sym == SDLK_DOWN) player.y++;
+                if (e.key.keysym.sym == SDLK_UP) movePlayer(0, -1);
+                else if (e.key.keysym.sym == SDLK_LEFT) movePlayer(-1, 0);
+                else if (e.key.keysym.sym == SDLK_RIGHT) movePlayer(1, 0);
+                else if (e.key.keysym.sym == SDLK_DOWN) movePlayer(0, 1);
         }
     }
 }

@@ -22,6 +22,15 @@ private:
     SDL_Event e;
     static GameManager* game;
     Player player {};
+    /**
+     * Move the player in given directions.
+     * @param x movement in x direction.
+     * @param y movement in y direction.
+     */
+    void movePlayer(int x, int y);
+    /**
+     * Track the objects.
+     */
     void trackObjects();
     /**
      * Stub method to load the first scene for the first Milestone test.
@@ -35,6 +44,13 @@ private:
      * Handle the key presses by the user.
      */
     void handleKeys();
+    /**
+     * Check if player is still inside the map after move.
+     * @param x Move in x direction.
+     * @param y Move in y direction.
+     * @return If the player is still inside bounds.
+     */
+    bool inline playerIsInsideMapAfterMove(int x, int y);
     /**
      * Initialise a gamemanager instance.
      */
