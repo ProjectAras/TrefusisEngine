@@ -8,6 +8,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_surface.h>
+#include <SDL2/SDL_ttf.h>
 
 
 SDL_Texture* GraphicsManager::drawToScreen(std::string filePath, bool fadeIn) {
@@ -35,6 +36,7 @@ SDL_Texture* GraphicsManager::drawToScreen(std::string filePath, bool fadeIn) {
 }
 
 GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
+    TTF_Init();
     this->screen_height = screen_height;
     this->screen_width = screen_width;
     this->gameWindow = SDL_CreateWindow("TrefusisEngine",
@@ -45,24 +47,35 @@ GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
 
 }
 
-void GraphicsManager::drawToScreen(int x, int y, SDL_Rect drawZone, std::string fileName) {
-    const SDL_Rect drawRect {x * TrefusisConfig::tileSize, y * TrefusisConfig::tileSize, TrefusisConfig::tileSize, TrefusisConfig::tileSize};
+void GraphicsManager::drawToScreen(int x, int y, SDL_Rect drawZone, SDL_Rect destinationZone, std::string fileName) {
     SDL_Surface* loadSurface = IMG_Load(fileName.c_str());
     SDL_SetColorKey( loadSurface, SDL_TRUE, SDL_MapRGB( loadSurface->format, 0, 0xFF, 0xFF ) );
     SDL_Texture* newTexture = SDL_CreateTextureFromSurface(this->gameRenderer, loadSurface);
     SDL_FreeSurface(loadSurface);
-    SDL_RenderCopy(this->gameRenderer, newTexture, &drawZone, &drawRect);
+    SDL_RenderCopy(this->gameRenderer, newTexture, &drawZone, &destinationZone);
     SDL_DestroyTexture(newTexture);
 }
 
+void GraphicsManager::drawToScreen(int x, int y, SDL_Rect drawZone, std::string fileName) {
+    const SDL_Rect drawRect {x * TrefusisConfig::tileSize, y * TrefusisConfig::tileSize, TrefusisConfig::tileSize, TrefusisConfig::tileSize};
+    this->drawToScreen(x, y, drawZone, drawRect, fileName);
+}
 
-void GraphicsManager::drawScreen(Player player) {
+
+void GraphicsManager::drawTextToScreen(int x, int y, SDL_Rect destZone, std::string text) {
+    SDL_Color Black{0, 0, 0};
+    TTF_Font* Roboto = TTF_OpenFont("../resources/roboto.ttf", 24);
+    SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Roboto, text.c_str(), Black);
+    SDL_Texture* Message = SDL_CreateTextureFromSurface(this->gameRenderer, surfaceMessage);
+    SDL_RenderCopy(this->gameRenderer, Message, NULL, &destZone);
+    SDL_FreeSurface(surfaceMessage);
+    SDL_DestroyTexture(Message);
+}
+
+void GraphicsManager::drawScreen(Player player, Dialog dialog) {
     int renderWidth = TrefusisConfig::screenWidth / TrefusisConfig::tileSize;
     int renderHeight = TrefusisConfig::screenHeight / TrefusisConfig::tileSize;
     Level activeLevel = Level::activeLevel;
-#ifdef DEBUG
-    std::cout << player.x << ", " << player.y << "\n";
-#endif
     int x = 0;
     int y = 0;
     SDL_RenderClear(this->gameRenderer);
@@ -75,6 +88,10 @@ void GraphicsManager::drawScreen(Player player) {
                 this->drawToScreen(x, y, rect, TrefusisConfig::prefix + TrefusisConfig::tilemapLocation);
                 if (i == player.x && j == player.y) {
                     this->drawToScreen(x, y, SDL_Rect {0, 0, 347, 368}, "../resources/davsan.png");
+                    if (dialog.owner.compare("player") == 0) {
+                        this->drawToScreen(x - 1, y - 1, SDL_Rect {0, 0, 256, 128}, SDL_Rect {(x - 3) * 64, (y - 2) * 64, 256, 128}, "../resources/images/UI_DialogBox.png");
+                        this->drawTextToScreen(x - 1, y - 1, SDL_Rect {(x - 2) * 52, (y - 1)* 52, 200, 50}, dialog.text);
+                    }
                 }
             }
             y++;
@@ -87,6 +104,7 @@ void GraphicsManager::drawScreen(Player player) {
 void GraphicsManager::close() {
     SDL_DestroyRenderer(this->gameRenderer);
     SDL_DestroyWindow(this->gameWindow);
+    TTF_Quit();
     SDL_Quit();
 }
 

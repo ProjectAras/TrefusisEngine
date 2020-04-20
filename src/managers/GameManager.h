@@ -10,6 +10,7 @@
 #include "../objects/Character.h"
 #include "TimeManager.h"
 #include "GraphicsManager.h"
+#include "../harlequin/DialogManager.hpp"
 
 /**
  * A singleton class, GameManager has only one active instance at any given time.
@@ -20,6 +21,8 @@ private:
     TimeManager timeManager;
     GraphicsManager graphicsManager;
     SDL_Event e;
+    bool displayDialog = false;
+    Dialog currentDialog{"", ""};
     static GameManager* game;
     Player player {};
     /**
@@ -51,6 +54,10 @@ private:
      * @return If the player is still inside bounds.
      */
     bool inline playerIsInsideMapAfterMove(int x, int y);
+    /**
+     * Handles the display and process of dialog.
+     */
+    void handleDialog();
     /**
      * Initialise a gamemanager instance.
      */

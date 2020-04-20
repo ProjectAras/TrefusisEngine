@@ -15,6 +15,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_surface.h>
+#include "../harlequin/DialogManager.hpp"
+#include <SDL2/SDL_ttf.h>
 
 class GraphicsManager {
 private:
@@ -47,7 +49,7 @@ public:
      * @param enviromentalActors
      * @param characters
      */
-    void drawScreen(Player player);
+    void drawScreen(Player player, Dialog dialog);
     /**
      * Draw a given image to the screen.
      * @param filePath File path to the image.
@@ -61,7 +63,20 @@ public:
      * @param y Y coordinate in screen
      * @param drawZone Draw zone from the image.
      */
-    void drawToScreen(int x, int y, SDL_Rect drawZone, std::string fileName);  // TODO: Add std::string variable for filename.
+    void drawToScreen(int x, int y, SDL_Rect drawZone, std::string fileName);
+    /**
+     * Draw to  screen with given coordinates and a draw zone and a destination zone.
+     * @param x X coordinate in screen.
+     * @param y Y coordinate in screen.
+     * @param drawZone drawZone from the image.
+     * @param destinationZone destination zone in the file.
+     * @param fileName File name.
+     */
+    void drawToScreen(int x, int y, SDL_Rect drawZone, SDL_Rect destinationZone, std::string fileName);
+    /**
+     * Show text on screen.
+     */
+    void drawTextToScreen(int x, int y, SDL_Rect destZone, std::string text);
     /**
      * Close the graphics relese its resources.
      */

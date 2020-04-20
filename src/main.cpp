@@ -6,7 +6,7 @@
 #include <iostream>
 #include "managers/GameManager.h"
 #include "trefusisInternals/TrefusisConfig.h"
-
+#include "harlequin/DialogManager.hpp"
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
@@ -29,6 +29,7 @@ int main(int argc, char* args[]){
     }
 #endif
     GameManager gm = GameManager::getInstance();
+    DialogManager::addDialog(Dialog{"player", "It is so cold."});
     while (!gm.quit) {
         SDL_Delay(TrefusisConfig::deltaTime);
         gm.Update();

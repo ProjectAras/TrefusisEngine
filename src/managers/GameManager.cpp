@@ -29,6 +29,17 @@ void GameManager::movePlayer(int x, int y) {
     }
 }
 
+void GameManager::handleDialog() {
+    if (displayDialog == false && DialogManager::hasNextDialog()) {
+        displayDialog = true;
+        currentDialog = DialogManager::nextDialog();
+    }
+
+    if (displayDialog == true) {
+        std::cout << currentDialog.owner << ": " << currentDialog.text << "\n";
+    }
+}
+
 void GameManager::handleKeys() {
     while(SDL_PollEvent(&e) != 0) {
         switch(e.type) {
@@ -40,13 +51,15 @@ void GameManager::handleKeys() {
                 else if (e.key.keysym.sym == SDLK_LEFT) movePlayer(-1, 0);
                 else if (e.key.keysym.sym == SDLK_RIGHT) movePlayer(1, 0);
                 else if (e.key.keysym.sym == SDLK_DOWN) movePlayer(0, 1);
+                else if (e.key.keysym.sym == SDLK_RETURN) displayDialog = false;
         }
     }
 }
 
 void GameManager::Update() {
     this->handleKeys();
-    this->graphicsManager.drawScreen(player);
+    this->handleDialog();
+    this->graphicsManager.drawScreen(player, this->currentDialog);
 }
 
 void GameManager::loadFirstScene() {
