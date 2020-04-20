@@ -57,6 +57,21 @@ private:
      */
     int paint(int x, int y, tileColor toBePainted, tileColor color);
 
+    /**
+     * TO check if there any tile in the specified color.
+     * @param color Specified color.
+     * @return Returns true if it contains any tile in the specified color, otherwise returns false.
+     */
+    bool isContains (tileColor color);
+
+    /**
+     * To check is foilage in the coordinates x and y removable.
+     * @param x X coordinate of the foilageç
+     * @param y Y coordinate of the foilage.
+     * @return Returns true if it is removable otherwise returns false.
+     */
+    bool isRemovable(int x, int y);
+
     std::vector<std::vector<foilageTile>> field;
     int length;
     int width;
