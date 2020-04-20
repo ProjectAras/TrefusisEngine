@@ -8,14 +8,18 @@ std::vector<std::vector<foilageTile>>
 FoilageGenerator::generateFoilage(vector <foilage> &foilages, int length, int width, int playerX, int playerY, int maxAllowed) {
     this->width = width;
     this->length = length;
-    
+
+    std::vector<std::vector<foilageTile>> field(width);
+
     for(int i=0; i<width; i++) {
-        for(int j=0; j<length; i++) {
+        field[i].resize(length);
+
+        for(int j=0; j<length; j++) {
             int foilageNumber = (int)(RandomNumberGenerator::random() * 100) % foilages.size();
             double chance = RandomNumberGenerator::random();
             foilageTile tile;
 
-            if(foilages[foilageNumber].chance == chance) {
+            if(foilages[foilageNumber].chance >= chance) {
                 tile.color = GREEN;
                 tile.foilageId = foilages[foilageNumber].id;
             } else {
@@ -30,12 +34,62 @@ FoilageGenerator::generateFoilage(vector <foilage> &foilages, int length, int wi
 
     for(int i=0; i<width; i++) {
         for(int j=0; j<length; j++) {
-            if(field[i][j].color == WHITE) 
+            if(field[i][j].color == WHITE)
                 if(FoilageGenerator::paint(i, j, WHITE, RED) <= maxAllowed)
                     FoilageGenerator::paint(i, j, RED, GREY);
-        } 
+        }
     }
-    return field;
+
+    if
+        for(int i=0; i<width; i++) {
+            for(int j=0; j<length; j++) {
+                if(field[i][j].color == GREEN && isRemovable(i, j)) {
+                    field[i][j].foilageId = -1;
+                    paint(i, j, BLUE, RED);
+                    paint(i, j, BLUE, GREY);
+                }
+            }
+        }
+
+    if()
+
+        return field;
+}
+
+bool FoilageGenerator::isContains (tileColor color) {
+
+    for(int i=0; i<width; i++) {
+        for(int j=0; j<length; j++) {
+            if(field[i][j].color == color)
+                return true;
+        }
+    }
+
+    return false;
+}
+
+bool FoilageGenerator::isRemovable(int x, int y) {
+    bool blueAdjacent = false;
+    bool redAdjacent = false;
+
+    if(field[x][y-1].color == BLUE)
+        blueAdjacent = true;
+    else if(field[x][y-1].color == RED)
+        redAdjacent = true;
+    if(field[x][y+1].color == BLUE)
+        blueAdjacent = true;
+    else if(field[x][y+1].color == RED)
+        redAdjacent = true;
+    if(field[x-1][y].color == BLUE)
+        blueAdjacent = true;
+    else if(field[x-1][y].color == RED)
+        redAdjacent = true;
+    if(field[x+1][y].color == BLUE)
+        blueAdjacent = true;
+    else if(field[x+1][y].color == RED)
+        redAdjacent = true;
+
+    return  blueAdjacent && redAdjacent;
 }
 
 int FoilageGenerator::paint(int x, int y, tileColor toBePainted, tileColor color) {
