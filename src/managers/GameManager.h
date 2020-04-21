@@ -11,7 +11,6 @@
 #include "TimeManager.h"
 #include "GraphicsManager.h"
 #include "../harlequin/DialogManager.hpp"
-
 /**
  * A singleton class, GameManager has only one active instance at any given time.
  */
