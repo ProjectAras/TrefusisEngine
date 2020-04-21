@@ -89,7 +89,7 @@ void GraphicsManager::drawScreen(Player player, Dialog dialog) {
                 if (i == player.x && j == player.y) {
                     this->drawToScreen(x, y, SDL_Rect {0, 0, 347, 368}, "../resources/davsan.png");
                     if (dialog.owner.compare("player") == 0) {
-                        this->drawToScreen(x - 1, y - 1, SDL_Rect {0, 0, 256, 128}, SDL_Rect {(x - 3) * 64, (y - 2) * 64, 256, 128}, "../resources/images/UI_DialogBox.png");
+                        this->drawToScreen(x - 1, y - 1, SDL_Rect {12, 12, 48, 48}, SDL_Rect {(x - 3) * 64, (y - 2) * 64, 256, 128}, "../resources/images/UI_DialogBox.png");
                         this->drawTextToScreen(x - 1, y - 1, SDL_Rect {(x - 2) * 52, (y - 1)* 52, 200, 50}, dialog.text);
                     }
                 }
