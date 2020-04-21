@@ -4,7 +4,7 @@
 
 #ifndef TREFUSISENGINE_SCRIPTMANAGER_H
 #define TREFUSISENGINE_SCRIPTMANAGER_H
-#include <angelscript.h>
+#include <python3.7/Python.h>
 class ScriptManager {
 
 };
