@@ -4,6 +4,10 @@ Hey you! Finally awake! This is the TrefusisEngine, our small in-house game engi
 
 ## Requirments
 
+### Compile Requirments
+
+You will need CMake to compile the project, if you will manually compile it, please compile it to its own directory. To do that, open a directory named `build`, enter that directory and then give the `cmake ..` command, this will compile the project inside the `build` directory you just opened, this directory is ignored by `git` so you won't accidently push it to the main. the file to run is named `TrefusisEngine.exe` for windows or just `TrefusisEngine` for \*nix.
+
 ### SDL Requirments
 
 You will need libsdl, libsdl_ttf and libsdl_image to make the repository compile properly.
@@ -20,3 +24,7 @@ Here in ProjectAras we adhere to a strict st-- na, just kidding, if you want a s
 ## DOCUMENTATION
 
 Please document your code man. Also leave some good messages to the Issue about Documention, we cannot seem to shut that down.
+
+# Note about SDL development
+
+We try to keep Harlequin and SDL to their respective compartments, in general, SDL and all graphics code is kept at the `GraphicsManager` and all the Harlequin stuff is kept at `src/harlequin` directory. 
