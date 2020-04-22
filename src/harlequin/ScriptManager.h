@@ -4,8 +4,16 @@
 
 #ifndef TREFUSISENGINE_SCRIPTMANAGER_H
 #define TREFUSISENGINE_SCRIPTMANAGER_H
-#include <python3.7/Python.h>
+#include <Python.h>
+#include <string>
+
 class ScriptManager {
+private:
+    PyObject *pModule;
+public:
+    ScriptManager();
+    ~ScriptManager();
+    void loadScript(std::string fileName);
 
 };
 

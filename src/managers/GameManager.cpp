@@ -72,6 +72,7 @@ GameManager::GameManager() {
     this->showSplashScreen();
     this->quit = false;
     this->loadFirstScene();
+    this->harlequin.loadScript("SampleMap");
 }
 
 void GameManager::close() {

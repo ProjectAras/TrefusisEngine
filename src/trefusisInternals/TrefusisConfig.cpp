@@ -11,6 +11,7 @@ std::string  TrefusisConfig::mapsDirectory;
 std::string  TrefusisConfig::resourcesDirectory;
 std::string  TrefusisConfig::musicsDirectory;
 std::vector<std::string> TrefusisConfig::mapFileNames;
+const char* TrefusisConfig::scriptFile = "../resources/scripts/main";
 #ifdef DEBUG
     std::string TrefusisConfig::prefix = "../";
 #endif

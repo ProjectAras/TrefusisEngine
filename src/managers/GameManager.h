@@ -11,6 +11,7 @@
 #include "TimeManager.h"
 #include "GraphicsManager.h"
 #include "../harlequin/DialogManager.hpp"
+#include "../harlequin/ScriptManager.h"
 /**
  * A singleton class, GameManager has only one active instance at any given time.
  */
@@ -18,6 +19,7 @@ class GameManager {
 private:
     std::vector<Character> characters;
     TimeManager timeManager;
+    ScriptManager harlequin {};
     GraphicsManager graphicsManager;
     SDL_Event e;
     bool displayDialog = false;
