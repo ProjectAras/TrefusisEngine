@@ -1,2 +1,3 @@
+import sys
 def SampleMap():
-    print("Loading SampleMap Script...")
+    print("HARLEQUIN DEBUG: " + sys.version)

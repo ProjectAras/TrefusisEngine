@@ -84,12 +84,15 @@ void GraphicsManager::drawScreen(Player player, Dialog dialog) {
         for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
             if (i >= 0 && j >= 0 && i < 500 && j < 500) {
                 EnviromentalActor actor = activeLevel.tileMatrix[i][j];
+ //               EnviromentalActor foilage = activeLevel.foilageMatrix[i][j];
+ //               SDL_Rect rectFoilage = foilage.getTexture();
                 SDL_Rect rect = actor.getTexture();
                 this->drawToScreen(x, y, rect, TrefusisConfig::prefix + TrefusisConfig::tilemapLocation);
+//                this->drawToScreen(x, y, rectFoilage, TrefusisConfig::prefix + TrefusisConfig::foilagemapLocation);
                 if (i == player.x && j == player.y) {
-                    this->drawToScreen(x, y, SDL_Rect {0, 0, 347, 368}, "../resources/davsan.png");
+                    this->drawToScreen(x, y, SDL_Rect {0, 0, 32, 32}, "../resources/davsan.png");
                     if (dialog.owner.compare("player") == 0) {
-                        this->drawToScreen(x - 1, y - 1, SDL_Rect {12, 12, 48, 48}, SDL_Rect {(x - 3) * 64, (y - 2) * 64, 256, 128}, "../resources/images/UI_DialogBox.png");
+                        this->drawToScreen(x - 1, y - 1, SDL_Rect {0, 0, 128, 64}, SDL_Rect {(x - 3) * 64, (y - 2) * 64, 256, 128}, "../resources/images/UI_DialogBox.png");
                         this->drawTextToScreen(x - 1, y - 1, SDL_Rect {(x - 2) * 52, (y - 1)* 52, 200, 50}, dialog.text);
                     }
                 }

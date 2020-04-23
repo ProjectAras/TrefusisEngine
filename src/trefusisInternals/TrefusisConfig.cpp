@@ -8,12 +8,15 @@
 std::string TrefusisConfig::configFile;
 std::string TrefusisConfig::tilemapLocation;
 std::string  TrefusisConfig::mapsDirectory;
+std::string TrefusisConfig::foilageLocation;
 std::string  TrefusisConfig::resourcesDirectory;
 std::string  TrefusisConfig::musicsDirectory;
 std::vector<std::string> TrefusisConfig::mapFileNames;
 const char* TrefusisConfig::scriptFile = "../resources/scripts/main";
 #ifdef DEBUG
     std::string TrefusisConfig::prefix = "../";
+#else
+    std::string TrefusisConfig::prefix;
 #endif
 
 bool TrefusisConfig::isInitialised = false;
@@ -47,6 +50,8 @@ bool TrefusisConfig::initConfig(std::string fileName) {
                         tilemapLocation = token;
                     } else if (writeTo == "map") {
                         mapFileNames.push_back(token + ".csv");
+                    } else if (writeTo == "foilage") {
+                        foilageLocation = token;
                     }
                     token = "";
                     break;

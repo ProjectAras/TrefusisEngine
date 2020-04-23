@@ -17,6 +17,7 @@ public:
     static std::string musicsDirectory;
     static std::string tilemapLocation;
     static std::string prefix;
+    static std::string foilageLocation;
     static const char* scriptFile;
     static const int deltaTime = 16;
     static const int tileSize = 64;
