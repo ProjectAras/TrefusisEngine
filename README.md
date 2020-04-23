@@ -1,5 +1,7 @@
 # Trefusis Engine - Newcomer Contributors Guide!
 
+![build](https://github.com/ProjectAras/TrefusisEngine/workflows/build/badge.svg?branch=master)
+
 Hey you! Finally awake! This is the TrefusisEngine, our small in-house game engine wannabe full of memory leaks and occasional runaway bug that will screetch until it gets you. Since we are in early days of development, not all is settled, but here is what you should do: Install the requirements, DO NOT change the CMakeLists.txt file in the root directory, or if you do, branch the repo so we can test it properly, and just start coding.
 
 ## Requirments
