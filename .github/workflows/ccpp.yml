@@ -20,4 +20,4 @@ jobs:
     - name: Run CMake
       run: mkdir build && cd build && cmake ..
     - name: Run make
-      run: make
+      run: make all
