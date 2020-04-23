@@ -18,6 +18,4 @@ jobs:
     - name: Install dependencies
       run: sudo apt install libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev cmake
     - name: Run CMake
-      run: mkdir build && cd build && cmake ..
-    - name: Run make
-      run: make all
+      run: mkdir build && cd build && cmake .. && make
