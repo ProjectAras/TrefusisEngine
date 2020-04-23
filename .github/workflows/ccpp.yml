@@ -9,9 +9,11 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
 
     steps:
+    - name: Update VM
+      run: sudo apt update
     - name: Install dependencies
       run: sudo apt install libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev cmake
     - name: Run CMake
