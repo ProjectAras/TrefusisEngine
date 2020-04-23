@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
     - name: Install dependencies
       run: apt install libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev cmake
     - name: Run CMake
