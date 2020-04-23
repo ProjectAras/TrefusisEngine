@@ -4,8 +4,8 @@
 
 #include "FoilageGenerator.h"
 
-std::vector<std::vector<foilageTile>>
-FoilageGenerator::generateFoilage(vector<foilage> &foilages, int length, int width, int playerX, int playerY,
+std::vector<std::vector<EnviromentalActor>>
+FoilageGenerator::generateFoilage(foilageProbability foilages, int length, int width, int playerX, int playerY,
                                   int maxAllowed) {
     this->width = width;
     this->length = length;
@@ -16,13 +16,13 @@ FoilageGenerator::generateFoilage(vector<foilage> &foilages, int length, int wid
         field[i].resize(length);
 
         for (int j = 0; j < length; j++) {
-            int foilageNumber = (int) (RandomNumberGenerator::random() * 100) % foilages.size();
-            double chance = RandomNumberGenerator::random();
+            int foilageNumber = (int) (RandomNumberGenerator::random() * 100) % foilages.ids.size();
+            double number = RandomNumberGenerator::random();
             foilageTile tile;
 
-            if (foilages[foilageNumber].chance >= chance) {
+            if (foilages.ids[foilageNumber] >= number) {
                 tile.color = GREEN;
-                tile.foilageId = foilages[foilageNumber].id;
+                tile.foilageId = foilages.ids[foilageNumber];
             } else {
                 tile.color = WHITE;
                 tile.foilageId = -1;
@@ -54,9 +54,20 @@ FoilageGenerator::generateFoilage(vector<foilage> &foilages, int length, int wid
         }
         if (isContains(RED))
             return generateFoilage(foilages, length, width, playerX, playerY, maxAllowed);
-        else
-            return field;
     }
+
+    std::vector<std::vector<EnviromentalActor>> actors(width);
+
+    for (int i = 0; i < width; i++)
+        actors[i].resize(length);
+
+    for(int i=0; i<field.size(); i++) {
+        for(int j=0; j<field[0].size(); j++) {
+            EnviromentalActor enviromentalActor {this->field[i][j].foilageId};
+        }
+    }
+
+    return actors;
 }
 
 bool FoilageGenerator::isContains(tileColor color) {

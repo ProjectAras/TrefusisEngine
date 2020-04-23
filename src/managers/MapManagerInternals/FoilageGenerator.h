@@ -7,6 +7,7 @@
 
 #include "Zone.h"
 #include "../../trefusisInternals/RandomNumberGenerator.h"
+#include "../../objects/EnviromentalActor.h"
 
 #include <iostream>
 #include <string>
@@ -35,16 +36,16 @@ class FoilageGenerator {
 public:
     /**
      * Generates foilage and returns a two dimensional vector.
-     * @param foilages Vector of foilages.
+     * @param foilages Foilage object that holds ids and probabilities.
      * @param length Length of the area.
      * @param width Width of the area.
      * @param playerX X coordinate of the player.
      * @param playerY Y coordinate of the player.
      * @param maxAllowed Maximum allowed blocked-off area.
-     * @return A two dimensional vector of foilageTile.
+     * @return A two dimensional vector of EnviromentalActor.
      */
-    std::vector<std::vector<foilageTile>>
-    generateFoilage(vector <foilage> &foilages, int length, int width, int playerX, int playerY, int maxAllowed);
+    std::vector<std::vector<EnviromentalActor>>
+    generateFoilage(foilageProbability foilages, int length, int width, int playerX, int playerY, int maxAllowed);
 
 private:
     /**

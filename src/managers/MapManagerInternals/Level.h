@@ -14,8 +14,11 @@ class Level {
 private:
     Level();
     std::vector<std::vector<Zone>> zoneMatrix;
+    std::vector<std::vector<EnviromentalActor>> foilageMatrix;
     static std::vector<Level> levels;
     std::vector<Zone> availableZones;
+    FoilageGenerator foilageGenerator;
+    
     /**
      * Import the base levelmap.
      * @param fileName File of the level.
@@ -24,6 +27,7 @@ private:
     static Level importLevelBase(std::string fileName);
     void generateTiles();
     void smoothTiles();
+    void generateFoilages();
 public:
     std::vector<std::vector<EnviromentalActor>> tileMatrix;
     static Level activeLevel;

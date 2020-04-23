@@ -86,6 +86,10 @@ void Level::generateTiles() {
     }
 }
 
+void Level::generateFoilages() {
+    
+}
+
 void Level::smoothTiles() {
     std::vector<EnviromentalActor> surrounding;
     for (int i = 1; i < 499; i++) {
