@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Install dependencies
-      run: apt install libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev cmake
+      run: sudo apt install libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev cmake
     - name: Run CMake
       run: mkdir build && cd build && cmake ..
     - name: Run make
