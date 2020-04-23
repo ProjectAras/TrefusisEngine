@@ -16,6 +16,6 @@ jobs:
     - name: Update VM
       run: sudo apt update
     - name: Install dependencies
-      run: sudo apt install libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev cmake
+      run: sudo apt install libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev cmake gcc-8
     - name: Run CMake
       run: mkdir build && cd build && cmake .. && make
