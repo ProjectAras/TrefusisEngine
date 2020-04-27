@@ -4,8 +4,8 @@
 
 #include <langinfo.h>
 #include "Level.h"
-#include "../../trefusisInternals/TrefusisConfig.h"
-#include "../../trefusisInternals/RandomNumberGenerator.h"
+#include "../trefusisInternals/TrefusisConfig.h"
+#include "../trefusisInternals/RandomNumberGenerator.h"
 
 #ifdef DEBUG
 #include <iostream>

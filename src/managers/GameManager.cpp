@@ -4,7 +4,7 @@
 
 #include "GameManager.h"
 #include "../objects/Character.h"
-#include "MapManagerInternals/Level.h"
+#include "Level.h"
 
 GameManager* GameManager::game = nullptr;
 
