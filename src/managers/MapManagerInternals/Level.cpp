@@ -11,102 +11,81 @@
 #include <iostream>
 #endif
 Level Level::activeLevel {};
-std::vector<Level> Level::levels;
-/**
- * Given the filename of a level, return the level's name, because C++ stdlib is lacking.
- * @param fileName filename of the level.
- * @return the level name.
- */
-std::string parseLevelName(std::string fileName) {
-    int pathEndIndex = 0;
-    int dotIndex = -1;
-    for (int i = 0; i < fileName.length(); i++) {
-        if (fileName[i] == '.') {
-            dotIndex = i;
-        } else if (fileName[i] == '/') {
-            pathEndIndex = i;
-        }
-    }
-    std::string token = "";
-    std::string levelName = "";
-    for (int i = pathEndIndex + 1; i < dotIndex; i++) {
-        levelName += fileName[i];
-    }
-#ifdef DEBUG
-    std::cout << "Level Name: " << levelName << "\n";
-#endif
-    return levelName;
-}
 
-Level Level::importLevelBase(std::string fileName) {
-    FILE *file_ptr;
-#ifdef DEBUG
-    std::cout << "File name: " << fileName << "\n";
-#endif
-    Level newLevel {};
-    newLevel.availableZones = Zone::importZones(parseLevelName(fileName));
-    file_ptr = fopen(fileName.c_str(), "r");
-    if (file_ptr == NULL) {
-        std::cout << "Error, file could not be opened\n";
-    }
-    int row = 0;
-    int column = 0;
-    int token = 66;
-    while (token != EOF) {
-        token = fgetc(file_ptr);
-        switch (token) {
+void Level::importLevelZoneMatrix(levelProbability *lpp) {
+    FILE* fptr;
+    fptr = fopen((TrefusisConfig::prefix + TrefusisConfig::mapsDirectory + lpp->levelName).c_str(), "r");
+    lpp->zoneMatrix.resize(500);
+    int i = 0;
+    int j = 0;
+    std::string token;
+    int char_;
+    do {
+        char_ = fgetc(fptr);
+        switch (char_) {
             case '\n':
-                row++;
-                column = 0;
+                lpp->zoneMatrix[i][j] = std::atoi(token.c_str());  // Assign last zone of a row.
+                i++;
+            case ' ':
                 break;
             case ',':
-                column++;
-            case ' ':
+                lpp->zoneMatrix[i][j] = std::atoi(token.c_str()); // Assign zone.
+                j++;
+                break;
             case EOF:
-                continue;
+                break;
             default:
-                const char toIndex = token; // This is a terrible idea use negation instead.
-                newLevel.zoneMatrix[row][column] = newLevel.availableZones[std::atoi(&toIndex)]; // Seriously fix this before prod.
+                token += char_;
+        }
+    } while (char_ != EOF);
+}
+
+void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileName) {
+    FILE* fptr;
+    fptr = fopen(fileName, "r");
+    std::string token;
+    ReadingMode mode;
+    envActor* currentEv;
+    do {
+        int char_ = fgetc(fptr);
+        switch(char_) {
+            case '+':
+                mode = LEVEL;
+                break;
+            case '-':
+                mode = ZONE;
+                break;
+            case '*':
+                currentEv = new envActor();
+                mode = TILE;
+                break;
+            case '/':
+                currentEv = new envActor();
+                mode = FOILAGE;
+                break;
+            case '\n':
+                switch (mode) {
+                    case LEVEL:
+                        lp->levelCount += 1;
+                        lp->levelNames.push_back(token);
+                        lp->probabilities.push_back(levelProbability{});
+                        lp->probabilities.back().levelName = token.c_str();
+                        importLevelZoneMatrix(&lp->probabilities.back());
+                        break;
+                    case ZONE:
+                        lp->probabilities.back().zoneCount += 1;
+                        lp->probabilities.back().zoneProbabilities;
+                }
+            default:
+                token += char_;
+                break;
         }
     }
-    fclose(file_ptr);
-    newLevel.generateTiles();
-    newLevel.smoothTiles();
-    return newLevel;
 }
 
-void Level::generateTiles() {
-
-    for (int i = 0; i < 500; i++) {
-        for (int j = 0; j < 500; j++) {
-            this->tileMatrix[i][j] = this->zoneMatrix[i][j].generateTile();
-        }
-    }
-}
-
-void Level::generateFoilages() {
-    
-}
-
-void Level::smoothTiles() {
-    std::vector<EnviromentalActor> surrounding;
-    for (int i = 1; i < 499; i++) {
-        for (int j = 1; j < 499; j++ ) {
-            surrounding.push_back(this->tileMatrix[i - 1][j]);
-            surrounding.push_back(this->tileMatrix[i][j - 1]);
-            surrounding.push_back(this->tileMatrix[i + 1][j]);
-            surrounding.push_back(this->tileMatrix[i][j + 1]);
-            this->tileMatrix[i][j] = surrounding[RandomNumberGenerator::randint(0, 4)];
-            surrounding.clear();
-        }
-    }
-
-}
-
-void Level::importLevels() {
-    for (auto fileName : TrefusisConfig::mapFileNames) {
-        levels.push_back(importLevelBase(TrefusisConfig::prefix + TrefusisConfig::mapsDirectory + fileName));
-    }
+levelProbabilities Level::importLevels() {
+    levelProbabilities lp;
+    importLevelProbabilities(&lp, TrefusisConfig::levelsLocation.c_str());
     activeLevel = levels[0];
 }
 
@@ -118,10 +97,4 @@ Level::Level() {
 #ifdef DEBUG
     std::cout << "Generating level...\n";
 #endif
-    this->tileMatrix.resize(500);
-    this->zoneMatrix.resize(500);
-    for (int i = 0; i < 500; i++) {
-        this->tileMatrix[i].resize(500);
-        this->zoneMatrix[i].resize(500);
-    }
 }

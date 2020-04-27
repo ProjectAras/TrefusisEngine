@@ -9,14 +9,17 @@ std::string TrefusisConfig::configFile;
 std::string TrefusisConfig::tilemapLocation;
 std::string  TrefusisConfig::mapsDirectory;
 std::string TrefusisConfig::foilageLocation;
+
 std::string  TrefusisConfig::resourcesDirectory;
 std::string  TrefusisConfig::musicsDirectory;
 std::vector<std::string> TrefusisConfig::mapFileNames;
 const char* TrefusisConfig::scriptFile = "../resources/scripts/main";
 #ifdef DEBUG
     std::string TrefusisConfig::prefix = "../";
+std::string TrefusisConfig::levelsLocation = "resources/levels.csv";
 #else
     std::string TrefusisConfig::prefix;
+    std::string TrefusisConfig::levelsLocation;
 #endif
 
 bool TrefusisConfig::isInitialised = false;

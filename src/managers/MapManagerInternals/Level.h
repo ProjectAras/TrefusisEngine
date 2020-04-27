@@ -9,6 +9,8 @@
 #include <vector>
 #include "../../objects/EnviromentalActor.h"
 
+enum ReadingMode {LEVEL, ZONE, TILE, FOILAGE};
+
 struct envActor {
     int id;
     int width;
@@ -33,8 +35,8 @@ struct levelProbability {
 
 struct levelProbabilities {
     int levelCount;
-    std::string levelNames;
-    std::vector<levelProbability> levelProbabilities;
+    std::vector<std::string> levelNames;
+    std::vector<levelProbability> probabilities;
 };
 
 
@@ -43,15 +45,17 @@ private:
     Level();
     std::vector<std::vector<EnviromentalActor>> foilageMatrix;
     static std::vector<Level> levels;
-    std::vector<Zone> availableZones;
-    FoilageGenerator foilageGenerator;
-    
+
+
+    static void importLevelProbabilities(levelProbabilities* lp, const char* fileName);
+
     /**
      * Import the base levelmap.
      * @param fileName File of the level.
      * @return the level map.
      */
-    static Level importLevelBase(std::string fileName);
+    static void importLevelBase(levelProbabilities probabilities);
+    static void importLevelZoneMatrix(levelProbability* lpp);
     void generateTiles();
     void smoothTiles();
     void generateFoilages();

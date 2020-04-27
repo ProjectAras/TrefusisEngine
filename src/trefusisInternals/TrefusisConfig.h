@@ -18,6 +18,7 @@ public:
     static std::string tilemapLocation;
     static std::string prefix;
     static std::string foilageLocation;
+    static std::string levelsLocation;
     static const char* scriptFile;
     static const int deltaTime = 16;
     static const int tileSize = 64;
