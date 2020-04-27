@@ -7,6 +7,7 @@
 
 
 #include <vector>
+#include <string>
 
 /**
  * Represents the reading mode the parser is in.
@@ -17,21 +18,21 @@ enum ReadingMode {LEVEL, ZONE, TILE, FOILAGE};
  * Enviromental actor structure.
  */
 struct envActor {
-    int id;
-    int width;
-    int height;
+    int id; // ID of the actor.
+    int width; // Width of the actor in spritesheet.
+    int height; // Height of the actor in spritesheet.
 };
 
 /**
  * Holds the spawn probability rule objects for one zone.
  */
 struct zoneProbability {
-    int tileCount;
-    int foilageCount;
-    std::vector<double> tileChances;
-    std::vector<double> foilageChances;
-    std::vector<envActor> tiles;
-    std::vector<envActor> foilages;
+    int tileCount;  // Tile count.
+    int foilageCount;  // Foilage count.
+    std::vector<double> tileChances;  // Tile spawn chances.
+    std::vector<double> foilageChances;  // Foilage spawn chances.
+    std::vector<envActor> tiles;  // Tiles.
+    std::vector<envActor> foilages; // Foilages.
 };
 
 
@@ -39,19 +40,19 @@ struct zoneProbability {
  * Holds the spawn probability rule objects for one level.
  */
 struct levelProbability {
-    const char* levelName;
-    std::vector<std::vector<int>> zoneMatrix;
-    int zoneCount;
-    std::vector<zoneProbability> zoneProbabilities;
+    const char* levelName;  // Name of the level.
+    std::vector<std::vector<int>> zoneMatrix; // Zone IDs as a matrix
+    int zoneCount;  // Count of zones.
+    std::vector<zoneProbability> zoneProbabilities;  // Zone probability objects for each zone.
 };
 
 /**
  * Holds the probability objects for all levels.
  */
 struct levelProbabilities {
-    int levelCount;
-    std::vector<std::string> levelNames;
-    std::vector<levelProbability> probabilities;
+    int levelCount;  // Count of levels.
+    std::vector<std::string> levelNames;  // Name of levels.
+    std::vector<levelProbability> probabilities;  // Probability objects for each level.
 };
 
 /**
