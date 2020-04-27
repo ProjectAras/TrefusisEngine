@@ -8,12 +8,39 @@
 
 #include <vector>
 #include "../../objects/EnviromentalActor.h"
-#include "Zone.h"
+
+struct envActor {
+    int id;
+    int width;
+    int height;
+};
+
+struct zoneProbability {
+    int tileCount;
+    int foilageCount;
+    std::vector<double> tileChances;
+    std::vector<double> foilageChances;
+    std::vector<envActor> tiles;
+    std::vector<envActor> foilages;
+};
+
+struct levelProbability {
+    const char* levelName;
+    std::vector<std::vector<int>> zoneMatrix;
+    int zoneCount;
+    std::vector<zoneProbability> zoneProbabilities;
+};
+
+struct levelProbabilities {
+    int levelCount;
+    std::string levelNames;
+    std::vector<levelProbability> levelProbabilities;
+};
+
 
 class Level {
 private:
     Level();
-    std::vector<std::vector<Zone>> zoneMatrix;
     std::vector<std::vector<EnviromentalActor>> foilageMatrix;
     static std::vector<Level> levels;
     std::vector<Zone> availableZones;
@@ -33,9 +60,9 @@ public:
     static Level activeLevel;
     /**
      * Given a vector of level names, import the levels.
-     * @param mapNames Names of the maps.
+     * @return the level probabilities object.
      */
-    static void importLevels();
+    static levelProbabilities importLevels();
     /**
      * Change the active level
      * @param levelIndex New active level's index.

@@ -12,8 +12,6 @@
 #endif
 Level Level::activeLevel {};
 std::vector<Level> Level::levels;
-
-
 /**
  * Given the filename of a level, return the level's name, because C++ stdlib is lacking.
  * @param fileName filename of the level.
