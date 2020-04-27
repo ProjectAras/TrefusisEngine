@@ -5,18 +5,28 @@
 #ifndef TREFUSISENGINE_TIMEMANAGER_H
 #define TREFUSISENGINE_TIMEMANAGER_H
 
-enum SEASON {WINTER, SPRING, SUMMER, AUTUMN};
-enum DAYTIME {DAY=1, NIGHT=-1};
 class TimeManager {
 private:
-    int tick;
-    SEASON season;
-    DAYTIME time;
+    static int tick;
+    static int timeConstant; //WD, WN, SD, SN, SD, SN, AD, AN
 public:
     /**
      * Pass the time by ticking it.
      */
-    void tickTime();
+    static void tickTime();
+    /**
+     * Return if it is day right now.
+     * @return True if it is day.
+     */
+    static bool isDay();
+    /**
+     * Increment seasons.
+     */
+    static void incrementSeason();
+    /**
+     * Transition day night.
+     */
+    static void transitionDayNight();
 };
 
 

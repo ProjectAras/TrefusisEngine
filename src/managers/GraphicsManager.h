@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 #include "../objects/Player.h"
-#include "../objects/EnviromentalActor.h"
+#include "Level.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_surface.h>
@@ -26,6 +26,7 @@ private:
     SDL_Surface* gameSurface;
     int screen_width;
     int screen_height;
+    static SDL_Rect getSpriteSheetRectangle(envActor* ptr);
     std::vector<SDL_Texture*> textures;
     /**
      * Load the spritesheet onto the RAM.

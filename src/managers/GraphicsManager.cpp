@@ -5,6 +5,7 @@
 #include "GraphicsManager.h"
 #include "../trefusisInternals/TrefusisConfig.h"
 #include "Level.h"
+#include "TimeManager.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_surface.h>
@@ -33,6 +34,10 @@ SDL_Texture* GraphicsManager::drawToScreen(std::string filePath, bool fadeIn) {
     //Update screen
     SDL_RenderPresent( this->gameRenderer );
     return newTexture;
+}
+
+SDL_Rect GraphicsManager::getSpriteSheetRectangle(envActor *ptr) {
+    return SDL_Rect {ptr->id * TrefusisConfig::tileSize, TimeManager::};
 }
 
 GraphicsManager::GraphicsManager(int screen_width, int screen_height) {

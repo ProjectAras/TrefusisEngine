@@ -32,6 +32,9 @@ public:
      * @return If config object is initialised, false if config file not found.
      */
     static bool initConfig(std::string fileName);
+
+    static const int dayLength = 1500;
+    static const int seasonLength = 6000;
 };
 
 

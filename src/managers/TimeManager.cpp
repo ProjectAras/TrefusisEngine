@@ -3,7 +3,34 @@
 //
 
 #include "TimeManager.h"
+#include "../trefusisInternals/TrefusisConfig.h"
+
+int TimeManager::tick = 0;
+int TimeManager::timeConstant = 0;
+
+void TimeManager::incrementSeason() {
+    timeConstant += 2;
+    timeConstant %= 8;
+}
+
+bool TimeManager::isDay() {
+    return (tick % TrefusisConfig::dayLength == 0) && (tick % (TrefusisConfig::dayLength * 2) != 0);
+}
+
+void TimeManager::transitionDayNight() {
+    if (isDay()) {
+        timeConstant--;
+    } else {
+        timeConstant++;
+    }
+}
 
 void TimeManager::tickTime() {
-    this->tick++;
+    tick++;
+    if (tick % TrefusisConfig::dayLength) {
+        transitionDayNight();
+    }
+    if (tick % TrefusisConfig::seasonLength) {
+        incrementSeason();
+    }
 }
