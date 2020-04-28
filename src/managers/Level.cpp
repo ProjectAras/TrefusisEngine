@@ -11,6 +11,7 @@
 #include <iostream>
 #endif
 Level Level::activeLevel {};
+std::vector<Level> Level::levels;
 
 inline envActor copyEnvActor(envActor* ptr) {
     envActor newEnvActor {ptr->id, ptr->width, ptr->height};
@@ -31,7 +32,7 @@ inline envActor generateFoilage(zoneProbability* zp) {
     return generateEnvActor(zp->foilages, zp->foilageChances);
 }
 
-inline envActor generateTiles(zoneProbability* zp) {
+inline envActor generateTile(zoneProbability* zp) {
     return generateEnvActor(zp->tiles, zp->tileChances);
 }
 
