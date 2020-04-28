@@ -27,6 +27,8 @@ private:
     int screen_width;
     int screen_height;
     static SDL_Rect getSpriteSheetRectangle(envActor* ptr);
+    void drawPlayer(int x, int y);
+    void drawDialogue(Dialog dialog, int x, int y);
     std::vector<SDL_Texture*> textures;
     /**
      * Load the spritesheet onto the RAM.

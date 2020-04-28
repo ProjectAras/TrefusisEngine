@@ -8,8 +8,8 @@
 class TimeManager {
 private:
     static int tick;
-    static int timeConstant; //WD, WN, SD, SN, SD, SN, AD, AN
 public:
+    static int timeConstant; //WD, WN, SD, SN, SD, SN, AD, AN
     /**
      * Pass the time by ticking it.
      */

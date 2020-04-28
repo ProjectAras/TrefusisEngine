@@ -37,7 +37,8 @@ SDL_Texture* GraphicsManager::drawToScreen(std::string filePath, bool fadeIn) {
 }
 
 SDL_Rect GraphicsManager::getSpriteSheetRectangle(envActor *ptr) {
-    return SDL_Rect {ptr->id * TrefusisConfig::tileSize, TimeManager::};
+    return SDL_Rect {ptr->id * TrefusisConfig::tileSize, TimeManager::timeConstant * TrefusisConfig::tileSize,
+                     ptr->width * TrefusisConfig::tileSize, ptr->height * TrefusisConfig::tileSize};
 }
 
 GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
@@ -77,6 +78,17 @@ void GraphicsManager::drawTextToScreen(int x, int y, SDL_Rect destZone, std::str
     SDL_DestroyTexture(Message);
 }
 
+void GraphicsManager::drawPlayer(int x, int y) {
+    this->drawToScreen(x, y, SDL_Rect {0, 0, 32, 32}, "../resources/davsan.png");
+}
+
+void GraphicsManager::drawDialogue(Dialog dialog, int x, int y) {
+    if (dialog.owner.compare("player") == 0) {
+        this->drawToScreen(x - 1, y - 1, SDL_Rect {0, 0, 128, 64}, SDL_Rect {(x - 3) * 64, (y - 2) * 64, 256, 128}, "../resources/images/UI_DialogBox.png");
+        this->drawTextToScreen(x - 1, y - 1, SDL_Rect {(x - 2) * 52, (y - 1)* 52, 200, 50}, dialog.text);
+    }
+}
+
 void GraphicsManager::drawScreen(Player player, Dialog dialog) {
     int renderWidth = TrefusisConfig::screenWidth / TrefusisConfig::tileSize;
     int renderHeight = TrefusisConfig::screenHeight / TrefusisConfig::tileSize;
@@ -88,19 +100,16 @@ void GraphicsManager::drawScreen(Player player, Dialog dialog) {
         y = 0;
         for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
             if (i >= 0 && j >= 0 && i < 500 && j < 500) {
-                EnviromentalActor actor = activeLevel.tileMatrix[i][j];
- //               EnviromentalActor foilage = activeLevel.foilageMatrix[i][j];
- //               SDL_Rect rectFoilage = foilage.getTexture();
-                SDL_Rect rect = actor.getTexture();
-                this->drawToScreen(x, y, rect, TrefusisConfig::prefix + TrefusisConfig::tilemapLocation);
-//                this->drawToScreen(x, y, rectFoilage, TrefusisConfig::prefix + TrefusisConfig::foilagemapLocation);
-                if (i == player.x && j == player.y) {
-                    this->drawToScreen(x, y, SDL_Rect {0, 0, 32, 32}, "../resources/davsan.png");
-                    if (dialog.owner.compare("player") == 0) {
-                        this->drawToScreen(x - 1, y - 1, SDL_Rect {0, 0, 128, 64}, SDL_Rect {(x - 3) * 64, (y - 2) * 64, 256, 128}, "../resources/images/UI_DialogBox.png");
-                        this->drawTextToScreen(x - 1, y - 1, SDL_Rect {(x - 2) * 52, (y - 1)* 52, 200, 50}, dialog.text);
-                    }
+                envActor tile = activeLevel.tileMatrix[i][j];  // Get the tile to draw.
+                envActor foilage = activeLevel.foilageMatrix[i][j]; // Get the foilage to draw.
+                this->drawToScreen(x, y, getSpriteSheetRectangle(&tile), TrefusisConfig::prefix + TrefusisConfig::tilemapLocation);
+                if (i == player.x && j == player.y) { // Check if we are in player's location.
+                    drawPlayer(x, y);
+                    drawDialogue(dialog, x, y);
                 }
+                // Draw foilage after the player so that the player is behind the foilage. (This might not work the way
+                // I expect it to.)
+                this->drawToScreen(x, y, getSpriteSheetRectangle(&foilage), TrefusisConfig::prefix + TrefusisConfig::tilemapLocation);
             }
             y++;
         }
