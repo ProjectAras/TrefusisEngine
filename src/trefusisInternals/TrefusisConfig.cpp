@@ -5,21 +5,23 @@
 #include <vector>
 #include "TrefusisConfig.h"
 
-std::string TrefusisConfig::configFile;
-std::string TrefusisConfig::tilemapLocation;
-std::string  TrefusisConfig::mapsDirectory;
-std::string TrefusisConfig::foilageLocation;
+// DECLARATIONS
 
-std::string  TrefusisConfig::resourcesDirectory;
-std::string  TrefusisConfig::musicsDirectory;
-std::vector<std::string> TrefusisConfig::mapFileNames;
-const char* TrefusisConfig::scriptFile = "../resources/scripts/main";
+std::string TrefusisConfig::configFile;
+std::string TrefusisConfig::scriptFile;
+std::string TrefusisConfig::levelsLocation;
+std::string TrefusisConfig::resourcesDirectory;
+std::string TrefusisConfig::mapsDirectory;
+std::string TrefusisConfig::musicsDirectory;
+std::string TrefusisConfig::splash;
+std::string TrefusisConfig::engineSplash;
+std::string TrefusisConfig::spritesheet;
+
+
 #ifdef DEBUG
     std::string TrefusisConfig::prefix = "../";
-std::string TrefusisConfig::levelsLocation = "resources/levels.csv";
 #else
     std::string TrefusisConfig::prefix;
-    std::string TrefusisConfig::levelsLocation;
 #endif
 
 bool TrefusisConfig::isInitialised = false;
@@ -49,12 +51,18 @@ bool TrefusisConfig::initConfig(std::string fileName) {
                 case '\n':
                     if (writeTo == "resources") {
                         resourcesDirectory = token;
-                    } else if (writeTo == "tilemap") {
-                        tilemapLocation = token;
-                    } else if (writeTo == "map") {
-                        mapFileNames.push_back(token + ".csv");
-                    } else if (writeTo == "foilage") {
-                        foilageLocation = token;
+                    } else if (writeTo == "envSpriteSheet") {
+                        spritesheet = token;
+                    } else if (writeTo == "gameSplashScreen") {
+                        splash = token;
+                    } else if (writeTo == "splashScreen") {
+                        engineSplash = token;
+                    } else if (writeTo == "levels") {
+                        levelsLocation = token;
+                    } else if (writeTo == "script") {
+                        scriptFile = token;
+                    } else if (writeTo == "maps") {
+                        mapsDirectory = token;
                     }
                     token = "";
                     break;
@@ -63,8 +71,6 @@ bool TrefusisConfig::initConfig(std::string fileName) {
             }
         }
         fclose(fileptr);
-        mapsDirectory = resourcesDirectory + "maps/";
-        musicsDirectory = resourcesDirectory + "musics/";
         return true;
     }
 }

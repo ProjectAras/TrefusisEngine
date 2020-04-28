@@ -6,6 +6,7 @@
 #include "GameManager.h"
 #include "../objects/Character.h"
 #include "Level.h"
+#include "../trefusisInternals/TrefusisConfig.h"
 
 GameManager* GameManager::game = nullptr;
 
@@ -83,10 +84,11 @@ GameManager::GameManager() {
 void GameManager::close() {
     this->graphicsManager.close();
 }
+
 void GameManager::showSplashScreen() {
-    this->graphicsManager.drawToScreen("../resources/splash.png", true);
+    this->graphicsManager.drawToScreen((TrefusisConfig::prefix + TrefusisConfig::engineSplash).c_str(), true);
     SDL_Delay(2000);
-    this->graphicsManager.drawToScreen("../resources/game_splash.png", true);
+    this->graphicsManager.drawToScreen((TrefusisConfig::prefix + TrefusisConfig::splash).c_str(), true);
     SDL_Delay(2000);
 }
 

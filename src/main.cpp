@@ -21,12 +21,6 @@ int main(int argc, char* args[]){
 
 #ifdef DEBUG
     std::cout << TrefusisConfig::configFile << "Maps directory: " << TrefusisConfig::mapsDirectory << " List of maps: \n";
-    for (auto mapName : TrefusisConfig::mapFileNames) {
-        std::cout << mapName << "\n";
-    }
-    if (!fileFound) {
-        std::cout << "Config file not found\n";
-    }
 #endif
     GameManager gm = GameManager::getInstance();
     DialogManager::addDialog(Dialog{"player", "It is so cold."});

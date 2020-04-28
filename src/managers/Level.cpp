@@ -62,7 +62,18 @@ Level::Level(Level* lp) {
 
 void Level::importLevelZoneMatrix(levelProbability *lpp) {
     FILE* fptr;
-    fptr = fopen((TrefusisConfig::prefix + TrefusisConfig::mapsDirectory + lpp->levelName).c_str(), "r");
+    lpp->zoneMatrix.resize(500);
+    for (int i = 0; i < 500; i++)
+        lpp->zoneMatrix[i].resize(500);
+    std::string fileName = TrefusisConfig::prefix + TrefusisConfig::mapsDirectory + lpp->levelName + ".csv";
+#ifdef DEBUG
+    std::cout << "DEBUG: Opening \"" + fileName + "\"\n";
+#endif
+    if (fptr == NULL) {
+        std::cout << "ERROR: \"" + fileName + "\" not found.\n";
+        exit(1);
+    }
+    fptr = fopen(fileName.c_str(), "r");
     lpp->zoneMatrix.resize(500);
     int i = 0;
     int j = 0;
@@ -74,16 +85,19 @@ void Level::importLevelZoneMatrix(levelProbability *lpp) {
             case '\n':
                 lpp->zoneMatrix[i][j] = std::atoi(token.c_str());  // Assign last zone of a row.
                 i++;
+                j = 0;
+                token = "";
             case ' ':
                 break;
             case ',':
                 lpp->zoneMatrix[i][j] = std::atoi(token.c_str()); // Assign zone.
                 j++;
+                token = "";
                 break;
             case EOF:
                 break;
             default:
-                token += char_;
+                token += (char) char_;
         }
     } while (char_ != EOF);
 }
@@ -91,6 +105,12 @@ void Level::importLevelZoneMatrix(levelProbability *lpp) {
 void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileName) {
     FILE* fptr;
     fptr = fopen(fileName, "r");
+    if (fptr == NULL) {
+        std::cout << "ERROR: File \"" + std::string(fileName) + "\" not found.\n";
+    }
+#ifdef DEBUG
+    std::cout << "DEBUG: Opening \"" + std::string(fileName) + "\" to import levels.\n";
+#endif
     std::string token;
     ReadingMode mode;
     zoneProbability currentProbability;
@@ -100,6 +120,8 @@ void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileNam
     do {
         char_ = fgetc(fptr);
         switch(char_) {
+            case ' ':
+                break;
             case '+':
                 mode = LEVEL;
                 break;
@@ -179,7 +201,7 @@ void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileNam
                 commaDepth++;
                 token = "";
             default:
-                token += char_;
+                token += (char) char_;
                 break;
         }
     } while(char_ != EOF);
@@ -223,7 +245,7 @@ void Level::smoothTiles() {
 }
 levelProbabilities Level::importLevels() {
     levelProbabilities lp;
-    importLevelProbabilities(&lp, TrefusisConfig::levelsLocation.c_str());
+    importLevelProbabilities(&lp, (TrefusisConfig::prefix +TrefusisConfig::levelsLocation).c_str());
     generateEnviromentalActors(&lp);
     smoothTiles();
     activeLevel = levels[0];

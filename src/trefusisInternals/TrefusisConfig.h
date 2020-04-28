@@ -11,20 +11,35 @@
 
 class TrefusisConfig {
 public:
+
+    // Config
     static std::string configFile;
+    static std::string prefix;
+    static std::string scriptFile;
+    static std::string levelsLocation;
+
+    // Directories
     static std::string resourcesDirectory;
     static std::string mapsDirectory;
     static std::string musicsDirectory;
-    static std::string tilemapLocation;
-    static std::string prefix;
-    static std::string foilageLocation;
-    static std::string levelsLocation;
-    static const char* scriptFile;
+
+    // Images
+    static std::string splash;
+    static std::string engineSplash;
+    static std::string spritesheet;
+
+
+    // Graphic Geometry
     static const int deltaTime = 16;
     static const int tileSize = 64;
     static const int screenWidth = 640;
     static const int screenHeight = 480;
-    static std::vector<std::string> mapFileNames;
+
+    //Time
+    static const int dayLength = 1500;
+    static const int seasonLength = 6000;
+
+
     static bool isInitialised;
     /**
      * Initialise the config object.
@@ -32,9 +47,6 @@ public:
      * @return If config object is initialised, false if config file not found.
      */
     static bool initConfig(std::string fileName);
-
-    static const int dayLength = 1500;
-    static const int seasonLength = 6000;
 };
 
 

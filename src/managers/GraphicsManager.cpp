@@ -102,14 +102,14 @@ void GraphicsManager::drawScreen(Player player, Dialog dialog) {
             if (i >= 0 && j >= 0 && i < 500 && j < 500) {
                 envActor tile = activeLevel.tileMatrix[i][j];  // Get the tile to draw.
                 envActor foilage = activeLevel.foilageMatrix[i][j]; // Get the foilage to draw.
-                this->drawToScreen(x, y, getSpriteSheetRectangle(&tile), TrefusisConfig::prefix + TrefusisConfig::tilemapLocation);
+                this->drawToScreen(x, y, getSpriteSheetRectangle(&tile), TrefusisConfig::prefix + TrefusisConfig::spritesheet);
                 if (i == player.x && j == player.y) { // Check if we are in player's location.
                     drawPlayer(x, y);
                     drawDialogue(dialog, x, y);
                 }
                 // Draw foilage after the player so that the player is behind the foilage. (This might not work the way
                 // I expect it to.)
-                this->drawToScreen(x, y, getSpriteSheetRectangle(&foilage), TrefusisConfig::prefix + TrefusisConfig::tilemapLocation);
+                this->drawToScreen(x, y, getSpriteSheetRectangle(&foilage), TrefusisConfig::prefix + TrefusisConfig::spritesheet);
             }
             y++;
         }
