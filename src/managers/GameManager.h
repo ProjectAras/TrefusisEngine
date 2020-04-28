@@ -56,6 +56,13 @@ private:
      */
     bool inline playerIsInsideMapAfterMove(int x, int y);
     /**
+     * Check if the player's desired location is blocked.
+     * @param dx Movement in x.
+     * @param dy Movement in y.
+     * @return If p.x + dx, p.y + dy is blocked.
+     */
+    bool inline playerIsBlockedAfterMove(int dx, int dy);
+    /**
      * Handles the display and process of dialog.
      */
     void handleDialog();

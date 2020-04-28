@@ -2,6 +2,7 @@
 // Created by elsa on 13.04.2020.
 //
 
+#include <iostream>
 #include "GameManager.h"
 #include "../objects/Character.h"
 #include "Level.h"
@@ -22,8 +23,12 @@ bool inline GameManager::playerIsInsideMapAfterMove(int x, int y) {
             player.y + y <= Level::activeLevel.tileMatrix.size();
 }
 
+bool inline GameManager::playerIsBlockedAfterMove(int dx, int dy) {
+    return Level::activeLevel.tileMatrix[player.x + dx][player.y + dy].height != 0;
+}
+
 void GameManager::movePlayer(int x, int y) {
-    if (playerIsInsideMapAfterMove(x, y) && !Level::activeLevel.tileMatrix[player.x + x][player.y + y].isObstruction) {
+    if (playerIsInsideMapAfterMove(x, y) && !playerIsBlockedAfterMove(x, y)) {
         player.x += x;
         player.y += y;
     }
