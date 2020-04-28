@@ -25,7 +25,8 @@ inline envActor generateEnvActor(std::vector<envActor> refVector, std::vector<do
             return refVector[i];
         }
     }
-    return envActor{0,0,0};
+    envActor env{0,0,0};
+    return env;
 }
 
 inline envActor generateFoilage(zoneProbability* zp) {
@@ -42,6 +43,10 @@ Level::Level() {
 #endif
     this->tileMatrix.resize(500);
     this->foilageMatrix.resize(500);
+    for (int i = 0; i < 500; i++) {
+        this->tileMatrix[i].resize(500);
+        this->foilageMatrix[i].resize(500);
+    }
 }
 
 Level::Level(Level* lp) {
@@ -52,7 +57,7 @@ Level::Level(Level* lp) {
     this->foilageMatrix.resize(500);
     for (int i = 0; i < 500; i++) {
         this->tileMatrix[i].resize(500);
-        this->foilageMatrix.resize(500);
+        this->foilageMatrix[i].resize(500);
         for (int j = 0; j < 500; j++) {
             this->tileMatrix[i][j] = copyEnvActor(&lp->tileMatrix[i][j]);
             this->foilageMatrix[i][j] = copyEnvActor(&lp->foilageMatrix[i][j]);
@@ -66,6 +71,7 @@ void Level::importLevelZoneMatrix(levelProbability *lpp) {
     for (int i = 0; i < 500; i++)
         lpp->zoneMatrix[i].resize(500);
     std::string fileName = TrefusisConfig::prefix + TrefusisConfig::mapsDirectory + lpp->levelName + ".csv";
+    fptr = fopen(fileName.c_str(), "r");
 #ifdef DEBUG
     std::cout << "DEBUG: Opening \"" + fileName + "\"\n";
 #endif
@@ -73,7 +79,6 @@ void Level::importLevelZoneMatrix(levelProbability *lpp) {
         std::cout << "ERROR: \"" + fileName + "\" not found.\n";
         exit(1);
     }
-    fptr = fopen(fileName.c_str(), "r");
     lpp->zoneMatrix.resize(500);
     int i = 0;
     int j = 0;
@@ -100,6 +105,7 @@ void Level::importLevelZoneMatrix(levelProbability *lpp) {
                 token += (char) char_;
         }
     } while (char_ != EOF);
+    fclose(fptr);
 }
 
 void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileName) {
@@ -113,8 +119,7 @@ void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileNam
 #endif
     std::string token;
     ReadingMode mode;
-    zoneProbability currentProbability;
-    envActor* currentEnv;
+    envActor currentEnv {0, 0, 0};
     int commaDepth = 0;
     int char_;
     do {
@@ -148,19 +153,17 @@ void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileNam
                         lp->probabilities.back().zoneProbabilities.push_back(zoneProbability{});
                         break;
                     case TILE: // Token in this case is the tile spawn chance.
-                        currentProbability = lp->probabilities.back().zoneProbabilities.back();
-                        currentProbability.tileChances.push_back(std::atof(token.c_str())); // We push that chance to the back.
-                        currentProbability.tileCount++;
-                        currentEnv->width = 1;
-                        currentEnv->height = 1;
-                        currentProbability.tiles.push_back(copyEnvActor(currentEnv));
+                        lp->probabilities.back().zoneProbabilities.back().tileChances.push_back(std::atof(token.c_str())); // We push that chance to the back.
+                        lp->probabilities.back().zoneProbabilities.back().tileCount++;
+                        currentEnv.width = 1;
+                        currentEnv.height = 1;
+                        lp->probabilities.back().zoneProbabilities.back().tiles.push_back(copyEnvActor(&currentEnv));
                         break;
                     case FOILAGE:
                         // Likewise, the last token must be foilage spawn chance.
-                        currentProbability = lp->probabilities.back().zoneProbabilities.back();
-                        currentProbability.foilageChances.push_back(std::atof(token.c_str()));
-                        currentProbability.foilageCount++;
-                        currentProbability.foilages.push_back(copyEnvActor(currentEnv));
+                        lp->probabilities.back().zoneProbabilities.back().foilageChances.push_back(std::atof(token.c_str()));
+                        lp->probabilities.back().zoneProbabilities.back().foilageCount++;
+                        lp->probabilities.back().zoneProbabilities.back().foilages.push_back(copyEnvActor(&currentEnv));
                         break;
                     default:
                         std::cout << "ERROR: Blank line atop the levels file, or blank levels file.\n";
@@ -168,6 +171,7 @@ void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileNam
                 }
                 token = ""; // Done!
                 commaDepth = 0;
+                break;
             case ',':
                 switch (mode) {
                     case TILE:
@@ -175,19 +179,19 @@ void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileNam
                             std::cout << "ERROR: Too many arguments (or commas) for tile definition.";
                             exit(1);
                         } else {
-                            currentEnv->id = std::atoi(token.c_str());
+                            currentEnv.id = std::atoi(token.c_str());
                         }
                         break;
                     case FOILAGE:
                         switch (commaDepth) {
                             case 0:
-                                currentEnv->id = std::atoi(token.c_str());
+                                currentEnv.id = std::atoi(token.c_str());
                                 break;
                             case 1:
-                                currentEnv->width = std::atoi(token.c_str());
+                                currentEnv.width = std::atoi(token.c_str());
                                 break;
                             case 2:
-                                currentEnv->height = std::atoi(token.c_str());
+                                currentEnv.height = std::atoi(token.c_str());
                                 break;
                             default:
                                 std::cout << "ERROR: Too many arguments (or commas) for foilage definition.";
@@ -200,16 +204,20 @@ void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileNam
                 }
                 commaDepth++;
                 token = "";
+                break;
             default:
                 token += (char) char_;
                 break;
         }
     } while(char_ != EOF);
-    free(currentEnv);
+    fclose(fptr);
 }
 
 void Level::generateEnviromentalActors(levelProbabilities *probabilities) {
-    Level* newLevel {};
+    Level newLevel {};
+#ifdef DEBUG
+    std::cout << "DEBUG: Generate enviromental actors\n";
+#endif
     levelProbability currentLevel;
     int currentZoneIndex; // Zone Index for this tile.
     zoneProbability currentZoneProbability; // Current zone probability for this tile.
@@ -219,20 +227,23 @@ void Level::generateEnviromentalActors(levelProbabilities *probabilities) {
             for (int j = 0; j < 500; j++) {
                 currentZoneIndex = currentLevel.zoneMatrix[i][j];
                 currentZoneProbability = currentLevel.zoneProbabilities[currentZoneIndex];
-                newLevel->foilageMatrix[i][j] = generateFoilage(&currentZoneProbability);
-                newLevel->tileMatrix[i][j] = generateTile(&currentZoneProbability);
+                newLevel.foilageMatrix[i][j] = generateFoilage(&currentZoneProbability);
+                newLevel.tileMatrix[i][j] = generateTile(&currentZoneProbability);
             }
         }
-        levels.push_back(new Level(newLevel));
+#ifdef DEBUG
+        std::cout << "DEBUG: Generated level " << x << "\n";
+#endif
+        Level copyTo{&newLevel};
+        levels.push_back(copyTo);
     }
-    free(newLevel);
 }
 
 void Level::smoothTiles() {
     std::vector<envActor> surrounding;
     for (Level level : levels) {
-        for (int i = 0; i < 500; i++) {
-            for (int j = 0; j < 500; j++) {
+        for (int i = 1; i < 499; i++) {  // If set to 0 and 500 this would
+            for (int j = 1; j < 499; j++) { // Cause a SEGFAULT due to misaccess.
                 surrounding.push_back(level.tileMatrix[i - 1][j]);
                 surrounding.push_back(level.tileMatrix[i][j - 1]);
                 surrounding.push_back(level.tileMatrix[i + 1][j]);
@@ -244,12 +255,17 @@ void Level::smoothTiles() {
     }
 }
 levelProbabilities Level::importLevels() {
+#ifdef DEBUG
+    std::cout << "DEBUG: Call to importLevels()\n";
+#endif
     levelProbabilities lp;
+    lp.levelCount = 0;
     importLevelProbabilities(&lp, (TrefusisConfig::prefix +TrefusisConfig::levelsLocation).c_str());
     generateEnviromentalActors(&lp);
     smoothTiles();
     activeLevel = levels[0];
 }
+
 
 void Level::changeLevel(int levelIndex) {
     activeLevel = levels[levelIndex];

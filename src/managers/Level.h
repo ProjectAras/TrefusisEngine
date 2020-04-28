@@ -40,7 +40,7 @@ struct zoneProbability {
  * Holds the spawn probability rule objects for one level.
  */
 struct levelProbability {
-    const char* levelName;  // Name of the level.
+    std::string levelName;  // Name of the level.
     std::vector<std::vector<int>> zoneMatrix; // Zone IDs as a matrix
     int zoneCount;  // Count of zones.
     std::vector<zoneProbability> zoneProbabilities;  // Zone probability objects for each zone.

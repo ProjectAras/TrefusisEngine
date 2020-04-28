@@ -16,7 +16,7 @@ ScriptManager::ScriptManager() {
 void ScriptManager::loadScript(std::string mapName) {
     PyObject* pName, *pFunc;
 #ifdef DEBUG
-    std::cout << "Importing " << mapName << " from " << TrefusisConfig::scriptFile << "\n";
+    std::cout << "DEBUG: Importing " << mapName << " from " << TrefusisConfig::scriptFile << "\n";
 #endif
     pName = PyUnicode_DecodeFSDefault("main");
     if (pName == NULL) {

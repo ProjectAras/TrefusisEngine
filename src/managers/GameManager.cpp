@@ -74,6 +74,9 @@ void GameManager::loadFirstScene() {
 }
 
 GameManager::GameManager() {
+#ifdef DEBUG
+    std::cout << "DEBUG: Instantiating GameManager\n";
+#endif
     Level::importLevels();
     this->showSplashScreen();
     this->quit = false;
