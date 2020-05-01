@@ -66,6 +66,7 @@ void GameManager::handleKeys() {
 void GameManager::Update() {
     this->handleKeys();
     this->handleDialog();
+    TimeManager::tickTime();
     this->graphicsManager.drawScreen(player, this->currentDialog);
 }
 

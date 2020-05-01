@@ -36,8 +36,8 @@ public:
     static const int screenHeight = 480;
 
     //Time
-    static const int dayLength = 1500;
-    static const int seasonLength = 6000;
+    static const int dayLength = 15;
+    static const int seasonLength = 45;
 
 
     static bool isInitialised;
