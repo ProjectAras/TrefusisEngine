@@ -264,6 +264,7 @@ levelProbabilities Level::importLevels() {
     generateEnviromentalActors(&lp);
     smoothTiles();
     activeLevel = levels[0];
+    return lp;
 }
 
 

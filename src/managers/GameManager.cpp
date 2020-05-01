@@ -25,7 +25,8 @@ bool inline GameManager::playerIsInsideMapAfterMove(int x, int y) {
 }
 
 bool inline GameManager::playerIsBlockedAfterMove(int dx, int dy) {
-    return Level::activeLevel.tileMatrix[player.x + dx][player.y + dy].height != 0;
+    //return Level::activeLevel.tileMatrix[player.x + dx][player.y + dy].height != 0;
+    return false;
 }
 
 void GameManager::movePlayer(int x, int y) {

@@ -37,7 +37,7 @@ SDL_Texture* GraphicsManager::drawToScreen(std::string filePath, bool fadeIn) {
 }
 
 SDL_Rect GraphicsManager::getSpriteSheetRectangle(envActor *ptr) {
-    return SDL_Rect {ptr->id * TrefusisConfig::tileSize, TimeManager::timeConstant * TrefusisConfig::tileSize,
+    return SDL_Rect {TimeManager::timeConstant * TrefusisConfig::tileSize, ptr->id * TrefusisConfig::tileSize,
                      ptr->width * TrefusisConfig::tileSize, ptr->height * TrefusisConfig::tileSize};
 }
 
@@ -55,15 +55,22 @@ GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
 
 void GraphicsManager::drawToScreen(int x, int y, SDL_Rect drawZone, SDL_Rect destinationZone, std::string fileName) {
     SDL_Surface* loadSurface = IMG_Load(fileName.c_str());
+    if (loadSurface == NULL) {
+        std::cout << "ERROR: \"" << fileName << "\" was not found.\n";
+        std::exit(1);
+    }
     SDL_SetColorKey( loadSurface, SDL_TRUE, SDL_MapRGB( loadSurface->format, 0, 0xFF, 0xFF ) );
     SDL_Texture* newTexture = SDL_CreateTextureFromSurface(this->gameRenderer, loadSurface);
+    if (newTexture == NULL) {
+        std::cout << "ERROR: Texture creation at drawToScreen() failed.\n";
+    }
     SDL_FreeSurface(loadSurface);
     SDL_RenderCopy(this->gameRenderer, newTexture, &drawZone, &destinationZone);
     SDL_DestroyTexture(newTexture);
 }
 
 void GraphicsManager::drawToScreen(int x, int y, SDL_Rect drawZone, std::string fileName) {
-    const SDL_Rect drawRect {x * TrefusisConfig::tileSize, y * TrefusisConfig::tileSize, TrefusisConfig::tileSize, TrefusisConfig::tileSize};
+    const SDL_Rect drawRect {x * TrefusisConfig::tileSize, y * TrefusisConfig::tileSize, drawZone.w, drawZone.h};
     this->drawToScreen(x, y, drawZone, drawRect, fileName);
 }
 
@@ -79,7 +86,7 @@ void GraphicsManager::drawTextToScreen(int x, int y, SDL_Rect destZone, std::str
 }
 
 void GraphicsManager::drawPlayer(int x, int y) {
-    this->drawToScreen(x, y, SDL_Rect {0, 0, 32, 32}, "../resources/davsan.png");
+    this->drawToScreen(x, y, SDL_Rect {0, 0, 32, 32}, "../resources/images/davsan.png");
 }
 
 void GraphicsManager::drawDialogue(Dialog dialog, int x, int y) {
@@ -109,6 +116,19 @@ void GraphicsManager::drawScreen(Player player, Dialog dialog) {
                 }
                 // Draw foilage after the player so that the player is behind the foilage. (This might not work the way
                 // I expect it to.)
+            }
+            y++;
+        }
+        x++;
+    }
+
+    x = 0;
+    y = 0;
+    for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
+        y = 0;
+        for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
+            if (i >= 0 && j >= 0 && i < 500 && j < 500) {
+                envActor foilage = activeLevel.foilageMatrix[i][j]; // Get the foilage to draw.
                 this->drawToScreen(x, y, getSpriteSheetRectangle(&foilage), TrefusisConfig::prefix + TrefusisConfig::spritesheet);
             }
             y++;

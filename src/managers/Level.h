@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 
 /**
  * Represents the reading mode the parser is in.
