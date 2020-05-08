@@ -96,36 +96,10 @@ void GraphicsManager::drawDialogue(Dialog dialog, int x, int y) {
     }
 }
 
-void GraphicsManager::drawScreen(Player player, Dialog dialog) {
-    int renderWidth = TrefusisConfig::screenWidth / TrefusisConfig::tileSize;
-    int renderHeight = TrefusisConfig::screenHeight / TrefusisConfig::tileSize;
-    Level activeLevel = Level::activeLevel;
+void GraphicsManager::drawFoilages(Player player, int renderWidth, int renderHeight, Level activeLevel) {
     int x = 0;
-    int y = 0;
-    SDL_RenderClear(this->gameRenderer);
     for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
-        y = 0;
-        for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
-            if (i >= 0 && j >= 0 && i < 500 && j < 500) {
-                envActor tile = activeLevel.tileMatrix[i][j];  // Get the tile to draw.
-                envActor foilage = activeLevel.foilageMatrix[i][j]; // Get the foilage to draw.
-                this->drawToScreen(x, y, getSpriteSheetRectangle(&tile), TrefusisConfig::prefix + TrefusisConfig::spritesheet);
-                if (i == player.x && j == player.y) { // Check if we are in player's location.
-                    drawPlayer(x, y);
-                    drawDialogue(dialog, x, y);
-                }
-                // Draw foilage after the player so that the player is behind the foilage. (This might not work the way
-                // I expect it to.)
-            }
-            y++;
-        }
-        x++;
-    }
-
-    x = 0;
-    y = 0;
-    for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
-        y = 0;
+        int y = 0;
         for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
             if (i >= 0 && j >= 0 && i < 500 && j < 500) {
                 envActor foilage = activeLevel.foilageMatrix[i][j]; // Get the foilage to draw.
@@ -135,6 +109,35 @@ void GraphicsManager::drawScreen(Player player, Dialog dialog) {
         }
         x++;
     }
+}
+
+void GraphicsManager::drawTiles(Player player, Dialog dialog, int renderWidth, int renderHeight, Level activeLevel) {
+    int x = 0;
+    SDL_RenderClear(this->gameRenderer);
+    for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
+        int y = 0;
+        for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
+            if (i >= 0 && j >= 0 && i < 500 && j < 500) {
+                envActor tile = activeLevel.tileMatrix[i][j];  // Get the tile to draw.
+                envActor foilage = activeLevel.foilageMatrix[i][j]; // Get the foilage to draw.
+                this->drawToScreen(x, y, getSpriteSheetRectangle(&tile), TrefusisConfig::prefix + TrefusisConfig::spritesheet);
+                if (i == player.x && j == player.y) { // Check if we are in player's location.
+                    drawPlayer(x, y);
+                    drawDialogue(dialog, x, y);
+                }
+            }
+            y++;
+        }
+        x++;
+    }
+}
+
+void GraphicsManager::drawScreen(Player player, Dialog dialog) {
+    int renderWidth = TrefusisConfig::screenWidth / TrefusisConfig::tileSize;
+    int renderHeight = TrefusisConfig::screenHeight / TrefusisConfig::tileSize;
+    Level activeLevel = Level::activeLevel;
+    drawTiles(player, dialog, renderWidth, renderHeight, activeLevel);
+    drawFoilages(player, renderWidth, renderHeight, activeLevel);
     SDL_RenderPresent(this->gameRenderer);
 }
 

@@ -81,6 +81,23 @@ public:
      */
     void drawTextToScreen(int x, int y, SDL_Rect destZone, std::string text);
     /**
+     * Draw the foilages to the screen.
+     * @param player Entity the viewport will be drawn according to.
+     * @param renderWidth Width of the viewport.
+     * @param renderHeight Height of the viewport.
+     * @param activeLevel active level to be drawn.
+     */
+    void drawFoilages(Player player, int renderWidth, int renderHeight, Level activeLevel);
+    /**
+     * Draw the tiles to the screen.
+     * @param player Entity the viewport will be drawn according to.
+     * @param dialog Dialog to be drawn.
+     * @param renderWidth Width of the viewport.
+     * @param renderHeight Height of the viewport.
+     * @param activeLevel active level to be drawn.
+     */
+    void drawTiles(Player player, Dialog dialog, int renderWidth, int renderHeight, Level activeLevel);
+    /**
      * Close the graphics relese its resources.
      */
     void close();
