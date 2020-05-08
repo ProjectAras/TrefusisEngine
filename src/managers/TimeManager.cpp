@@ -14,7 +14,7 @@ void TimeManager::incrementSeason() {
 }
 
 bool TimeManager::isDay() {
-    return ((tick % TrefusisConfig::dayLength) == 0) && (tick % (TrefusisConfig::dayLength * 2) != 0);
+    return ((tick % TrefusisConfig::dayLength) == 0) && (tick % (TrefusisConfig::dayLength * 2) == 0);
 }
 
 void TimeManager::transitionDayNight() {
