@@ -8,6 +8,10 @@
 
 RandomNumberGenerator* RandomNumberGenerator::rng = nullptr;
 
+float dotProduct(GradientVector* vec1, GradientVector* vec2) {
+    return vec1->x*vec2->x + vec1->y*vec2->y;
+}
+
 RandomNumberGenerator::RandomNumberGenerator() {
     srand(time(nullptr));
 }

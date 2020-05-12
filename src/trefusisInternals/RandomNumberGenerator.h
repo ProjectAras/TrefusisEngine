@@ -5,6 +5,17 @@
 #ifndef TREFUSISENGINE_RANDOMNUMBERGENERATOR_H
 #define TREFUSISENGINE_RANDOMNUMBERGENERATOR_H
 
+#include <vector>
+
+struct GradientVector {
+    float x;
+    float y;
+};
+
+/**
+ * Take the dot product of two vectors.
+ */
+float dotProduct(GradientVector* vec1, GradientVector* vec2);
 
 class RandomNumberGenerator {
 private:
@@ -27,6 +38,11 @@ public:
      * @return A random between smaller and larger number, both inclusive.
      */
     static int randint(int small, int large);
+    /**
+     * Generate a matrix with Perlin Noise.
+     * @return a matrix in term of std::vector's of floats.
+     */
+    static std::vector<std::vector<float>> generatePerlinNoise();
 };
 
 

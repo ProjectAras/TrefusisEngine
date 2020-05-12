@@ -119,6 +119,9 @@ void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileNam
 #endif
     std::string token;
     ReadingMode mode;
+    float tokenFloatValue = 0;
+    float previousTileChance = 0;
+    float previousFoilageChance = 0;
     envActor currentEnv {0, 0, 0};
     int commaDepth = 0;
     int char_;
@@ -153,17 +156,21 @@ void Level::importLevelProbabilities(levelProbabilities* lp, const char* fileNam
                         lp->probabilities.back().zoneProbabilities.push_back(zoneProbability{});
                         break;
                     case TILE: // Token in this case is the tile spawn chance.
-                        lp->probabilities.back().zoneProbabilities.back().tileChances.push_back(std::atof(token.c_str())); // We push that chance to the back.
+                        tokenFloatValue = std::atof(token.c_str());
+                        lp->probabilities.back().zoneProbabilities.back().tileChances.push_back(tokenFloatValue + previousTileChance); // We push that chance to the back.
                         lp->probabilities.back().zoneProbabilities.back().tileCount++;
                         currentEnv.width = 1;
                         currentEnv.height = 1;
                         lp->probabilities.back().zoneProbabilities.back().tiles.push_back(copyEnvActor(&currentEnv));
+                        previousTileChance = tokenFloatValue;
                         break;
                     case FOILAGE:
                         // Likewise, the last token must be foilage spawn chance.
-                        lp->probabilities.back().zoneProbabilities.back().foilageChances.push_back(std::atof(token.c_str()));
+                        tokenFloatValue = std::atof(token.c_str());
+                        lp->probabilities.back().zoneProbabilities.back().foilageChances.push_back(tokenFloatValue + previousFoilageChance);
                         lp->probabilities.back().zoneProbabilities.back().foilageCount++;
                         lp->probabilities.back().zoneProbabilities.back().foilages.push_back(copyEnvActor(&currentEnv));
+                        previousFoilageChance = tokenFloatValue;
                         break;
                     default:
                         std::cout << "ERROR: Blank line atop the levels file, or blank levels file.\n";
