@@ -31,7 +31,7 @@ private:
      * @param x movement in x direction.
      * @param y movement in y direction.
      */
-    void movePlayer(int x, int y);
+    void movePlayer(float x, float y);
     /**
      * Track the objects.
      */
@@ -54,14 +54,14 @@ private:
      * @param y Move in y direction.
      * @return If the player is still inside bounds.
      */
-    bool inline playerIsInsideMapAfterMove(int x, int y);
+    bool inline playerIsInsideMapAfterMove(float x, float y);
     /**
      * Check if the player's desired location is blocked.
      * @param dx Movement in x.
      * @param dy Movement in y.
      * @return If p.x + dx, p.y + dy is blocked.
      */
-    bool inline playerIsBlockedAfterMove(int dx, int dy);
+    bool inline playerIsBlockedAfterMove(float dx, float dy);
     /**
      * Handles the display and process of dialog.
      */

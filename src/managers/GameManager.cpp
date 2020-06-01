@@ -18,18 +18,18 @@ void GameManager::trackObjects() {
     }
 }
 
-bool inline GameManager::playerIsInsideMapAfterMove(int x, int y) {
+bool inline GameManager::playerIsInsideMapAfterMove(float x, float y) {
     return player.x + x >= 0 && player.y + y >= 0 &&
             player.x + x <= Level::activeLevel.tileMatrix.size() &&
             player.y + y <= Level::activeLevel.tileMatrix.size();
 }
 
-bool inline GameManager::playerIsBlockedAfterMove(int dx, int dy) {
+bool inline GameManager::playerIsBlockedAfterMove(float dx, float dy) {
     //return Level::activeLevel.tileMatrix[player.x + dx][player.y + dy].height != 0;
     return false;
 }
 
-void GameManager::movePlayer(int x, int y) {
+void GameManager::movePlayer(float x, float y) {
     if (playerIsInsideMapAfterMove(x, y) && !playerIsBlockedAfterMove(x, y)) {
         player.x += x;
         player.y += y;
