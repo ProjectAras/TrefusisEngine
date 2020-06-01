@@ -9,6 +9,7 @@
 #include "../trefusisInternals/TrefusisConfig.h"
 
 ScriptManager::ScriptManager() {
+    PyImport_AppendInittab("harlequin", &PyInit_harlequin);
     Py_Initialize();
     PyRun_SimpleString("import sys;import os;sys.path.append(os.getcwd() + '/../resources/scripts/')");
 }

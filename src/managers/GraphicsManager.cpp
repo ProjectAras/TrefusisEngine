@@ -86,7 +86,7 @@ void GraphicsManager::drawTextToScreen(int x, int y, SDL_Rect destZone, std::str
 }
 
 void GraphicsManager::drawPlayer(int x, int y) {
-    this->drawToScreen(x, y, SDL_Rect {0, 0, 32, 32}, "../resources/images/davsan.png");
+    this->drawToScreen(x, y, SDL_Rect {0, 0, 64, 128}, "../resources/images/player.png");
 }
 
 void GraphicsManager::drawDialogue(Dialog dialog, int x, int y) {
@@ -113,6 +113,8 @@ void GraphicsManager::drawFoilages(Player player, int renderWidth, int renderHei
 
 void GraphicsManager::drawTiles(Player player, Dialog dialog, int renderWidth, int renderHeight, Level activeLevel) {
     int x = 0;
+    int spec_x = 0;
+    int spec_y = 0;
     SDL_RenderClear(this->gameRenderer);
     for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
         int y = 0;
@@ -122,14 +124,16 @@ void GraphicsManager::drawTiles(Player player, Dialog dialog, int renderWidth, i
                 envActor foilage = activeLevel.foilageMatrix[i][j]; // Get the foilage to draw.
                 this->drawToScreen(x, y, getSpriteSheetRectangle(&tile), TrefusisConfig::prefix + TrefusisConfig::spritesheet);
                 if (i == player.x && j == player.y) { // Check if we are in player's location.
-                    drawPlayer(x, y);
-                    drawDialogue(dialog, x, y);
+                   spec_x = x;
+                   spec_y = y; 
                 }
             }
             y++;
         }
         x++;
     }
+    drawPlayer(spec_x, spec_y);
+    drawDialogue(dialog, spec_x, spec_y);
 }
 
 void GraphicsManager::drawScreen(Player player, Dialog dialog) {

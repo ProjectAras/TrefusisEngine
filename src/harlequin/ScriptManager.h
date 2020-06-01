@@ -4,8 +4,10 @@
 
 #ifndef TREFUSISENGINE_SCRIPTMANAGER_H
 #define TREFUSISENGINE_SCRIPTMANAGER_H
-#include <Python.h>
+#include <python3.8/Python.h>
 #include <string>
+#include <iostream>
+#include "harlequin_api.h"
 
 class ScriptManager {
 private:

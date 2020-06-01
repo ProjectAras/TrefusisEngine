@@ -23,7 +23,6 @@ int main(int argc, char* args[]){
     std::cout << TrefusisConfig::configFile << "Maps directory: " << TrefusisConfig::mapsDirectory << " List of maps: \n";
 #endif
     GameManager gm = GameManager::getInstance();
-    DialogManager::addDialog(Dialog{"player", "It is so cold."});
     while (!gm.quit) {
         SDL_Delay(TrefusisConfig::deltaTime);
         gm.Update();
