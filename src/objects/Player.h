@@ -9,7 +9,8 @@
 #include "Character.h"
 
 class Player : public Character {
-
+public:
+    Player() : Character(0.05, 100) {}
 };
 
 

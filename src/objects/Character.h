@@ -14,6 +14,8 @@ public:
     float x;
     float y;
     void track(Character other);
+    float getSpeed();
+    Character(float baseSpeed, float baseHealth);
 };
 
 

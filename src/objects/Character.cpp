@@ -7,3 +7,12 @@
 void Character::track(Character other) {
 
 }
+
+float Character::getSpeed() {
+    return baseSpeed;
+}
+
+Character::Character(float baseSpeed, float baseHealth) {
+    this->baseSpeed = baseSpeed;
+    this->baseHealth = baseHealth;
+}
