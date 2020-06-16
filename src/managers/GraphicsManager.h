@@ -10,6 +10,7 @@
 #include <SDL2/SDL_render.h>
 #include <string>
 #include <vector>
+#include <cmath>
 #include "../objects/Player.h"
 #include "Level.h"
 #include <SDL2/SDL.h>
@@ -27,7 +28,19 @@ private:
     int screen_width;
     int screen_height;
     static SDL_Rect getSpriteSheetRectangle(envActor* ptr);
-    void drawPlayer(int x, int y);
+    /**
+     * Draw to player
+     * @param player the player entity.
+     * @param x the x coordinate
+     * @param y the y coordinate
+     */
+    void drawPlayer(Player player, int x, int y);
+    /**
+     * Draw the dialogue box and a dialog.
+     * @param dialog dialog to draw.
+     * @param x the x coordinate.
+     * @param y the y coordinate.
+    */
     void drawDialogue(Dialog dialog, int x, int y);
     std::vector<SDL_Texture*> textures;
     /**
@@ -62,11 +75,12 @@ public:
     SDL_Texture* drawToScreen(std::string filePath, bool fadeIn);
     /**
      * Draw to screen given coordinates and a draw zone.
+     * @param player the Player entity.
      * @param x X coordinate in screen.
      * @param y Y coordinate in screen
      * @param drawZone Draw zone from the image.
      */
-    void drawToScreen(int x, int y, SDL_Rect drawZone, std::string fileName);
+    void drawToScreen(Player player, int x, int y, SDL_Rect drawZone, std::string fileName);
     /**
      * Draw to  screen with given coordinates and a draw zone and a destination zone.
      * @param x X coordinate in screen.

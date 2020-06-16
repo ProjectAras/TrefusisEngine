@@ -19,9 +19,9 @@ void GameManager::trackObjects() {
 }
 
 bool inline GameManager::playerIsInsideMapAfterMove(float x, float y) {
-    return player.x + x >= 0 && player.y + y >= 0 &&
-            player.x + x <= Level::activeLevel.tileMatrix.size() &&
-            player.y + y <= Level::activeLevel.tileMatrix.size();
+    return player->x + x >= 0 && player->y + y >= 0 &&
+            player->x + x <= Level::activeLevel.tileMatrix.size() &&
+            player->y + y <= Level::activeLevel.tileMatrix.size();
 }
 
 bool inline GameManager::playerIsBlockedAfterMove(float dx, float dy) {
@@ -31,8 +31,8 @@ bool inline GameManager::playerIsBlockedAfterMove(float dx, float dy) {
 
 void GameManager::movePlayer(float x, float y) {
     if (playerIsInsideMapAfterMove(x, y) && !playerIsBlockedAfterMove(x, y)) {
-        player.x += x;
-        player.y += y;
+        player->x += x;
+        player->y += y;
     }
 }
 
@@ -54,10 +54,10 @@ void GameManager::handleKeys() {
                 this->quit = true;
                 break;
             case SDL_KEYDOWN:
-                if (e.key.keysym.sym == SDLK_UP) movePlayer(0, -1);
-                else if (e.key.keysym.sym == SDLK_LEFT) movePlayer(-1, 0);
-                else if (e.key.keysym.sym == SDLK_RIGHT) movePlayer(1, 0);
-                else if (e.key.keysym.sym == SDLK_DOWN) movePlayer(0, 1);
+                if (e.key.keysym.sym == SDLK_UP) movePlayer(0, -player->getSpeed());
+                else if (e.key.keysym.sym == SDLK_LEFT) movePlayer(-player->getSpeed(), 0);
+                else if (e.key.keysym.sym == SDLK_RIGHT) movePlayer(player->getSpeed(), 0);
+                else if (e.key.keysym.sym == SDLK_DOWN) movePlayer(0, player->getSpeed());
                 else if (e.key.keysym.sym == SDLK_RETURN) displayDialog = false;
         }
     }
@@ -67,12 +67,12 @@ void GameManager::Update() {
     this->handleKeys();
     this->handleDialog();
     TimeManager::tickTime();
-    this->graphicsManager.drawScreen(player, this->currentDialog);
+    this->graphicsManager.drawScreen(*player, this->currentDialog);
 }
 
 void GameManager::loadFirstScene() {
-    player.x = 110;
-    player.y = 110;
+    player->x = 110;
+    player->y = 110;
 }
 
 GameManager::GameManager() {
@@ -80,6 +80,7 @@ GameManager::GameManager() {
     std::cout << "DEBUG: Instantiating GameManager\n";
 #endif
     Level::importLevels();
+    this->player = new Player();
     this->showSplashScreen();
     this->quit = false;
     this->loadFirstScene();

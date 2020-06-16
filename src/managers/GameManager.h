@@ -10,6 +10,7 @@
 #include "../objects/Character.h"
 #include "TimeManager.h"
 #include "GraphicsManager.h"
+#include "../objects/Player.h"
 #include "../harlequin/DialogManager.hpp"
 #include "../harlequin/ScriptManager.h"
 /**
@@ -25,7 +26,7 @@ private:
     bool displayDialog = false;
     Dialog currentDialog{"", ""};
     static GameManager* game;
-    Player player {};
+    Player *player;
     /**
      * Move the player in given directions.
      * @param x movement in x direction.

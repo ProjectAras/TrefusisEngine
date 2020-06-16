@@ -69,8 +69,8 @@ void GraphicsManager::drawToScreen(int x, int y, SDL_Rect drawZone, SDL_Rect des
     SDL_DestroyTexture(newTexture);
 }
 
-void GraphicsManager::drawToScreen(int x, int y, SDL_Rect drawZone, std::string fileName) {
-    const SDL_Rect drawRect {x * TrefusisConfig::tileSize, y * TrefusisConfig::tileSize, drawZone.w, drawZone.h};
+void GraphicsManager::drawToScreen(Player player, int x, int y, SDL_Rect drawZone, std::string fileName) {
+    const SDL_Rect drawRect {(x - player.x + floor(player.x)) * TrefusisConfig::tileSize, (y - player.y + floor(player.y)) * TrefusisConfig::tileSize, drawZone.w, drawZone.h};
     this->drawToScreen(x, y, drawZone, drawRect, fileName);
 }
 
@@ -85,8 +85,8 @@ void GraphicsManager::drawTextToScreen(int x, int y, SDL_Rect destZone, std::str
     SDL_DestroyTexture(Message);
 }
 
-void GraphicsManager::drawPlayer(int x, int y) {
-    this->drawToScreen(x, y, SDL_Rect {0, 0, 64, 128}, "../resources/images/player.png");
+void GraphicsManager::drawPlayer(Player player, int x, int y) {
+    this->drawToScreen(player, x, y, SDL_Rect {0, 0, 64, 128}, "../resources/images/player.png");
 }
 
 void GraphicsManager::drawDialogue(Dialog dialog, int x, int y) {
@@ -103,7 +103,7 @@ void GraphicsManager::drawFoilages(Player player, int renderWidth, int renderHei
         for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
             if (i >= 0 && j >= 0 && i < 500 && j < 500) {
                 envActor foilage = activeLevel.foilageMatrix[i][j]; // Get the foilage to draw.
-                this->drawToScreen(x, y, getSpriteSheetRectangle(&foilage), TrefusisConfig::prefix + TrefusisConfig::spritesheet);
+                this->drawToScreen(player, x, y, getSpriteSheetRectangle(&foilage), TrefusisConfig::prefix + TrefusisConfig::spritesheet);
             }
             y++;
         }
@@ -116,23 +116,19 @@ void GraphicsManager::drawTiles(Player player, Dialog dialog, int renderWidth, i
     int spec_x = 0;
     int spec_y = 0;
     SDL_RenderClear(this->gameRenderer);
-    for (int i = player.x- renderWidth/2; i <= player.x + renderWidth/2; i++) {
+    for (int i = ceil(player.x)- renderWidth/2; i <= ceil(player.x) + renderWidth/2; i++) {
         int y = 0;
         for (int j = player.y - renderHeight/2; j<=player.y + renderWidth/2; j++) {
             if (i >= 0 && j >= 0 && i < 500 && j < 500) {
                 envActor tile = activeLevel.tileMatrix[i][j];  // Get the tile to draw.
                 envActor foilage = activeLevel.foilageMatrix[i][j]; // Get the foilage to draw.
-                this->drawToScreen(x, y, getSpriteSheetRectangle(&tile), TrefusisConfig::prefix + TrefusisConfig::spritesheet);
-                if (i == player.x && j == player.y) { // Check if we are in player's location.
-                   spec_x = x;
-                   spec_y = y; 
-                }
+                this->drawToScreen(player, x, y, getSpriteSheetRectangle(&tile), TrefusisConfig::prefix + TrefusisConfig::spritesheet);
             }
             y++;
         }
         x++;
     }
-    drawPlayer(spec_x, spec_y);
+    drawPlayer(player, 5, 3);
     drawDialogue(dialog, spec_x, spec_y);
 }
 
