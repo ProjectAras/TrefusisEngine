@@ -27,9 +27,6 @@ void TimeManager::transitionDayNight() {
 
 void TimeManager::tickTime() {
     tick++;
-    if ((tick % TrefusisConfig::dayLength) == 0) {
-        transitionDayNight();
-    }
     if ((tick % TrefusisConfig::seasonLength) == 0) {
         incrementSeason();
     }
