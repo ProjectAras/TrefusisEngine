@@ -4,9 +4,20 @@
 
 #include "TimeManager.h"
 #include "../trefusisInternals/TrefusisConfig.h"
-
+#include <iostream>
 int TimeManager::tick = 0;
 int TimeManager::timeConstant = 0;
+double TimeManager::globalBrightness = 0;
+
+void TimeManager::setGlobalBrightness() {
+    if (isDay()) {
+        float dayTick = tick % TrefusisConfig::dayLength;
+        globalBrightness = 255 - abs(55 * sin(periodConstant * dayTick));  
+    }
+    #ifdef DEBUG  
+        std::cout << globalBrightness << "\n"; 
+    #endif 
+}
 
 void TimeManager::incrementSeason() {
     timeConstant += 2;
@@ -14,7 +25,7 @@ void TimeManager::incrementSeason() {
 }
 
 bool TimeManager::isDay() {
-    return ((tick % TrefusisConfig::dayLength) == 0) && (tick % (TrefusisConfig::dayLength * 2) == 0);
+    return ((tick % TrefusisConfig::dayLength)) == (tick % (TrefusisConfig::dayLength * 2));
 }
 
 void TimeManager::transitionDayNight() {
@@ -27,6 +38,7 @@ void TimeManager::transitionDayNight() {
 
 void TimeManager::tickTime() {
     tick++;
+    setGlobalBrightness();
     if ((tick % TrefusisConfig::seasonLength) == 0) {
         incrementSeason();
     }

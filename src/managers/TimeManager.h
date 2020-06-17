@@ -5,11 +5,20 @@
 #ifndef TREFUSISENGINE_TIMEMANAGER_H
 #define TREFUSISENGINE_TIMEMANAGER_H
 
+#include <math.h>
+#include "../trefusisInternals/TrefusisConfig.h"
+
 class TimeManager {
 private:
     static int tick;
+    static constexpr double periodConstant = 3.1415 / (2 * TrefusisConfig::dayLength); // 2*pi/4dt
 public:
     static int timeConstant; //WD, WN, SD, SN, SD, SN, AD, AN
+    static double globalBrightness; // Determines the brightness level.
+    /**
+     * Controls the day night cycle.
+     */
+    static inline void setGlobalBrightness();
     /**
      * Pass the time by ticking it.
      */
