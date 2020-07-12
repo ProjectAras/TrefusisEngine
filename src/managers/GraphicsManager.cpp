@@ -41,6 +41,17 @@ SDL_Rect GraphicsManager::getSpriteSheetRectangle(envActor *ptr) {
                      ptr->width * TrefusisConfig::tileSize, ptr->height * TrefusisConfig::tileSize};
 }
 
+void GraphicsManager::drawGlobalLighting() {
+    SDL_Rect rect;
+    rect.x = 0;
+    rect.y = 0;
+    rect.w = TrefusisConfig::screenWidth;
+    rect.h = TrefusisConfig::screenHeight;
+    SDL_SetRenderDrawColor(this->gameRenderer, 0, 0, 0, (255 - TimeManager::globalBrightness) * 3);
+    SDL_RenderFillRect(this->gameRenderer, &rect);
+    SDL_RenderPresent(this->gameRenderer);
+}
+
 GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
     TTF_Init();
     this->screen_height = screen_height;
@@ -49,6 +60,7 @@ GraphicsManager::GraphicsManager(int screen_width, int screen_height) {
             SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
             screen_width, screen_height, SDL_WINDOW_SHOWN);
     this->gameRenderer = SDL_CreateRenderer(this->gameWindow, -1, SDL_RENDERER_ACCELERATED);
+    SDL_SetRenderDrawBlendMode(this->gameRenderer, SDL_BLENDMODE_BLEND); // This allows alpha channels to work properly.
     SDL_SetRenderDrawColor(this->gameRenderer, 255, 255, 255, 255);
 
 }
@@ -139,6 +151,7 @@ void GraphicsManager::drawScreen(Player player, Dialog dialog) {
     drawTiles(player, dialog, renderWidth, renderHeight, activeLevel);
     drawFoilages(player, renderWidth, renderHeight, activeLevel);
     SDL_RenderPresent(this->gameRenderer);
+    drawGlobalLighting();
 }
 
 void GraphicsManager::close() {

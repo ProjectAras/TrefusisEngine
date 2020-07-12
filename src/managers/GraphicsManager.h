@@ -22,12 +22,17 @@
 class GraphicsManager {
 private:
     SDL_Window* gameWindow;
+    SDL_Renderer* lightingRenderer;
     SDL_Renderer* gameRenderer;
     SDL_Surface* mainSpriteSheet;
     SDL_Surface* gameSurface;
     int screen_width;
     int screen_height;
     static SDL_Rect getSpriteSheetRectangle(envActor* ptr);
+    /**
+     * Add the lighting effects.
+     */
+    void drawGlobalLighting();
     /**
      * Draw to player
      * @param player the player entity.

@@ -30,7 +30,7 @@ public:
 
 
     // Graphic Geometry
-    static const int deltaTime = 16;
+    static const int deltaTime = 0;
     static const int tileSize = 64;
     static const int screenWidth = 640;
     static const int screenHeight = 480;
