@@ -106,3 +106,16 @@ GameManager GameManager::getInstance() {
         return *game;
     }
 }
+
+void GameManager::startGame() {
+    bool fileFound = TrefusisConfig::initConfig("../trefusis.conf");
+#ifdef DEBUG
+    std::cout << TrefusisConfig::configFile << "Maps directory: " << TrefusisConfig::mapsDirectory << " List of maps: \n";
+#endif
+    GameManager gm = GameManager::getInstance();
+    while (!gm.quit) {
+        SDL_Delay(TrefusisConfig::deltaTime);
+        gm.Update();
+    }
+    gm.close();
+}

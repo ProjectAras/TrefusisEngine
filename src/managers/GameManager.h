@@ -86,6 +86,10 @@ public:
      * Close the game manager. Release used resources.
      */
     void close();
+    /**
+     * Start a new game.
+     */
+    static void startGame();
 };
 
 
