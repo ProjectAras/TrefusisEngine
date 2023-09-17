@@ -16,16 +16,16 @@
 /**
  * A singleton class, GameManager has only one active instance at any given time.
  */
-class GameManager {
+class GameManager
+{
 private:
     std::vector<Character> characters;
     TimeManager timeManager;
-    ScriptManager harlequin {};
     GraphicsManager graphicsManager;
     SDL_Event e;
     bool displayDialog = false;
     Dialog currentDialog{"", ""};
-    static GameManager* game;
+    static GameManager *game;
     Player *player;
     /**
      * Move the player in given directions.
@@ -71,6 +71,7 @@ private:
      * Initialise a gamemanager instance.
      */
     GameManager();
+
 public:
     bool quit;
     /**
@@ -88,5 +89,4 @@ public:
     void close();
 };
 
-
-#endif //TREFUSISENGINE_GAMEMANAGER_H
+#endif // TREFUSISENGINE_GAMEMANAGER_H

@@ -6,18 +6,18 @@
 #define TREFUSISENGINE_GRAPHICSMANAGER_H
 
 
-#include <SDL2/SDL_video.h>
-#include <SDL2/SDL_render.h>
+#include "SDL.h"
+#include "SDL.h"
 #include <string>
 #include <vector>
 #include <cmath>
 #include "../objects/Player.h"
 #include "Level.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_surface.h>
+#include "SDL.h"
+#include "SDL.h"
+#include "SDL.h"
 #include "../harlequin/DialogManager.hpp"
-#include <SDL2/SDL_ttf.h>
+#include "SDL.h"
 
 class GraphicsManager {
 private:
