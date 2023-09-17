@@ -26,6 +26,7 @@ private:
     bool displayDialog = false;
     Dialog currentDialog{"", ""};
     static GameManager *game;
+    ScriptManager harlequin;
     Player *player;
     /**
      * Move the player in given directions.
