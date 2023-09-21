@@ -5,7 +5,6 @@
 #ifndef TREFUSISENGINE_GRAPHICSMANAGER_H
 #define TREFUSISENGINE_GRAPHICSMANAGER_H
 
-
 #include "SDL.h"
 #include "SDL.h"
 #include <string>
@@ -19,16 +18,17 @@
 #include "../harlequin/DialogManager.hpp"
 #include "SDL.h"
 
-class GraphicsManager {
+class GraphicsManager
+{
 private:
-    SDL_Window* gameWindow;
-    SDL_Renderer* lightingRenderer;
-    SDL_Renderer* gameRenderer;
-    SDL_Surface* mainSpriteSheet;
-    SDL_Surface* gameSurface;
+    SDL_Window *gameWindow;
+    SDL_Renderer *lightingRenderer;
+    SDL_Renderer *gameRenderer;
+    SDL_Surface *mainSpriteSheet;
+    SDL_Surface *gameSurface;
     int screen_width;
     int screen_height;
-    static SDL_Rect getSpriteSheetRectangle(envActor* ptr);
+    static SDL_Rect getSpriteSheetRectangle(envActor *ptr);
     /**
      * Add the lighting effects.
      */
@@ -45,14 +45,23 @@ private:
      * @param dialog dialog to draw.
      * @param x the x coordinate.
      * @param y the y coordinate.
-    */
+     */
     void drawDialogue(Dialog dialog, int x, int y);
-    std::vector<SDL_Texture*> textures;
+    std::vector<SDL_Texture *> textures;
     /**
      * Load the spritesheet onto the RAM.
      * @return
      */
     void getSpriteSheet(std::string);
+
+    /**
+     * @brief Get the Tile Texture object if not loaded yet.
+     *
+     * @param tile
+     * @return SDL_Texture*
+     */
+    SDL_Texture *getTileTexture(envActor tile);
+
 public:
     /**
      * Initialise a Graphics Manager with given sizes.
@@ -63,7 +72,7 @@ public:
     /**
      * Initialise an empty graphics manager.
      */
-    GraphicsManager() : GraphicsManager(640, 480) {};
+    GraphicsManager() : GraphicsManager(640, 480){};
     /**
      * Given the player character render the screen.
      * @param player
@@ -77,7 +86,7 @@ public:
      * @param fadeIn Wheter or not image will be faded in.
      * @return
      */
-    SDL_Texture* drawToScreen(std::string filePath, bool fadeIn);
+    SDL_Texture *drawToScreen(std::string filePath, bool fadeIn);
     /**
      * Draw to screen given coordinates and a draw zone.
      * @param player the Player entity.
@@ -122,5 +131,4 @@ public:
     void close();
 };
 
-
-#endif //TREFUSISENGINE_GRAPHICSMANAGER_H
+#endif // TREFUSISENGINE_GRAPHICSMANAGER_H

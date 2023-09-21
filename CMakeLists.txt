@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
 set(CMAKE_C_COMPILER "gcc-4.2")
 project(TrefusisEngine C CXX)
+set(CMAKE_CXX_COMPILER "/Users/elsa/homebrew/opt/llvm/bin/clang++")
+set(CMAKE_C_COMPILER "/Users/elsa/homebrew/opt/llvm/bin/clang")
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG -fsanitize=address")
 include(FindPython)
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
