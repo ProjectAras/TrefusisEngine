@@ -5,22 +5,19 @@
 #ifndef TREFUSISENGINE_GRAPHICSMANAGER_H
 #define TREFUSISENGINE_GRAPHICSMANAGER_H
 
-#include "SDL.h"
-#include "SDL.h"
-#include <string>
-#include <vector>
-#include <cmath>
+#include "../harlequin/DialogManager.hpp"
 #include "../objects/Player.h"
 #include "Level.h"
 #include "SDL.h"
-#include "SDL.h"
-#include "SDL.h"
-#include "../harlequin/DialogManager.hpp"
-#include "SDL.h"
+#include <SDL_surface.h>
+#include <cmath>
+#include <string>
+#include <tuple>
+#include <unordered_map>
+#include <vector>
 
-class GraphicsManager
-{
-private:
+class GraphicsManager {
+  private:
     SDL_Window *gameWindow;
     SDL_Renderer *lightingRenderer;
     SDL_Renderer *gameRenderer;
@@ -28,6 +25,7 @@ private:
     SDL_Surface *gameSurface;
     int screen_width;
     int screen_height;
+    std::unordered_map<std::string, std::tuple<SDL_Surface *, SDL_Texture *>> textureCache;
     static SDL_Rect getSpriteSheetRectangle(envActor *ptr);
     /**
      * Add the lighting effects.
@@ -55,20 +53,34 @@ private:
     void getSpriteSheet(std::string);
 
     /**
-     * @brief Get the Tile Texture object if not loaded yet.
+     * @brief Get a texture from file.
      *
-     * @param tile
-     * @return SDL_Texture*
+     * This function works almost identical to the IMG_Load, except for
+     * the important parts. It also has acache.
+     * @param path Texture path.
+     * @return SDL_Texture* texture of the spritesheet
      */
-    SDL_Texture *getTileTexture(envActor tile);
+    SDL_Texture *getTextureFromFile(std::string path);
 
-public:
+    /**
+     * @brief Draw a single tile to the screen.
+     *
+     * Draw a single tile to the screen, whether it be foilage or a surface.
+     * @param tile Tile to draw.
+     * @param player Player to centre the camera around.
+     * @param x X coord of the tile on the map.
+     * @param y Y coord of the tile on the map.
+     */
+    void drawTile(envActor tile, Player player, int x, int y);
+
+  public:
     /**
      * Initialise a Graphics Manager with given sizes.
      * @param screen_width
      * @param screen_height
      */
     GraphicsManager(int screen_width, int screen_height);
+    ~GraphicsManager();
     /**
      * Initialise an empty graphics manager.
      */
@@ -96,7 +108,8 @@ public:
      */
     void drawToScreen(Player player, int x, int y, SDL_Rect drawZone, std::string fileName);
     /**
-     * Draw to  screen with given coordinates and a draw zone and a destination zone.
+     * Draw to  screen with given coordinates and a draw zone and a destination
+     * zone.
      * @param x X coordinate in screen.
      * @param y Y coordinate in screen.
      * @param drawZone drawZone from the image.
